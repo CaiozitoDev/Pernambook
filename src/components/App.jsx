@@ -1,8 +1,16 @@
 import React from 'react'
 
+import Main from './Main/Main'
+import RightMenu from './RightMenu/RightMenu'
+
 function App() {
     return (
-        <h1>Oi casada</h1>
+        <div className='App'>
+            <div className='row Allrow'>
+                <Main />
+                <RightMenu />
+            </div>
+        </div>
     )
 }
 

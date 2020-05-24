@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.row {
+    margin: 0;
+}
+/* HEADER */
+.Header {
+    display: flex;
+
+    align-items: center;
+}
+.Header h1 {
+    margin-right: auto;
+}
+.Header ul {
+    display: flex;
+}
+.Header li {
+    padding: 15px;
+    list-style: none;
+}
+/* LEFT MENU */
+.LeftMenu {
+    border: 2px solid darkcyan;
+    border-bottom: none;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+    float: left;
+    min-height: 100%;
+ 
+
+}
+
+.NewPostForm form {
+    text-align: center;
+}
+
+
+
+/* POST AREA */
+.PostArea {
+    padding: 20px;
+}
+
+.PostArea h1 {
+    text-align: center;
+}
+.Post {
+    border: 2px solid green;
+}
+
+
+
+/* RIGHT MENU */
+.RightMenu {
+    border: 2px solid darkcyan;
+    border-top: none;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    float: right;
+    min-height: 100%;
+    
+}
