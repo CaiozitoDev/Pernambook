@@ -1,65 +1,168 @@
 @charset "UTF-8";
 
-.row {
-    margin: 0;
-}
-/* HEADER */
-.Header {
-    display: flex;
 
-    align-items: center;
-}
-.Header h1 {
-    margin-right: auto;
-}
-.Header ul {
-    display: flex;
-}
-.Header li {
-    padding: 15px;
-    list-style: none;
-}
-/* LEFT MENU */
-.LeftMenu {
-    border: 2px solid darkcyan;
-    border-bottom: none;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-
-    float: left;
-    min-height: 100%;
- 
-
+.LeftMenu::-webkit-scrollbar, .RightMenu::-webkit-scrollbar {
+    display: none;
 }
 
-.NewPostForm form {
-    text-align: center;
+a {
+    text-decoration: none;
+    color: white;
+    
 }
 
+
+
+/* LEFT */
+.Left {
+    position: fixed;
+    height: 100vh;
+
+    padding-right: 0;
+}
+    /* BRAND */
+    .LeftTop {
+        text-align: center;
+    }
+    /* LEFT MENU */
+    .LeftMenu {
+        border: 2px solid darkcyan;
+        border-bottom: none;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+
+        height: 100vh; /* 600px */
+        padding: 5%;
+
+        overflow-y: scroll;
+
+    }
+        /* NEW POST FORM */
+        .NewPostForm form {
+            text-align: center;
+        }
+        .NewPostForm button {
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+        }
+        .NewPostForm textarea {
+            resize: none;
+            width: 100%;
+
+            border-radius: 20px;
+        }
+
+        /* LIST CONFIGS */
+        .ListConfigs {
+            border: 2px solid darkcyan;
+            border-radius: 30px;
+            margin-top: 30px;
+        }
+        .ListConfigs ul{
+            padding: 0;
+        }
+        .ListConfigs li {
+            display: flex;
+            list-style: none;
+            padding: 10px 0 10px 20px;
+            align-items: center;
+            
+        }
+        .ListConfigs li h4 {
+            padding-left: 20px;
+        }
+        .ListConfigs li:last-child {
+            padding-bottom: 0px;
+        }
+        #ListConfigsProfile {
+            border-top: 1px solid darkcyan;
+            border-bottom: 1px solid darkcyan; 
+        }
 
 
 /* POST AREA */
 .PostArea {
-    padding: 20px;
+    margin-left: calc(100% / 3);
 }
-
 .PostArea h1 {
     text-align: center;
+    padding: 0;
 }
-.Post {
-    border: 2px solid green;
-}
-
-
-
-/* RIGHT MENU */
-.RightMenu {
-    border: 2px solid darkcyan;
-    border-top: none;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-
-    float: right;
-    min-height: 100%;
+    /* POST */
+    .Post {
+        border: 2px solid cyan;
+        border-radius: 30px;
+        margin-bottom: 50px;
+    }
+    .PostHeader, .PostFooter form{
+        display: flex;
+        align-items: center;
+        padding-left: 2%;
+    }
+    .PostHeader * {
+        margin: 10px 10px 10px 0;
+    }
+    .PostHeaderImg {
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+    }
+    .PostHeader p {
+        opacity: 0.8;
+    }
+    .PostBody, .PostFooter {
+        padding: 10px;
+    }
+    .PostBody {
+        border: none;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+    .PostFooter form {
+        justify-content: space-around;
+    }
+    .PostFooter form * {
+        cursor: pointer;
+    }
     
+
+
+
+/* RIGHT*/
+.Right {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    height: 100vh;
+
+    padding-left: 0;
 }
+    /* RIGHT MENU */
+    .RightMenu {
+        border: 2px solid darkcyan;
+        border-top: none;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+
+        height: 90vh;
+        padding: 5%;
+
+        overflow-y: scroll;
+
+    }
+        /* BUTTONS */
+        .Nav {
+            text-align: center;
+        }
+        .Nav ul {
+            padding: 0;
+            padding-top: 10px;
+        }
+        .Nav li {
+            display: inline;
+            padding: 15px;
+            list-style: none;
+        }

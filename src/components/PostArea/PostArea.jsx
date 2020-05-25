@@ -1,10 +1,12 @@
 import React from 'react'
 
-import Post from './Post'
+import Header from './Header/Header'
+import Post from './Post/Post'
 
-function PostArea() { //col-6 
+function PostArea() {
     return (
-        <div className='col-8 PostArea'>
+        <div className='col-5 PostArea'>
+            <Header />
             <h1>Initial page</h1>
             <Post />
             <Post />

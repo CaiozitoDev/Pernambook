@@ -1,9 +1,8 @@
 import React from 'react'
 
-function Header() {
+function Buttons() {
     return (
-        <header className='Header'>
-            <h1>Pernambook</h1>
+        <nav className='Nav'>
             <ul>
                 <li>
                 <a href=''>Home</a>
@@ -13,8 +12,8 @@ function Header() {
                 </li>
                 <button className='btn btn-large btn-outline-primary'>Adicionar post</button>
             </ul>
-        </header>
+        </nav>
     )
 }
 
-export default Header
+export default Buttons
