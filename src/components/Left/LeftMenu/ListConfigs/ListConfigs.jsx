@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-import {Home, Person, Email} from '@material-ui/icons'
+import {Home, Person, Email, Group} from '@material-ui/icons'
 
 function ListConfigs() {
     return (
@@ -10,15 +10,19 @@ function ListConfigs() {
             <ul>
                 <li>
                     <Home />
-                    <a href='.Header'> <h4>Home page</h4> </a>
+                    <a href='/'> <h4>Home page</h4> </a>
                 </li>
                 <li id='ListConfigsProfile'>
                     <Person />
-                    <h4>Profile</h4>
+                    <a href=''> <h4>Profile</h4> </a>
                 </li>
                 <li>
                     <Email />
-                    <h4>Messages</h4>
+                    <a href=''> <h4>Messages</h4> </a>
+                </li>
+                <li>
+                    <Group />
+                    <a href=''> <h4>Friends</h4> </a>
                 </li>
             </ul>
         </div>

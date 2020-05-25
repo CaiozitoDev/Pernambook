@@ -7,7 +7,9 @@ function LeftMenu() {
     return (
         <div className='LeftMenu'>
             <NewPostForm />
+            <hr />
             <LeftOptions />
+            <hr />
         </div>
     )
 }

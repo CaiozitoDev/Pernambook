@@ -7,8 +7,7 @@
 
 a {
     text-decoration: none;
-    color: white;
-    
+    list-style: none;
 }
 
 
@@ -52,14 +51,15 @@ a {
             width: 100%;
 
             border-radius: 20px;
+            outline: 0;
+        }
+
+        .LeftMenu hr {
+            border: 2px solid darkcyan;
+            border-radius: 10px;
         }
 
         /* LIST CONFIGS */
-        .ListConfigs {
-            border: 2px solid darkcyan;
-            border-radius: 30px;
-            margin-top: 30px;
-        }
         .ListConfigs ul{
             padding: 0;
         }
@@ -72,13 +72,6 @@ a {
         }
         .ListConfigs li h4 {
             padding-left: 20px;
-        }
-        .ListConfigs li:last-child {
-            padding-bottom: 0px;
-        }
-        #ListConfigsProfile {
-            border-top: 1px solid darkcyan;
-            border-bottom: 1px solid darkcyan; 
         }
 
 
@@ -104,7 +97,7 @@ a {
     .PostHeader * {
         margin: 10px 10px 10px 0;
     }
-    .PostHeaderImg {
+    .PostUserIcon {
         height: 50px;
         width: 50px;
         border-radius: 100%;
@@ -126,6 +119,16 @@ a {
     .PostFooter form * {
         cursor: pointer;
     }
+        /* ICONS */
+        .ThumbUpIcon:hover {
+            color: cyan;
+        }
+        .FavoriteBorderIcon:hover {
+            color: red;
+        }
+        .CommentIcon:hover {
+            color: orange;
+        }
     
 
 
@@ -153,6 +156,24 @@ a {
         overflow-y: scroll;
 
     }
+        .Quotation {
+            font-style: italic;
+            font-size: 1.5rem;
+        }
+        .TopPost {
+            border-top: 1px solid darkcyan;
+            padding-top: 10px;
+        }
+        .TopPost:last-child {
+            border-bottom: 1px solid darkcyan;
+        }
+        .TopPost .PostUserIcon {
+            float: left;
+            margin: 0 10px 0 0;
+        }
+        .TopPost p {
+            line-height: 1.3;
+        }
         /* BUTTONS */
         .Nav {
             text-align: center;
