@@ -6,7 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 function DownMenuSearch() {
     return (
         <div className='DownMenuSearch'>
-            <span> <SearchIcon style={{fill: '#fe346e'}}/> </span>
+            <span> <SearchIcon style={{fill: 'white'}}/> </span>
             <input type='text' placeholder='Search' />
         </div>
     )

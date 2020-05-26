@@ -13,7 +13,7 @@ a {
 
 
 body {
-    background: linear-gradient(65deg, rgb(252, 252, 195) 20%, #fe346e);
+    background: linear-gradient(65deg, #ffa46b 30%, #fc4774);
 }
 
 h1, h2, h3, h4, h5 {
@@ -39,15 +39,18 @@ h1, h2, h3, h4, h5 {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
 
-        height: 100vh; /* 600px */
+        height: 100vh;
         padding: 0 5%;
 
         overflow-y: scroll;
 
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.356);
 
-        background: linear-gradient(65deg, #ffb385 30%, #ff7998 );
-        border: none;
+        background: linear-gradient(65deg, #ffb385 30%, #fc4774 );
+        border: 3px solid white;
+
+        position: relative;
+        top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
     }
         /* NEW POST FORM */
         .NewPostForm {
@@ -84,7 +87,7 @@ h1, h2, h3, h4, h5 {
         }
         .NewPostForm textarea::placeholder {
             padding-left: 5%;
-            color: white;
+            color: black;
         }
 
         .LeftMenu hr {
@@ -201,11 +204,10 @@ h1, h2, h3, h4, h5 {
 }
     /* RIGHT MENU */
     .RightMenu {
-        border: 2px solid darkcyan;
+        border: 2px solid #fae7cb;
         border-top: none;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-
         height: 90vh;
         padding: 5%;
 
@@ -214,18 +216,21 @@ h1, h2, h3, h4, h5 {
 
         box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.377);
 
-        background: linear-gradient(65deg, #fae7cb 30%, #ff7272);
-        border: none;
+        background: linear-gradient(65deg, #fae7cb 5%, #ff7272);
+        border: 3px solid white;
+        border-top: none;
+
+        position: relative;
+        top: -100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
     }
     .RightMenu h2 {
-        border-bottom: 1px solid darkcyan;
+        border-bottom: 1px solid #fae7cb;
         padding-bottom: 5%;
         margin-bottom: 0;
     }
         /* TOP POST AREA */
         .TopPostArea {
             overflow-y: scroll;
-            box-sizing: border-box;
             padding-top: 0;
         }
             .Quotation {
@@ -233,11 +238,11 @@ h1, h2, h3, h4, h5 {
                 font-size: 1.5rem;
             }
             .TopPost {
-                border-top: 1px solid darkcyan;
+                border-top: 1px solid #fae7cb;
                 padding-top: 10px;
             }
             .TopPost:last-child {
-                border-bottom: 1px solid darkcyan;
+                border-bottom: 1px solid #fae7cb;
             }
             .TopPost .PostUserIcon {
                 float: left;
@@ -262,11 +267,14 @@ h1, h2, h3, h4, h5 {
             }
 
 
-/* DOWN MENU*/
-.DownMenu {
+
+.Down {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+/* DOWN MENU*/
+.DownMenu {
     background-color: transparent;
 
     border-top-left-radius: 9999px;
@@ -278,6 +286,9 @@ h1, h2, h3, h4, h5 {
     border-top: 2px solid white;
     
     backdrop-filter: blur(3px);
+
+    position: relative;
+    bottom: 0%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
 }
     /* DOWN MENU COMPONENTS */
     .DownMenuComponents {
@@ -303,14 +314,15 @@ h1, h2, h3, h4, h5 {
         .DownMenuSearch input {
             width: 100%;
             border: none;
-            color: #fe346e;
+            color: white;
 
             outline: 0;
 
             background-color: transparent;
         }
         .DownMenuSearch input::placeholder {
-            color: #fe346e;
+            color: white;
+            font-weight: bold;
         }
         .DownMenuSearch span {
             align-self: center;
