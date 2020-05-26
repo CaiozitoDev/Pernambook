@@ -7,7 +7,7 @@ import slideAnimation from '../../functions/slideAnimation'
 
 function DownMenu() {
     return (
-        <div className='DownMenu' onClick={() => {slideAnimation('DownMenu')}}>
+        <div className='DownMenu' onLoad={() => {slideAnimation('DownMenu')}}>
             <div className='DownMenuComponents'>
                 <DownMenuSearch />
                 <DownMenuFriends />
