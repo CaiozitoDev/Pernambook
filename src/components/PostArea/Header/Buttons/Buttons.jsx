@@ -10,7 +10,7 @@ function Buttons() {
                 <li>
                 <a href=''>Suporte</a>
                 </li>
-                <button className='btn btn-large btn-outline-primary'>Adicionar post</button>
+                <button className='btn btn-large btn-outline-light'>Adicionar post</button>
             </ul>
         </nav>
     )

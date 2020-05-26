@@ -1,16 +1,25 @@
 @charset "UTF-8";
 
 
-.LeftMenu::-webkit-scrollbar, .RightMenu::-webkit-scrollbar {
+.LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar {
     display: none;
 }
 
 a {
     text-decoration: none;
     list-style: none;
+    color: white;
 }
 
 
+body {
+    background: linear-gradient(65deg, rgb(252, 252, 195) 20%, #fe346e);
+}
+
+h1, h2, h3, h4, h5 {
+    color: white;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.377);
+}
 
 /* LEFT */
 .Left {
@@ -25,53 +34,92 @@ a {
     }
     /* LEFT MENU */
     .LeftMenu {
-        border: 2px solid darkcyan;
+        border: 2px solid ;
         border-bottom: none;
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
 
         height: 100vh; /* 600px */
-        padding: 5%;
+        padding: 0 5%;
 
         overflow-y: scroll;
 
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.356);
+
+        background: linear-gradient(65deg, #ffb385 30%, #ff7998 );
+        border: none;
     }
         /* NEW POST FORM */
+        .NewPostForm {
+            margin-bottom: 20px;
+        }
         .NewPostForm form {
+            position: relative;
             text-align: center;
         }
-        .NewPostForm button {
-            border-bottom-left-radius: 9999px;
-            border-bottom-right-radius: 9999px;
-            border-top-left-radius: 9999px;
-            border-top-right-radius: 9999px;
+        .NewPostForm form button {
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            border: none;
+            border-radius: 100%;
+            background-color: #fae7cb;
+
+            width: 40px;
+            height: 40px;
+
+            cursor: pointer;
+            outline: none;
+
+            box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.356);
         }
         .NewPostForm textarea {
             resize: none;
             width: 100%;
 
-            border-radius: 20px;
+            border-radius: 10px;
+            border: 2px solid;
             outline: 0;
+            border: none;
+        }
+        .NewPostForm textarea::placeholder {
+            padding-left: 5%;
+            color: white;
         }
 
         .LeftMenu hr {
-            border: 2px solid darkcyan;
+            border: 2px solid #fae7cb;
             border-radius: 10px;
         }
 
         /* LIST CONFIGS */
         .ListConfigs ul{
             padding: 0;
+            margin: 0;
+
         }
         .ListConfigs li {
             display: flex;
-            list-style: none;
-            padding: 10px 0 10px 20px;
+            padding: 5px 0 5px 5%;
             align-items: center;
             
         }
         .ListConfigs li h4 {
             padding-left: 20px;
+        }
+
+        /* MY PROFILE */
+        .MyProfile {
+            margin-top: 5%;
+            display: flex;
+            padding-left: 10px;
+            align-items: center;
+        }
+        .MyProfile * {
+            margin: 0 10px 0 0;
+        }
+        .MyProfile img {
+            box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.329);
         }
 
 
@@ -85,9 +133,15 @@ a {
 }
     /* POST */
     .Post {
-        border: 2px solid cyan;
+        border: 2px solid #6f0000;
         border-radius: 30px;
         margin-bottom: 50px;
+
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322);
+
+        background: #fae7cb;
+
+        border: 3px double rgb(240, 183, 183);
     }
     .PostHeader, .PostFooter form{
         display: flex;
@@ -101,6 +155,7 @@ a {
         height: 50px;
         width: 50px;
         border-radius: 100%;
+        border: 2px solid;
     }
     .PostHeader p {
         opacity: 0.8;
@@ -121,7 +176,7 @@ a {
     }
         /* ICONS */
         .ThumbUpIcon:hover {
-            color: cyan;
+            color: #00bdaa;
         }
         .FavoriteBorderIcon:hover {
             color: red;
@@ -142,6 +197,7 @@ a {
     height: 100vh;
 
     padding-left: 0;
+
 }
     /* RIGHT MENU */
     .RightMenu {
@@ -153,37 +209,128 @@ a {
         height: 90vh;
         padding: 5%;
 
-        overflow-y: scroll;
+        display: flex;            /* */
+        flex-direction: column;  /*PRA FUNCIONAR O SCROLL DA DIV TOP POST AREA */
+
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.377);
+
+        background: linear-gradient(65deg, #fae7cb 30%, #ff7272);
+        border: none;
+    }
+    .RightMenu h2 {
+        border-bottom: 1px solid darkcyan;
+        padding-bottom: 5%;
+        margin-bottom: 0;
+    }
+        /* TOP POST AREA */
+        .TopPostArea {
+            overflow-y: scroll;
+            box-sizing: border-box;
+            padding-top: 0;
+        }
+            .Quotation {
+                font-style: italic;
+                font-size: 1.5rem;
+            }
+            .TopPost {
+                border-top: 1px solid darkcyan;
+                padding-top: 10px;
+            }
+            .TopPost:last-child {
+                border-bottom: 1px solid darkcyan;
+            }
+            .TopPost .PostUserIcon {
+                float: left;
+                margin: 0 10px 0 0;
+                border: 2px solid #fae7cb;
+            }
+            .TopPost p {
+                line-height: 1.3;
+            }
+            /* BUTTONS */
+            .Nav {
+                text-align: center;
+            }
+            .Nav ul {
+                padding: 0;
+                padding-top: 10px;
+            }
+            .Nav li {
+                display: inline;
+                padding: 15px;
+                list-style: none;
+            }
+
+
+/* DOWN MENU*/
+.DownMenu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+
+    padding: 5px 40px 5px;
+
+    box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.295) ;
+    border-top: 2px solid white;
+    
+    backdrop-filter: blur(3px);
+}
+    /* DOWN MENU COMPONENTS */
+    .DownMenuComponents {
+        display: flex;
+        width: 100%;
+        align-items: center;
 
     }
-        .Quotation {
-            font-style: italic;
-            font-size: 1.5rem;
+        /* DOWN MENU SEARCH */
+        .DownMenuSearch {
+            width: 25%;
+            display: flex;
+
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+
+            padding: 5px;
+
+            border: 2px solid white;
         }
-        .TopPost {
-            border-top: 1px solid darkcyan;
-            padding-top: 10px;
+        .DownMenuSearch input {
+            width: 100%;
+            border: none;
+            color: #fe346e;
+
+            outline: 0;
+
+            background-color: transparent;
         }
-        .TopPost:last-child {
-            border-bottom: 1px solid darkcyan;
+        .DownMenuSearch input::placeholder {
+            color: #fe346e;
         }
-        .TopPost .PostUserIcon {
-            float: left;
-            margin: 0 10px 0 0;
+        .DownMenuSearch span {
+            align-self: center;
+            height: 100%;
+            margin-right: 5px;
+
+            background-color: transparent;
         }
-        .TopPost p {
-            line-height: 1.3;
+
+
+        /* DOWN MENU FRIENDS */
+        .DownMenuFriends {
+            display: flex;
+            width: 75%;
+            padding: 0 20px;
+
+            align-items: center;
+            justify-content: space-around;
         }
-        /* BUTTONS */
-        .Nav {
-            text-align: center;
-        }
-        .Nav ul {
-            padding: 0;
-            padding-top: 10px;
-        }
-        .Nav li {
-            display: inline;
-            padding: 15px;
-            list-style: none;
+        .DownMenuFriends img {
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.37);
+            border: 2px solid white;
         }

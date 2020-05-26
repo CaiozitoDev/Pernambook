@@ -6,9 +6,12 @@ function RightMenu() {
     return (
         <div className='RightMenu'>
             <h2>Most liked posts</h2>
-            <TopPost />
-            <TopPost />
-            <TopPost />
+            <div className='TopPostArea'>
+                <TopPost />
+                <TopPost />
+                <TopPost />
+                <TopPost />
+            </div>
         </div>
     )
 }

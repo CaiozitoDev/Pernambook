@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Buttons from './Buttons/Buttons'
+
 function Header() {
     return (
         <div className='Header'>
-            <h1>Header</h1>
+            <Buttons />
         </div>
     )
 }
