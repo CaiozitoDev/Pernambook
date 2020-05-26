@@ -10,7 +10,7 @@ function slideAnimation(item) {
     }
 
     document.querySelector('.' + item).style.top = '0%'
-    document.querySelector('.' + item).style.transition = `all 0.5s ` + easeResult
+    document.querySelector('.' + item).style.transition = `all 0.7s ` + easeResult
 }
 
 export default slideAnimation

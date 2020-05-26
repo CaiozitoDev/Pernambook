@@ -8,22 +8,30 @@ function ListConfigs() {
     return (
         <div className='ListConfigs'>
             <ul>
-                <li>
-                    <Home />
-                    <a href='/'> <h4>Home page</h4> </a>
-                </li>
-                <li id='ListConfigsProfile'>
-                    <Person />
-                    <a href=''> <h4>Profile</h4> </a>
-                </li>
-                <li>
-                    <Email />
-                    <a href=''> <h4>Messages</h4> </a>
-                </li>
-                <li>
-                    <Group />
-                    <a href=''> <h4>Friends</h4> </a>
-                </li>
+                <a href=''>
+                    <li>
+                        <Home />
+                        <h4>Home page</h4>
+                    </li>
+                </a>
+                <a href=''>
+                    <li>
+                        <Person />
+                        <h4>Profile</h4>
+                    </li>
+                </a>
+                <a href=''>
+                    <li>
+                        <Email />
+                        <h4>Messages</h4>
+                    </li>
+                </a>
+                <a href=''>
+                    <li>
+                        <Group />
+                        <h4>Friends</h4>
+                    </li>
+                </a>
             </ul>
         </div>
     )

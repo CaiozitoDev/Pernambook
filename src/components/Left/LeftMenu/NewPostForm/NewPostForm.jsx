@@ -11,9 +11,12 @@ function NewPostForm() {
         <div className='NewPostForm'>
             <h1>Post area</h1>
             <form>
-                <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onClick={() => {
-                    setTextAreaClick(true)
-                }}></textarea>
+                <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onFocus={() => {
+                    setTextAreaClick(true)  // QUANDO CLICAR
+                }} onBlur={() => {
+                    setTextAreaClick(false)  // QUANDO SAIR
+                }}> 
+                </textarea>
                 <Zoom in={textAreaClick}>
                     <Fab>
                         <AddIcon />

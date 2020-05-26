@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 
 .LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar {
     display: none;
 }
 
-a {
+.LeftMenu a, .PostArea a, .RightMenu a {
     text-decoration: none;
-    list-style: none;
     color: white;
 }
 
@@ -19,6 +20,7 @@ body {
 h1, h2, h3, h4, h5 {
     color: white;
     text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.377);
+    font-family: 'Roboto', sans-serif;
 }
 
 /* LEFT */
@@ -31,6 +33,12 @@ h1, h2, h3, h4, h5 {
     /* BRAND */
     .LeftTop {
         text-align: center;
+        display: flex;
+        align-items: center;
+    }
+    .LeftTop img {
+        width: 25%;
+        height: 10%;
     }
     /* LEFT MENU */
     .LeftMenu {
@@ -56,6 +64,7 @@ h1, h2, h3, h4, h5 {
         .NewPostForm {
             margin-bottom: 20px;
         }
+        
         .NewPostForm form {
             position: relative;
             text-align: center;
@@ -106,7 +115,15 @@ h1, h2, h3, h4, h5 {
             display: flex;
             padding: 5px 0 5px 5%;
             align-items: center;
+
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
             
+        }
+        .ListConfigs li:hover {
+            background-color: rgba(0, 0, 0, 0.041);
         }
         .ListConfigs li h4 {
             padding-left: 20px;
@@ -116,8 +133,16 @@ h1, h2, h3, h4, h5 {
         .MyProfile {
             margin-top: 5%;
             display: flex;
-            padding-left: 10px;
+            padding-left: 0px;
             align-items: center;
+
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+        }
+        .MyProfile:hover {
+            background-color: rgba(0, 0, 0, 0.041);
         }
         .MyProfile * {
             margin: 0 10px 0 0;
@@ -174,20 +199,36 @@ h1, h2, h3, h4, h5 {
         border-top: 2px solid white;
         border-bottom: 2px solid white;
     }
+    .PostFooter {
+        padding: 0;
+    }
     .PostFooter form {
         justify-content: space-around;
     }
     .PostFooter form * {
         cursor: pointer;
     }
+    .PostFooter form button {
+        background: transparent;
+        border: none;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        padding: 10px;
+    }
         /* ICONS */
-        .ThumbUpIcon:hover {
+        .ThumbUpButton:hover {
             color: #00bdaa;
         }
-        .FavoriteBorderIcon:hover {
+        .PostFooter .FavoriteBorderButton {
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+            
+        }
+        .FavoriteBorderButton:hover {
             color: red;
         }
-        .CommentIcon:hover {
+        .CommentButton:hover {
             color: orange;
         }
     
@@ -275,7 +316,7 @@ h1, h2, h3, h4, h5 {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 10%;
+    height: 65px;
 }
 /* DOWN MENU*/
 .DownMenu {
@@ -286,7 +327,7 @@ h1, h2, h3, h4, h5 {
 
     height: 100%;
 
-    padding: 5px 40px 5px;
+    padding: 5px 40px;
 
     box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.295) ;
     border-top: 2px solid white;
@@ -301,7 +342,6 @@ h1, h2, h3, h4, h5 {
         display: flex;
         width: 100%;
         align-items: center;
-
     }
         /* DOWN MENU SEARCH */
         .DownMenuSearch {
@@ -350,7 +390,17 @@ h1, h2, h3, h4, h5 {
 
             
         }
-        .DownMenuFriends img {
-            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.37);
-            border: 2px solid white;
-        }
+            /* DOWN MENU FRIEND CHAT */
+            .DownMenuFriendChat img {
+                box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.37);
+                border: 2px solid white;
+            }
+            .DownMenuFriendChat img:hover {
+                -webkit-filter: brightness(90%);
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;         /* EFEITO DE ESCURECER O ICONE */  
+                -o-transition: all 0.3s ease;
+                -ms-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+    

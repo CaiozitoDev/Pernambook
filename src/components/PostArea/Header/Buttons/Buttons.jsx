@@ -5,12 +5,12 @@ function Buttons() {
         <nav className='Nav'>
             <ul>
                 <li>
-                <a href=''>Home</a>
+                <a href=''>About</a>
                 </li>
                 <li>
-                <a href=''>Suporte</a>
+                <a href=''>Support</a>
                 </li>
-                <button className='btn btn-large btn-outline-light'>Adicionar post</button>
+                <button className='btn btn-large btn-outline-light'>Logoff</button>
             </ul>
         </nav>
     )
