@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.LeftMenu a, .PostArea a, .RightMenu a {
+    text-decoration: none;
+    color: white;
+}
+
+
+body {
+    background: linear-gradient(65deg, #ffbc92 30%, #ff3265);
+}
+
+h1, h2, h3, h4, h5 {
+    color: white;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.377);
+    font-family: 'Roboto', sans-serif;
+}
+
+.Left, .Right, .Down {
+    display: none;
+}
+/* POST AREA */
+.PostArea {
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+}
+.PostArea h1 {
+    text-align: center;
+    padding: 0;
+}
+    /* POST */
+    .Post {
+        border: 2px solid #6f0000;
+        border-radius: 30px;
+        margin-bottom: 50px;
+
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322);
+
+        background: #fae7cb;
+
+        border: 3px double rgb(240, 183, 183);
+    }
+    .PostHeader, .PostFooter form{
+        display: flex;
+        align-items: center;
+        padding-left: 2%;
+    }
+    .PostHeader * {
+        margin: 10px 10px 10px 0;
+    }
+    .PostHeader a {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .PostUserIcon {
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        border: 2px solid;
+
+        border: 2px solid white;
+    }
+    .PostHeader p {
+        opacity: 0.8;
+    }
+    .PostBody, .PostFooter {
+        padding: 10px;
+    }
+    .PostBody {
+        border: none;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+    .PostFooter {
+        padding: 0;
+    }
+    .PostFooter form {
+        justify-content: space-around;
+    }
+    .PostFooter form * {
+        cursor: pointer;
+    }
+    .PostFooter form button {
+        background: transparent;
+        border: none;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        padding: 10px;
+    }
+        /* ICONS */
+        .ThumbUpButton:hover {
+            color: #00bdaa;
+        }
+        .PostFooter .FavoriteBorderButton {
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+            
+        }
+        .FavoriteBorderButton:hover {
+            color: red;
+        }
+        .CommentButton:hover {
+            color: orange;
+        }
+    
+
+
+.Down {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+}
+/* DOWN MENU*/
+.DownMenu {
+    background-color: transparent;
+
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+
+    height: 100%;
+
+    padding: 5px 40px;
+
+    box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.295) ;
+    border-top: 2px solid white;
+    
+    backdrop-filter: blur(3px);
+
+    position: relative;
+    top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
+}
+    /* DOWN MENU COMPONENTS */
+    .DownMenuComponents {
+        display: flex;
+        width: 100%;
+        align-items: center;
+    }
+        /* DOWN MENU SEARCH */
+        .DownMenuSearch {
+            width: 25%;
+            display: flex;
+
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            border-top-left-radius: 9999px;
+            border-top-right-radius: 9999px;
+
+            padding: 5px;
+
+            border: 2px solid white;
+        }
+        .DownMenuSearch input {
+            width: 100%;
+            border: none;
+            color: white;
+
+            outline: 0;
+
+            background-color: transparent;
+        }
+        .DownMenuSearch input::placeholder {
+            color: white;
+            font-weight: bold;
+        }
+        .DownMenuSearch span {
+            align-self: center;
+            height: 100%;
+            margin-right: 5px;
+
+            background-color: transparent;
+        }
+
+
+        /* DOWN MENU FRIENDS */
+        .DownMenuFriends {
+            display: flex;
+            width: 75%;
+            padding: 0 20px;
+
+            align-items: center;
+            justify-content: space-around;
+
+            
+        }
+            /* DOWN MENU FRIEND CHAT */
+            .DownMenuFriendChat img {
+                box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.37);
+                border: 2px solid white;
+            }
+            .DownMenuFriendChat img:hover {
+                -webkit-filter: brightness(90%);
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;         /* EFEITO DE ESCURECER O ICONE */  
+                -o-transition: all 0.3s ease;
+                -ms-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+    

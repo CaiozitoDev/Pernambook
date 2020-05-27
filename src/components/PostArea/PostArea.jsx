@@ -5,7 +5,7 @@ import Post from './Post/Post'
 
 function PostArea() {
     return (
-        <div className='col-5 PostArea'>
+        <div className='col-lg-5 PostArea'>
             <Header />
             <h1>Initial page</h1>
             <Post />
