@@ -1,18 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './components/App'
+import CorrectDevice from './components/functions/verifyDeviceScreen/verifyDeviceScreen'
 
-import CorrectScreen from './components/functions/verifyDeviceScreen/verifyDeviceScreen'
+/* import AppDesktop from './components/App/App'
+import AppTablet from './components/AppTablet/App'
+import AppSmartphone from './components/AppSmartphone/App'
 
-let CorrectDevice = <App />
+let CorrectDevice
 
-ReactDOM.render(CorrectDevice, document.querySelector('#root'))
-
-/* if(CorrectScreen == 'desktop') {
+if(CorrectScreen == 'desktop') {
     CorrectDevice = <AppDesktop />
 } else if(CorrectScreen == 'tablet') {
     CorrectDevice = <AppTablet />
 } else {
     CorrectDevice = <AppSmartphone />
 } */
+
+
+
+ReactDOM.render(CorrectDevice, document.querySelector('#root'))
+
