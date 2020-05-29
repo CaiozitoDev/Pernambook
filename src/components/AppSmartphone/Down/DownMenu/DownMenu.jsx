@@ -1,6 +1,8 @@
 import React from 'react'
 
-import {Home, Person, Email, Group} from '@material-ui/icons'
+import {Home, Search, Email, Group} from '@material-ui/icons'
+
+import Zoom from '@material-ui/core/Zoom'
 
 import slideAnimation from '../../../functions/slideAnimation'
 
@@ -8,20 +10,30 @@ function DownMenu() {
     return (
         <div className='DownMenu'>
             <div className='DownMenuComponents'>
-                <ul>
-                    <li>
-                        <Home /> 
-                    </li>
-                    <li>
-                        <Person />
-                    </li>
-                    <li>
-                        <Group />
-                    </li>
-                    <li>
-                        <Email />
-                    </li>
-                </ul>
+                <Zoom in='true'>
+                    <ul>
+                        <a href=''>
+                            <li>
+                                <Home /> 
+                            </li>
+                        </a>
+                        <a href=''>
+                            <li>
+                                <Search />
+                            </li>
+                        </a>
+                        <a href=''>
+                            <li>
+                                <Group />
+                            </li>
+                        </a>
+                        <a href=''>
+                            <li>
+                                <Email />
+                            </li>
+                        </a>
+                    </ul>
+                </Zoom>
             </div>
         </div>
     )

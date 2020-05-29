@@ -26,7 +26,7 @@ function NewPostForm() {
                 }} required> 
                 </textarea>
                 <Zoom in='true'>
-                    <Fab className='AddPostButton' onClick={() => { setTextAreaClick(false); console.log('clicado')}} type='submit'>
+                    <Fab className='AddPostButton' onClick={() => { setTextAreaClick(false)}} type='submit'>
                         <AddIcon />
                     </Fab>
                 </Zoom>

@@ -1,12 +1,13 @@
 import React from 'react'
 
-import MyProfile from './MyProfile/MyProfile'
+import HeaderMyProfile from './HeaderMyProfile/HeaderMyProfile'
 import LogOff from './LogOff/LogOff'
+
 
 function Header() {
     return (
         <div className='Header'>
-            <MyProfile />
+            <HeaderMyProfile/>
             <LogOff />
         </div>
     )
