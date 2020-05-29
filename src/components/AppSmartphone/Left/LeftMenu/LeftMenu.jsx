@@ -3,7 +3,7 @@ import React from 'react'
 import {Person, TrendingUp, Group, Email, Close} from '@material-ui/icons/'
 import Zoom from '@material-ui/core/Zoom'
 
-import MyProfile from './MyProfile/MyProfile'
+import LeftMenuMyProfile from './LeftMenuMyProfile/LeftMenuMyProfile'
 
 function LeftMenu() {
     return (
@@ -11,35 +11,35 @@ function LeftMenu() {
             <div className='LeftMenuHeader'>
                 <h2>Menu</h2>
                 <Zoom in='true'>
-                    <div className='LeftMenuCloseButton' onClick={() => {document.querySelector('.Left').style.display = 'none'}}>
+                    <div className='LeftMenuCloseButton' onClick={() => {document.querySelector('.Left').classList.remove('isLeftClicked'); document.querySelector('.LeftMenu').classList.remove('isLeftMenuClicked')}}>
                         <Close style={{fill: 'white'}} />
                     </div>
                 </Zoom>
             </div>
-            <MyProfile />
+            <LeftMenuMyProfile/>
             <Zoom in='true'>
                 <ul>
                     <li>
                         <a>
-                            <Person />
+                            <Person style={{fill: 'white'}}/>
                             <h4>Profile</h4>
                         </a>
                     </li>
                     <li>
                         <a>
-                            <TrendingUp />
+                            <TrendingUp style={{fill: 'white'}}/>
                             <h4>Trending</h4>
                         </a>
                     </li>
                     <li>
                         <a>
-                            <Group />
+                            <Group style={{fill: 'white'}}/>
                             <h4>Friends</h4>
                         </a>
                     </li>
                     <li>
                         <a>
-                            <Email  />
+                            <Email style={{fill: 'white'}}/>
                             <h4>Messages</h4>
                         </a>
                     </li>

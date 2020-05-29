@@ -3,6 +3,7 @@ import React from 'react'
 function Buttons() {
     return (
         <nav className='Nav'>
+            <p>Made with ❤ by CuscuzComCharque Productions</p>
             <ul>
                 <li>
                 <a href=''>About</a>

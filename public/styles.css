@@ -429,7 +429,7 @@ h1, h2, h3, h4, h5 {
                     border: 2px solid white;
                 }
                 .DownMenuFriendChat img:hover {
-                    -webkit-filter: brightness(90%);
+                    filter: brightness(90%);
                     -webkit-transition: all 0.3s ease;
                     -moz-transition: all 0.3s ease;         /* EFEITO DE ESCURECER O ICONE */  
                     -o-transition: all 0.3s ease;

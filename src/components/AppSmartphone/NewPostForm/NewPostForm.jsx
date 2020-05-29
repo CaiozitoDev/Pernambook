@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import AddIcon from '@material-ui/icons/Add';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import Zoom from '@material-ui/core/Zoom/'
+import Zoom from '@material-ui/core/Zoom'
 import Fab from '@material-ui/core/Fab'
 
 function NewPostForm() {
@@ -13,7 +13,7 @@ function NewPostForm() {
         <div className='NewPostForm'>
             <div className='NewPostFormHeader'>
                 <div className='ReturnPostButton' onClick={() => {
-                    document.querySelector('.NewPostForm').style.display = 'none'
+                    document.querySelector('.NewPostForm').classList.remove('isNewPostFormClicked')
                     setTextAreaClick(false) // PRA QUANDO SAIR DO MENU O TXTAREA FICAR PEQUENO DNV
                 }}>
                     <ArrowBackIcon style={{fill: 'white'}} />

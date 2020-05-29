@@ -7,7 +7,7 @@ function PostArea() {
     return (
         <div className='col-lg-5 PostArea'>
             <Header />
-            <h1>Initial page</h1>
+            <h1>Home page</h1>
             <Post />
             <Post />
             <Post />
