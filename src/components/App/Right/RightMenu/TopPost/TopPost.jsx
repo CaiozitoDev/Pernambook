@@ -9,7 +9,6 @@ function TopPost() {
                 <p>@CaioReidaFarofa</p>
             </div>
             <p><span className='Quotation'>"</span> Some quick example text to build on the card title and make up the bulk of the card's content. <span className='Quotation'>"</span> </p>
-
         </div>
     )
 }

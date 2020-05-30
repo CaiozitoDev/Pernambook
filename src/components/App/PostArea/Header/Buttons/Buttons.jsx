@@ -6,12 +6,14 @@ function Buttons() {
             <p>Made with ❤ by CuscuzComCharque Productions</p>
             <ul>
                 <li>
-                <a href=''>About</a>
+                    <a href=''>About</a>
                 </li>
                 <li>
-                <a href=''>Support</a>
+                    <a href=''>Support</a>
                 </li>
-                <button className='btn btn-large btn-outline-light'>Logoff</button>
+                <button className='btn btn-large btn-outline-light'>
+                    Logoff
+                </button>
             </ul>
         </nav>
     )

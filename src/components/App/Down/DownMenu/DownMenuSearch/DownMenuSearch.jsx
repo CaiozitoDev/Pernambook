@@ -2,7 +2,6 @@ import React from 'react'
 
 import SearchIcon from '@material-ui/icons/Search';
 
-
 function DownMenuSearch() {
     return (
         <div className='DownMenuSearch'>

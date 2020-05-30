@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 
 import AddIcon from '@material-ui/icons/Add';
-import Zoom from '@material-ui/core/Zoom/'
-import Fab from '@material-ui/core/Fab'
+import {Zoom, Fab} from '@material-ui/core'
 
 function NewPostForm() {
     const [textAreaClick, setTextAreaClick] = useState(false)
@@ -17,7 +16,7 @@ function NewPostForm() {
                 }} required> 
                 </textarea>
                 <Zoom in={textAreaClick}>
-                    <Fab onClick={() => {setTextAreaClick(false); console.log('cliquei em viado')}}>
+                    <Fab onClick={() => {setTextAreaClick(false)}}>
                         <AddIcon />
                     </Fab>
                 </Zoom>

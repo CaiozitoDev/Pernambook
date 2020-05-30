@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {ExitToApp} from '@material-ui/icons';
 
 function LogOff() {
     return (
-        <div className='LogOff'>
-            <ExitToAppIcon style={{fill: 'white'}} />
+        <div className='LogOff' onClick={() => {document.querySelector('.LogOffConfirm').classList.add('isLogOffClicked')}}>
+            <ExitToApp style={{fill: 'white'}} />
         </div>
     )
 }

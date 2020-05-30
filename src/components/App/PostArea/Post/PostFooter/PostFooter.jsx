@@ -22,13 +22,13 @@ function PostFooter() {
         <div className='PostFooter'>
             <form>
                 <button onClick={() => handleIconClick('ThumbUp', iconClick.ThumbUp)} className='ThumbUpButton'>
-                    <ThumbUp style={iconClick.ThumbUp ? {color: 'cyan'} : null} />
+                    <ThumbUp style={{fill: iconClick.ThumbUp ? 'cyan' : 'white'}} />
                 </button>
                 <button onClick={() => handleIconClick('FavoriteBorder', iconClick.FavoriteBorder)} className='FavoriteBorderButton'>
                     {iconClick.FavoriteBorder ? <Favorite color='secondary' /> : <FavoriteBorder />}
                 </button>
                 <button onClick={() => {handleIconClick('Comment', iconClick.Comment)}} className='CommentButton'>
-                    <Comment style={iconClick.Comment ? {color: 'orange'} : null} />
+                    <Comment style={{fill: iconClick.Comment ? 'orange' : 'white'}} />
                 </button>
             </form>
         </div>

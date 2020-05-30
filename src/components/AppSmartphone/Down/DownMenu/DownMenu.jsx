@@ -4,8 +4,6 @@ import {Home, Search, Email, Group} from '@material-ui/icons'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import slideAnimation from '../../../functions/slideAnimation'
-
 function DownMenu() {
     return (
         <div className='DownMenu'>

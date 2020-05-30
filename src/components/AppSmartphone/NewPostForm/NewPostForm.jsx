@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 
-import AddIcon from '@material-ui/icons/Add';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Add, ArrowBack} from '@material-ui/icons';
 
-import Zoom from '@material-ui/core/Zoom'
-import Fab from '@material-ui/core/Fab'
+import {Zoom, Fab} from '@material-ui/core'
 
 function NewPostForm() {
     const [textAreaClick, setTextAreaClick] = useState(false)
@@ -16,7 +14,7 @@ function NewPostForm() {
                     document.querySelector('.NewPostForm').classList.remove('isNewPostFormClicked')
                     setTextAreaClick(false) // PRA QUANDO SAIR DO MENU O TXTAREA FICAR PEQUENO DNV
                 }}>
-                    <ArrowBackIcon style={{fill: 'white'}} />
+                    <ArrowBack style={{fill: 'white'}} />
                 </div>
                 <h1>Post area</h1>
             </div>
@@ -25,9 +23,9 @@ function NewPostForm() {
                     setTextAreaClick(true)  // QUANDO CLICAR
                 }} required> 
                 </textarea>
-                <Zoom in='true'>
+                <Zoom in={textAreaClick}>
                     <Fab className='AddPostButton' onClick={() => { setTextAreaClick(false)}} type='submit'>
-                        <AddIcon />
+                        <Add />
                     </Fab>
                 </Zoom>
             </form>

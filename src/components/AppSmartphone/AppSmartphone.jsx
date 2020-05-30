@@ -4,6 +4,7 @@ import Left from './Left/Left'
 import NewPostForm from './NewPostForm/NewPostForm'
 import NewPostFormAddButton from './NewPostForm/NewPostFormAddButton/NewPostFormAddButton'
 import Header from './Header/Header'
+import LogOffConfirm from './LogOffConfirm/LogOffConfirm'
 import PostArea from './PostArea/PostArea'
 import Down from './Down/Down'
 
@@ -13,6 +14,8 @@ function AppSmartphone() {
             <Left />
             <NewPostForm />
             <Header />
+            <LogOffConfirm />
+
             <PostArea />
             <NewPostFormAddButton />
             <Down />

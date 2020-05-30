@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 import {Home, Person, Email, Group} from '@material-ui/icons'
 
 function ListConfigs() {
