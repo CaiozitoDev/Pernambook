@@ -19,6 +19,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* HOME */
+.Home {
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 /* LEFT */
 .Left {
     visibility: hidden;
@@ -105,7 +113,6 @@ h1, h2, h3, h4, h5, h6 {
             flex-direction: column;
 
             margin-bottom: 30px;
-            border-bottom: 2px solid white;
         }
             .MyProfile .UserDiv {
                 display: flex;
@@ -185,6 +192,8 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
 
     height: 100%;
+    width: 100%;
+
     padding: 20px;
 
     z-index: 2;
@@ -200,11 +209,15 @@ h1, h2, h3, h4, h5, h6 {
 
     .NewPostFormHeader {
         display: flex;
-        padding: 0 15px;
 
         align-items: center;
+        justify-content: space-around;
     }
+        
         .NewPostFormHeader .ReturnPostButton {
+            position: absolute;
+            left: 10px;
+            
             background: transparent;
             border: 2px solid white;
 
@@ -548,5 +561,152 @@ h1, h2, h3, h4, h5, h6 {
                     height: 30px;
                     width: 30px;
                 }
-        
-    
+
+
+
+
+
+
+
+
+
+
+
+
+/* *******SEARCH PAGE********** */
+.SearchContent {
+    padding: 100px 5% 60px;
+}
+
+/* DOWN MENU SEARCH */
+
+.SearchPageHeader {
+    background-color: rgb(128, 62, 0);
+
+    height: 90px;
+    width: 100%;
+
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+
+    position: fixed;
+
+    z-index: 1;
+
+    padding-top: 5px;
+
+    border-bottom: 2px solid white;
+
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.397);
+}
+.SearchPageHeader img {
+    position: absolute;
+    left: 10px;
+
+    height: 40px;
+    width: 40px;
+}
+.SearchPageHeader h5 {
+    text-align: center;
+}
+    .SearchMenu {
+        width: 70%;
+        display: flex;
+
+        border-radius: 100px;
+
+        padding: 5px;
+
+        border: 2px solid white;
+
+        margin: 0 auto 10px;
+
+    }
+        .SearchMenu input {
+            width: 100%;
+            border: none;
+            color: white;
+
+            outline: 0;
+
+            background-color: transparent;
+        }
+            .SearchMenu input::placeholder {
+                color: white;
+                font-weight: bold;
+                text-align: center;
+                padding-right: 30px;
+            }
+        .SearchMenu span {
+            align-self: center;
+            height: 100%;
+            margin-right: 5px;
+
+            background-color: transparent;
+        }
+
+/* TOP TRENDING POST */
+.TopTrendingPost {
+    background-color: burlywood;
+    border-radius: 30px;
+
+    text-align: center;
+    margin-bottom: 30px;
+
+    border: 2px solid white;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322); 
+}
+.TopTrendingPost * {
+    padding: 10px;
+}
+.TopOneSpan {
+    position: absolute;
+    left: 50px;
+
+    font-size: 3rem;
+    font-weight: bolder;
+
+    color: white;
+}
+.TopTrendingPost img {
+    height: 100px;
+    width: 100px;
+
+    border-radius: 100%;
+}
+
+/* TRENDING */
+
+.Trending {
+    background-color: rgb(238, 175, 39);
+
+    border-radius: 20px;
+
+    padding: 5%;
+
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322); 
+}
+
+.Quotation {
+    font-style: italic;
+    font-size: 1.5rem;
+}
+.TopPost {
+    border-top: 2px solid #fae7cb;
+    padding: 20px 0;
+
+}
+    .TopPost:last-child {
+        border-bottom: 1px solid #fae7cb;
+    }
+    .TopPost .PostUserIcon {
+        float: left;
+        margin: 0 10px 0 0;
+        border: 2px solid #fae7cb;
+
+        height: 60px;
+        width: 60px;
+    }
+    .TopPost p {
+        line-height: 1.3;
+    }

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@media (min-width: 1025px) {
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 .LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar {
@@ -168,7 +166,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 
     
-/* POST AREA */
+/* POST AREA */ 
 .PostArea {
     margin-left: calc(100% / 3);
 }
@@ -426,5 +424,3 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     
                         transition: all 0.3s ease;
                     }
-            
-}

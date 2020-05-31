@@ -1,24 +1,17 @@
 import React from 'react'
 
-import Left from './Left/Left'
-import NewPostForm from './NewPostForm/NewPostForm'
-import NewPostFormAddButton from './NewPostForm/NewPostFormAddButton/NewPostFormAddButton'
-import Header from './Header/Header'
-import LogOffConfirm from './LogOffConfirm/LogOffConfirm'
-import PostArea from './PostArea/PostArea'
-import Down from './Down/Down'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+
+import Home from './Home/Home'
+import Search from './Search/Search'
 
 function AppSmartphone() {
     return (
         <div className='AppSmartphone'>
-            <Left />
-            <NewPostForm />
-            <Header />
-            <LogOffConfirm />
-
-            <PostArea />
-            <NewPostFormAddButton />
-            <Down />
+            <Router>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/search' component={Search} />
+            </Router>
         </div>
     )
 }

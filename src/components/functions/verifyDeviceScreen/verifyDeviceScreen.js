@@ -40,10 +40,12 @@ function verifyDeviceScreen() {
     
     if(CorrectScreen == 'desktop') {
         CorrectDevice = <AppDesktop />
-    } else if(CorrectScreen == 'tablet') {
+        require('../../App/styles.css')  // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
+    } /* else if(CorrectScreen == 'tablet') {
         CorrectDevice = <AppTablet /> 
-    } else {
+    } */ else {
         CorrectDevice = <AppSmartphone />
+        require('../../AppSmartphone/phone.css') // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
     }
 
     return CorrectDevice
