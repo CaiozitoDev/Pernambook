@@ -1,17 +1,18 @@
 import React from 'react'
 
-import Left from './Left/Left'
-import PostArea from './PostArea/PostArea'
-import Right from './Right/Right'
-import Down from './Down/Down'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+
+import HomePage from './HomePage/HomePage'
 
 function App() {
     return (
         <div className='App'>
-            <Left />
-            <PostArea />
-            <Right />
-            <Down />
+            <Router>
+                <Route exact path='/' component={HomePage}/>
+                {/* <Route exact path='/profile' component={}/>
+                <Route exact path='/messages' component={}/>
+                <Route exact path='/friends' component={}/> */}
+            </Router>
         </div>
     )
 }

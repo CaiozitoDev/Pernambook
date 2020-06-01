@@ -20,12 +20,12 @@ function DownMenu() {
                                 <Search />
                             </li>
                         </a>
-                        <a href=''>
+                        <a href='/friends'>
                             <li>
                                 <Group />
                             </li>
                         </a>
-                        <a href=''>
+                        <a href='/messages'>
                             <li>
                                 <Email />
                             </li>

@@ -13,6 +13,10 @@ body {
     background: linear-gradient(65deg, #ffbc92 30%, #ff3265);
 }
 
+p {
+    color: white;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -62,8 +66,6 @@ h1, h2, h3, h4, h5, h6 {
 
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
-
-        border-right: 2px solid white;
 
         box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.459);
 
@@ -178,6 +180,8 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     
     padding-top: 20px;
+
+    z-index: 1;
 }
     .NewPostFormAddButton svg {
         height: 30px;
@@ -287,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
 .PostArea {
     margin: 0;
     width: 100%;
-    padding: 10px;
+    padding: 10px 10px 100px;
 }
     .PostArea h1 {
         text-align: center;
@@ -309,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
     .HeaderMyProfile {
         display: flex;
 
-        width: 180px;
+        width: 200px;
 
         padding: 5px 10px 10px 5px;
 
@@ -341,7 +345,7 @@ h1, h2, h3, h4, h5, h6 {
             width: 40px;
         }
         .HeaderMyProfile p {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
         }
 
     
@@ -461,7 +465,7 @@ h1, h2, h3, h4, h5, h6 {
 
         box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322);
 
-        background: #fae7cb;
+        background: linear-gradient(to right, #ffaa5a, #ffd194);
 
         border: 3px double rgb(240, 183, 183);
     }
@@ -489,8 +493,11 @@ h1, h2, h3, h4, h5, h6 {
         }
         .PostBody {
             border: none;
-            border-top: 2px solid white;
-            border-bottom: 2px solid white;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;;
+        }
+        .PostBody p {
+            color: black;
         }
         .PostFooter {
             padding: 0;
@@ -523,6 +530,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 80px;
 
     padding: 0 10px 10px;
+
+    z-index: 1;
 }
     /* DOWN MENU*/
     .DownMenu {
@@ -572,16 +581,17 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+.SearchContent, .ProfileContent, .FriendsContent, .MessagesContent {
+    padding: 150px 5% 100px;
 
-/* *******SEARCH PAGE********** */
-.SearchContent {
-    padding: 100px 5% 60px;
 }
 
-/* DOWN MENU SEARCH */
+
+
+/* *******SEARCH PAGE********** */
 
 .SearchPageHeader {
-    background-color: rgb(128, 62, 0);
+    background: linear-gradient(to right, #ec008e94, #fc67679a);
 
     height: 90px;
     width: 100%;
@@ -591,13 +601,15 @@ h1, h2, h3, h4, h5, h6 {
 
     position: fixed;
 
+    top: 0;
+
     z-index: 1;
 
     padding-top: 5px;
 
-    border-bottom: 2px solid white;
-
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.397);
+
+    backdrop-filter: blur(5px);
 }
 .SearchPageHeader img {
     position: absolute;
@@ -620,7 +632,6 @@ h1, h2, h3, h4, h5, h6 {
         border: 2px solid white;
 
         margin: 0 auto 10px;
-
     }
         .SearchMenu input {
             width: 100%;
@@ -654,31 +665,34 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
 
     border: 2px solid white;
+
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322); 
 }
-.TopTrendingPost * {
-    padding: 10px;
-}
-.TopOneSpan {
-    position: absolute;
-    left: 50px;
+    .TopTrendingPost * {
+        padding: 10px;
+    }
+    .TopTrendingPost img {
+        height: 100px;
+        width: 100px;
 
-    font-size: 3rem;
-    font-weight: bolder;
+        border-radius: 100%;
+    }
 
-    color: white;
-}
-.TopTrendingPost img {
-    height: 100px;
-    width: 100px;
+    .TopOneSpan {
+        position: absolute;
+        left: 50px;
 
-    border-radius: 100%;
-}
+        font-size: 3rem;
+        font-weight: bolder;
+
+        color: white;
+    }
+
 
 /* TRENDING */
-
-.Trending {
-    background-color: rgb(238, 175, 39);
+.Trending, .FriendsMenu, .Message, .UserProfile{
+   /*  background-color: rgb(238, 175, 39); */
+   background: linear-gradient(to right, #f09819, #edde5d); 
 
     border-radius: 20px;
 
@@ -687,26 +701,152 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322); 
 }
 
-.Quotation {
-    font-style: italic;
-    font-size: 1.5rem;
-}
-.TopPost {
-    border-top: 2px solid #fae7cb;
-    padding: 20px 0;
+    .Quotation {
+        font-style: italic;
+        font-size: 1.5rem;
+    }
+    .TopPost {
+        border-top: 2px solid #fae7cb;
+        padding: 20px 0;
 
-}
-    .TopPost:last-child {
-        border-bottom: 1px solid #fae7cb;
     }
-    .TopPost .PostUserIcon {
-        float: left;
-        margin: 0 10px 0 0;
-        border: 2px solid #fae7cb;
+        .TopPost:last-child {
+            border-bottom: 1px solid #fae7cb;
+        }
+        .TopPost .PostUserIcon {
+            float: left;
+            margin: 0 10px 0 0;
+            border: 2px solid #fae7cb;
 
-        height: 60px;
-        width: 60px;
+            height: 60px;
+            width: 60px;
+        }
+        .TopPost p {
+            line-height: 1.3;
+        }
+
+
+
+
+
+
+
+/* FRIENDS PAGE */
+.FriendsContent {
+    height: 100vh;
+}
+    .FriendsMenu h1 {
+        text-align: center;
     }
-    .TopPost p {
-        line-height: 1.3;
+        .Friend li {
+            display: flex;
+
+            border-radius: 100px;
+        
+            border: 1px solid white;
+        
+            margin-bottom: 20px;
+        
+            align-items: center;
+        
+            padding: 5px 10px;
+        }
+        .Friend img {
+            height: 70px;
+            width: 70px;
+        
+            border-radius: 100%;
+            border: 2px solid white;
+        
+            margin-right: 20px;
+        }
+        .Friend .UserInfo * {
+            margin: 0;
+        }
+
+
+
+
+
+
+/* MESSAGES PAGE */
+.MessagesContent {
+    height: 100vh;
+}
+    .Message {
+        padding: 15px 10px;
+
+        display: flex;
+
+        margin-bottom: 30px;
+
+        align-items: center;
     }
+    .Message p {
+        margin: 0;
+    }
+    .Message:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    .Message img {
+        height: 70px;
+        width: 70px;
+
+        border-radius: 100%;
+
+        border: 2px solid white;
+
+        margin-right: 20px;
+    }
+
+
+
+
+/* PROFILE PAGE */
+
+.ProfileContent {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+    .UserProfile {
+        display: flex;
+        flex-direction: column;
+
+        padding: 30px 15px;
+
+        border-radius: 30px;
+
+        margin: auto 0;
+
+        background-color: burlywood;
+
+        text-align: center;
+
+        height: 100%;
+    }
+    .ProfileContent img {
+        height: 100px;
+        width: 100px;
+
+        border-radius: 100%;
+
+        border: 2px solid white;
+
+        margin: 10px auto;
+    }
+    .UserExtraInfo {
+        width: 100%;
+        height: 100%;
+    }
+        .TableTitle {
+            margin-right: auto;
+        }
+        .UserExtraInfo h4 {
+            margin: 0;
+            border: 2px solid wheat;
+
+            border-radius: 100px;
+        }
