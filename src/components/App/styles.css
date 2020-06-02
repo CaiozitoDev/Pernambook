@@ -650,7 +650,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         margin: auto;
 
-        background: linear-gradient(to left, #ffc252, #fff783);
+        background: linear-gradient(to right, #f09819, #edde5d); 
 
         border-radius: 30px;
 

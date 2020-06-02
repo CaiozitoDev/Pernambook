@@ -20,7 +20,8 @@ function AppSmartphone() {
                 <Route exact path='/messages' component={Messages} />
                 <Route exact path='/profile' component={Profile} />
 
-                <Route exact path='/login' component={Login} />
+                <Route exact path='/login' component={() => {return <Login title='Log In' />}} />
+                <Route exact path='/register' component={() => {return <Login title='Register' />}} />
             </Router>
         </div>
     )

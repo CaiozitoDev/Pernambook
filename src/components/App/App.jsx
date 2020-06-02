@@ -17,8 +17,9 @@ function App() {
                 <Route exact path='/profile' component={ProfilePage} />
                 <Route exact path='/messages' component={MessagesPage}/>
                 <Route exact path='/friends' component={FriendsPage}/>
-                
-                <Route exact path='/login' component={Login}/>
+
+                <Route exact path='/login' component={() => {return <Login title='Log In' />}}/>
+                <Route exact path='/register' component={() => {return <Login title='Register' />}}/>
             </Router>
         </div>
     )

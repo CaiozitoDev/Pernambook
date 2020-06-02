@@ -11,7 +11,7 @@ function MyProfile() {
                 </div>
             </div>
             <div className='UserStats'>
-                <p> Friends: {} Following: {}</p>
+                <p> Friends: 23 Following: 634 </p>
             </div>
         </div>
     )

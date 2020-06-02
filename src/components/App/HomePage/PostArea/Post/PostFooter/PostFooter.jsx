@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'
 
 function PostFooter() {
+    // FUNÇÃO E HOOK PRA TROCA DE ÍCONES E CORES DOS BOTÕES DO POST FOOTER
     const [iconClick, setIconClick] = useState({
         ThumbUp: false,
         FavoriteBorder: false,
