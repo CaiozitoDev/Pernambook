@@ -10,10 +10,11 @@ function LogOffConfirm() {
                     <Close style={{fill: 'white'}} />
                 </div>
                 <h2>Confirm exiting</h2>
-                <div className='LogOffConfirmButtons'>
-                    <button>Cancel</button>
-                    <button>Exit</button>
-                </div>
+                <form action='/logoff' method='POST'>
+                    <div className='LogOffConfirmButtons'>
+                        <button type='submit' value='exit'>Exit</button>
+                    </div>
+                </form>
             </div>
         </div>
     )

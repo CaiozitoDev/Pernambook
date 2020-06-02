@@ -11,9 +11,13 @@ function Buttons() {
                 <li>
                     <a href=''>Support</a>
                 </li>
-                <button className='btn btn-large btn-outline-light'>
-                    Logoff
-                </button>
+                <li>
+                    <form action='/logoff' method='POST'>
+                        <button className='btn btn-large btn-outline-light' value='exit'>
+                            Logoff
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
     )

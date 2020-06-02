@@ -18,10 +18,10 @@ function NewPostForm() {
                 </div>
                 <h1>Post area</h1>
             </div>
-            <form>
+            <form action='/newpost' method='POST'>
                 <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onClick={() => {
                     setTextAreaClick(true)  // QUANDO CLICAR
-                }} required> 
+                }} required name='txtarea'> 
                 </textarea>
                 <Zoom in={textAreaClick}>
                     <Fab className='AddPostButton' onClick={() => { setTextAreaClick(false)}} type='submit'>

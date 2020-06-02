@@ -77,7 +77,10 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         .NewPostForm {
             margin-bottom: 20px;
         }
-        
+            .NewPostForm h1 {
+                padding-left: 10px;
+                padding-top: 15px;
+            }
             .NewPostForm form {
                 position: relative; 
                 text-align: center;
@@ -181,10 +184,14 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         text-align: center;
     }
         .Nav ul {
+            display: flex;
             padding: 10px 0 0;
+
+            justify-content: space-around;
+            padding: 0px 100px;
         }
         .Nav li {
-            display: inline;
+           
             padding: 15px;
             list-style: none;
         }
@@ -216,6 +223,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 .PostHeader a {
                     display: flex;
                     flex-wrap: wrap;
+                }
+                .PostHeader p {
+                    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.671);
                 }
                 .PostUserIcon {
                     height: 50px;
@@ -370,8 +380,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 }
     /* DOWN MENU*/
     .DownMenu {
-        background-color: transparent;
-
         height: 100%;
 
         padding: 5px 40px;
@@ -382,6 +390,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         border-radius: 100px;
 
         backdrop-filter: blur(3px);
+
+        background: linear-gradient(to right, #ee097880, #ff6a0083);
 
         position: relative;
         top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
@@ -455,13 +465,18 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 /* PROFILE PAGE */
 
-.ProfileContent {
+.ProfileContent, .FriendsContent, .MessagesContent {
     width: 60%;
 
     margin-left: 40%;
 
     padding: 3% 5% 80px 0;
 }
+
+
+
+
+
     .UserProfile {
         display: flex;
         flex-direction: column;
@@ -526,49 +541,45 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 /* MESSAGES PAGE */
 .MessagesContent {
-    width: 60%;
-
-    margin-left: 40%;
-
     padding: 5% 5% 5% 0;
 }
-.Message {
-    padding: 15px 10px;
+    .Message {
+        padding: 15px 10px;
 
-    display: flex;
+        display: flex;
 
-    margin-bottom: 30px;
+        margin-bottom: 30px;
 
-    align-items: center;
+        align-items: center;
 
-    background: linear-gradient(to right, #f2994a, #f2c94c);
+        background: linear-gradient(to right, #f2994a, #f2c94c);
 
-    border-radius: 100px;
+        border-radius: 100px;
 
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.384);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.384);
 
-    border: 1px solid white;
-}
-.Message:hover {
-    filter: brightness(90%);
-}
-.Message p {
-    margin: 0;
-}
-.Message:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-.Message img {
-    height: 70px;
-    width: 70px;
+        border: 1px solid white;
+    }
+    .Message:hover {
+        filter: brightness(90%);
+    }
+    .Message p {
+        margin: 0;
+    }
+    .Message:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    .Message img {
+        height: 70px;
+        width: 70px;
 
-    border-radius: 100%;
+        border-radius: 100%;
 
-    border: 2px solid white;
+        border: 2px solid white;
 
-    margin-right: 20px;
-}
+        margin-right: 20px;
+    }
 
 
 
@@ -588,40 +599,151 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 /* FRIENDS PAGE */
 
 .FriendsContent {
-    width: 60%;
-                               /* MT REPETIDO NOS OUTROS*/
-    margin-left: 40%;
-
     padding: 5% 5% 5% 0;
 }
-.Friend li {
-    display: flex;
+    .Friend li {
+        display: flex;
 
-    border-radius: 100px;
+        border-radius: 100px;
 
-    border: 1px solid white;
+        border: 1px solid white;
 
-    margin-bottom: 20px;
+        margin-bottom: 20px;
 
-    align-items: center;
+        align-items: center;
 
-    padding: 5px 10px;
+        padding: 5px 10px;
+    }
+    .Friend li:hover {
+        background-color: wheat;
+    }
+    .Friend img {
+        height: 70px;
+        width: 70px;
+
+        border-radius: 100%;
+        border: 2px solid white;
+
+        margin-right: 20px;
+    }
+    .Friend .UserInfo * {
+        margin: 0;
+    }
+    .Friend p {
+        color: rgb(252, 249, 245);
+    }
+
+
+
+
+
+
+
+
+/* LOGIN PAGE */
+.LoginPage {
+    padding: 5% 0;
 }
-.Friend li:hover {
-    background-color: wheat;
-}
-.Friend img {
-    height: 70px;
-    width: 70px;
+    .LoginMenu {
+        height: 500px;
+        width: 75%;
 
-    border-radius: 100%;
-    border: 2px solid white;
+        margin: auto;
 
-    margin-right: 20px;
-}
-.Friend .UserInfo * {
-    margin: 0;
-}
-.Friend p {
-    color: rgb(252, 249, 245);
-}
+        background: linear-gradient(to left, #ffc252, #fff783);
+
+        border-radius: 30px;
+
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.445);
+
+        border: 2px double wheat;
+    }
+        
+        .LoginMenu .Brand {
+            height: 100%;
+            width: 60%;
+
+            float: left;
+            flex-direction: column;
+
+            align-items: center;
+        }
+        .LoginMenu .Brand img {
+            width: 300px;
+            height: 300px;
+
+            margin-bottom: 0;
+        }
+        .LoginMenu .Brand h1 {
+            
+            width: 100%;
+            
+            font-size: 4rem;
+        }
+        
+        .LoginMenu form {
+            float: right;
+
+            display: flex;
+            flex-direction: column;
+
+            height: 100%;
+            width: 40%;
+
+            padding: 5%;
+
+            background-color: white;
+
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+            form h1 {
+                text-align: center;
+
+                margin-bottom: 30px;
+                
+                color: rgb(255, 0, 0);
+
+                text-shadow: none;
+            }
+            .UsernameField, .PasswordField {
+                display: flex;
+
+                border: 1px solid black;
+
+                border-radius: 100px;
+
+                padding: 10px;
+
+                margin-bottom: 5%;
+            }
+                .UsernameField svg, .PasswordField svg {
+                    margin-right: 10px;
+                }
+                .UsernameField input, .PasswordField input {
+                    border: none;
+
+                    width: 100%;
+
+                    outline: none;
+                }
+            .GoogleField {
+                display: flex;
+
+                padding: 15px;
+
+                margin-top: auto;
+
+                align-items: center;
+            }
+            .GoogleField h4 {
+                margin: 0;
+            }
+            .GoogleField svg {
+                height: 30px;
+                width: 30px;
+                margin-right: 20px;
+            }
+            .GoogleField h4 {
+                text-shadow: none;
+            }

@@ -7,6 +7,8 @@ import ProfilePage from './ProfilePage/ProfilePage'
 import MessagesPage from './MessagesPage/MessagesPage'
 import FriendsPage from './FriendsPage/FriendsPage'
 
+import Login from './login'
+
 function App() {
     return (
         <div className='App'>
@@ -15,6 +17,8 @@ function App() {
                 <Route exact path='/profile' component={ProfilePage} />
                 <Route exact path='/messages' component={MessagesPage}/>
                 <Route exact path='/friends' component={FriendsPage}/>
+                
+                <Route exact path='/login' component={Login}/>
             </Router>
         </div>
     )
