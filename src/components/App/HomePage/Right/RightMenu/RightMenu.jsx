@@ -1,6 +1,7 @@
 import React from 'react'
 
-import TopPost from './TopPost/TopPost'
+import TopOnePost from './TopOnePost/TopOnePost'
+import TopPost from './TopPosts/TopPosts'
 
 import slideAnimation from '../../../../functions/slideAnimation'
 
@@ -9,6 +10,8 @@ function RightMenu() {
         <div className='RightMenu' onLoad={() => {slideAnimation('RightMenu')}}>
             <h2>Most liked posts</h2>
             <div className='TopPostArea'>
+                <TopOnePost />
+                
                 <TopPost />
                 <TopPost />
                 <TopPost />

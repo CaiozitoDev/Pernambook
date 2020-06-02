@@ -6,25 +6,25 @@ function ListConfigs() {
     return (
         <div className='ListConfigs'>
             <ul>
-                <a href=''>
+                <a href='/'>
                     <li>
                         <Home />
                         <h4>Home page</h4>
                     </li>
                 </a>
-                <a href=''>
+                <a href='/profile'>
                     <li>
                         <Person />
                         <h4>Profile</h4>
                     </li>
                 </a>
-                <a href=''>
+                <a href='/messages'>
                     <li>
                         <Email />
                         <h4>Messages</h4>
                     </li>
                 </a>
-                <a href=''>
+                <a href='/friends'>
                     <li>
                         <Group />
                         <h4>Friends</h4>

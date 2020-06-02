@@ -14,6 +14,7 @@
 
 body {
     background: linear-gradient(65deg, #ffbc92 30%, #ff3265);
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
@@ -48,7 +49,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             height: 10%;
         }
         .Brand h1 {
-            font-size: calc(3rem + 2vmin);
+            font-size: 3em;
         }
 
     /* LEFT MENU */
@@ -169,8 +170,12 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 /* POST AREA */ 
 .PostArea {
     margin-left: calc(100% / 3);
-}
 
+    padding-bottom: 50px;
+}
+    .Header p {
+        color: white;
+    }
     /* BUTTONS */
     .Nav {
         text-align: center;
@@ -305,6 +310,22 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             margin-bottom: 0;
         }
 
+        .TopOnePost {
+            text-align: center;
+
+            font-weight: bold;
+        }
+        .TopOnePost .TopOneNumber {
+            float: left;
+
+            font-size: 2rem;
+            
+            color: white;
+        }
+        .TopOnePost img {
+            position: relative;
+            left: -20px;
+        }
         /* TOP POST AREA */
         .TopPostArea {
             overflow-y: scroll;
@@ -315,19 +336,19 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 font-style: italic;
                 font-size: 1.5rem;
             }
-            .TopPost {
+            .TopPosts, .TopOnePost {
                 border-top: 1px solid #fae7cb;
                 padding-top: 10px;
             }
-                .TopPost:last-child {
+                .TopPosts:last-child {
                     border-bottom: 1px solid #fae7cb;
                 }
-                .TopPost .PostUserIcon {
+                .TopPosts .PostUserIcon {
                     float: left;
                     margin: 0 10px 0 0;
                     border: 2px solid #fae7cb;
                 }
-                .TopPost p {
+                .TopPosts p {
                     line-height: 1.3;
                 }
 
@@ -424,3 +445,183 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     
                         transition: all 0.3s ease;
                     }
+
+
+
+
+
+
+
+
+/* PROFILE PAGE */
+
+.ProfileContent {
+    width: 60%;
+
+    margin-left: 40%;
+
+    padding: 3% 5% 80px 0;
+}
+    .UserProfile {
+        display: flex;
+        flex-direction: column;
+
+        padding: 30px 25px;
+
+        border-radius: 30px;
+
+        margin: auto 0;
+
+        background: linear-gradient(to right, #d1913c, #ffd194);
+
+        text-align: center;
+
+        height: 100%;
+
+        min-height: 500px;
+
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.329);
+
+        border: 2px solid white;
+    }
+    .ProfileContent img {
+        height: 100px;
+        width: 100px;
+
+        border-radius: 100%;
+
+        border: 2px solid white;
+
+        margin: 10px auto;
+    }
+    
+    .UserExtraInfo {
+        margin-top: 10px;
+        height: 100%;
+        border: 2px solid white;
+        border-radius: 30px;
+    }
+    .UserExtraInfo table {
+        height: 250px;
+        width: 100%;
+    }
+        .UserExtraInfo td {
+            padding: 0 10%;
+        }
+        .TableTitle {
+            margin-right: auto;
+        }
+        .UserExtraInfo h4 {
+            margin: 0;
+            border: 2px solid white;
+
+            border-radius: 100px;
+        }
+
+
+
+
+
+
+
+/* MESSAGES PAGE */
+.MessagesContent {
+    width: 60%;
+
+    margin-left: 40%;
+
+    padding: 5% 5% 5% 0;
+}
+.Message {
+    padding: 15px 10px;
+
+    display: flex;
+
+    margin-bottom: 30px;
+
+    align-items: center;
+
+    background: linear-gradient(to right, #f2994a, #f2c94c);
+
+    border-radius: 100px;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.384);
+
+    border: 1px solid white;
+}
+.Message:hover {
+    filter: brightness(90%);
+}
+.Message p {
+    margin: 0;
+}
+.Message:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.Message img {
+    height: 70px;
+    width: 70px;
+
+    border-radius: 100%;
+
+    border: 2px solid white;
+
+    margin-right: 20px;
+}
+
+
+
+
+.ProfileContent h1, .MessagesContent h1, .FriendsContent h1 {
+    text-align: center;
+    background-color: rgb(252, 251, 190);
+    border-radius: 100px;
+    border: 3px solid white;
+
+    margin-bottom: 20px;
+}
+
+
+
+
+/* FRIENDS PAGE */
+
+.FriendsContent {
+    width: 60%;
+                               /* MT REPETIDO NOS OUTROS*/
+    margin-left: 40%;
+
+    padding: 5% 5% 5% 0;
+}
+.Friend li {
+    display: flex;
+
+    border-radius: 100px;
+
+    border: 1px solid white;
+
+    margin-bottom: 20px;
+
+    align-items: center;
+
+    padding: 5px 10px;
+}
+.Friend li:hover {
+    background-color: wheat;
+}
+.Friend img {
+    height: 70px;
+    width: 70px;
+
+    border-radius: 100%;
+    border: 2px solid white;
+
+    margin-right: 20px;
+}
+.Friend .UserInfo * {
+    margin: 0;
+}
+.Friend p {
+    color: rgb(252, 249, 245);
+}

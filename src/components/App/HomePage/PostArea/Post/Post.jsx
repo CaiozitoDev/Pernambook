@@ -10,7 +10,7 @@ function Post() {
     
 
     return (
-        <Zoom in='true'>
+        <Zoom in='true' timeout={1000}>
             <div className='Post'>
                 <PostHeader />
                 <PostBody />
