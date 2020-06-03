@@ -28,7 +28,7 @@ function Login(props) {
                         <h1>{props.title}</h1>
                         <div className='UsernameField'>
                             <Person />
-                            <input type='text' placeholder='Username' name='username' />
+                            <input type='email' placeholder='E-mail' name='email' />
                         </div>
                         <div className='PasswordField'>
                             <Lock />
