@@ -1,6 +1,6 @@
 import React from 'react'
 
-import InterfacePresets from '../InterfacePresets/InterfacePresets'
+import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 import Friend from './Friend/Friend'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import InterfacePresets from '../InterfacePresets/InterfacePresets'
+import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 import UserProfile from './UserProfile/UserProfile'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import InterfacePresets from '../InterfacePresets/InterfacePresets'
+import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 import PostArea from './PostArea/PostArea'
 import Right from './Right/Right'
