@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 
 import {Person, Lock} from '@material-ui/icons'
 
-import Brand from './InterfacePresets/Left/Brand/Brand'
+import Brand from '../InterfacePresets/Left/Brand/Brand'
 
 import Zoom from '@material-ui/core/Zoom'
 
 import axios from 'axios'
 
-function Login(props) {
+function LoginRegisterPage(props) {
     // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
     const [isLoginPage, setIsLoginPage] = useState('/registerdata')
 
@@ -112,4 +112,4 @@ function Login(props) {
     )
 }
 
-export default Login
+export default LoginRegisterPage
