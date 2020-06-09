@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     z-index: 1;
 }
     /* BRAND */
-    .Brand a {
+    .Brand {
         display: flex;
         flex-wrap: wrap;
 
@@ -649,6 +649,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 .LoginPage {
     padding: 5% 0;
 }
+.LoginPage a {
+    text-decoration: none;
+}
     .LoginMenu {
         height: 500px;
         width: 75%;
@@ -688,7 +691,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             font-size: 4rem;
         }
         
-        .LoginMenu form {
+        .LoginMenu .LoginRegisterData {
             float: right;
 
             display: flex;
@@ -697,14 +700,14 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             height: 100%;
             width: 40%;
 
-            padding: 5%;
+            padding: 5% 5% 0;
 
             background-color: white;
 
             border-top-right-radius: 30px;
             border-bottom-right-radius: 30px;
         }
-            form h1 {
+            .LoginRegisterData h1 {
                 text-align: center;
 
                 margin-bottom: 30px;
@@ -735,13 +738,16 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     outline: none;
                 }
             .GoogleField {
+                margin-top: auto;
+            }
+            .GoogleField button {
                 display: flex;
 
                 padding: 15px;
 
-                margin-top: auto;
-
                 align-items: center;
+
+                width: 100%;
             }
             .GoogleField h4 {
                 margin: 0;
@@ -754,3 +760,52 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             .GoogleField h4 {
                 text-shadow: none;
             }
+            .SwitchPageButton {
+                position: relative;
+                bottom: 10px;
+                margin: 30px auto 0;
+            }
+
+
+
+
+
+/* LOADING PAGE */
+
+.LoadingPage {
+    height: 100%;
+    min-height: 100vh;
+    padding: 5% 0;
+}
+    .LoadingContent {
+        height: 100%;
+        min-height: 450px;
+        width: 40%;
+        min-width: 400px;
+        margin: auto;
+        text-align: center;
+
+        background: linear-gradient(to right, #f09819, #edde5d);
+        border-radius: 50px;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.377);
+        border: 2px solid white;
+
+        padding: 3% 0;
+    }
+    .LoadingContent .Brand {
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+    .LoadingContent img {
+        height: 150px;
+        width: 150px;
+    }
+    .LoadingContent img:last-child {
+        height: 100px;
+        width: 100px;
+    }
+    .LoadingContent h1 {
+        margin-bottom: 5%;
+    }
+
+
