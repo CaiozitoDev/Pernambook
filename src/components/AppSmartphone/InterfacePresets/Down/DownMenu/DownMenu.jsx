@@ -10,7 +10,7 @@ function DownMenu() {
             <div className='DownMenuComponents'>
                 <Zoom in='true'>
                     <ul>
-                        <a href='/'>
+                        <a href='/home'>
                             <li>
                                 <Home /> 
                             </li>
