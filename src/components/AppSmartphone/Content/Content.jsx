@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import HomePage from './HomePage/HomePage'
+import SearchPage from './SearchPage/SearchPage'
 import ProfilePage from './ProfilePage/ProfilePage'
 import MessagesPage from './MessagesPage/MessagesPage'
 import FriendsPage from './FriendsPage/FriendsPage'
@@ -30,10 +31,11 @@ function Content() {
     } else {
         return (
             <Router>
-                <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <div>Connection not authorized</div>}} />
-                <Route exact path='/profile' component={() => {return isAuth ? <ProfilePage /> : <div>Connection not authorized</div>}} />
-                <Route exact path='/messages' component={() => {return isAuth ? <MessagesPage /> : <div>Connection not authorized</div>}}/>
-                <Route exact path='/friends' component={() => {return isAuth ? <FriendsPage /> : <div>Connection not authorized</div>}}/>
+                <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <div> Connection not authorized</div>}} /> 
+                <Route exact path='/search' component={() => {return isAuth ? <SearchPage /> : <div> Connection not authorized</div>}} />
+                <Route exact path='/friends' component={() => {return isAuth ? <FriendsPage /> : <div> Connection not authorized</div>}} />
+                <Route exact path='/messages' component={() => {return isAuth ? <MessagesPage /> : <div> Connection not authorized</div>}} />
+                <Route exact path='/profile' component={() => {return isAuth ? <ProfilePage /> : <div> Connection not authorized</div>}} />
             </Router>
         )
     }

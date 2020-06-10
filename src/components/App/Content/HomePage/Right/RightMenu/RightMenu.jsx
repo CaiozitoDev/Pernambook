@@ -3,7 +3,7 @@ import React from 'react'
 import TopOnePost from './TopOnePost/TopOnePost'
 import TopPost from './TopPosts/TopPosts'
 
-import slideAnimation from '../../../../../functions/slideAnimation'
+import slideAnimation from '../../../../../functions/slideAnimation/slideAnimation'
 
 function RightMenu() {
     return (

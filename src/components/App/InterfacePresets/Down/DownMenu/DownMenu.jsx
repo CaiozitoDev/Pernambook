@@ -3,7 +3,7 @@ import React from 'react'
 import DownMenuSearch from './DownMenuSearch/DownMenuSearch'
 import DownMenuFriends from './DownMenuFriends/DownMenuFriends'
 
-import slideAnimation from '../../../../functions/slideAnimation'
+import slideAnimation from '../../../../functions/slideAnimation/slideAnimation'
 
 function DownMenu() {
     return (

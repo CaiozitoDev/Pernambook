@@ -686,6 +686,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             margin-top: 30px;
         }
+        .WelcomeButtons a {
+            width: 100%;
+        }
         .WelcomeButtons button {
             height: 70px;
             width: 100%;

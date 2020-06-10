@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AppDesktop from '../../App/App'
-import AppTablet from '../../AppTablet/AppTablet'
+/* import AppTablet from '../../AppTablet/AppTablet' */
 import AppSmartphone from '../../AppSmartphone/AppSmartphone'
 
 function verifyDeviceScreen() {

@@ -4,7 +4,7 @@ import NewPostForm from './NewPostForm/NewPostForm'
 import LeftOptions from './ListConfigs/ListConfigs'
 import MyProfile from './MyProfile/MyProfile'
 
-import slideAnimation from '../../../../functions/slideAnimation'
+import slideAnimation from '../../../../functions/slideAnimation/slideAnimation'
 
 function LeftMenu() {
     return (

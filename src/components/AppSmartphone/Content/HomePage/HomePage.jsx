@@ -11,7 +11,7 @@ import {
     NewPostFormPreset as NewPostForm,
     NewPostFormAddButtonPreset as NewPostFormAddButton,
     DownPreset as Down
-} from '../InterfacePresets/InterfacePresets'
+} from '../../InterfacePresets/InterfacePresets'
 
 function Home() {
     return (

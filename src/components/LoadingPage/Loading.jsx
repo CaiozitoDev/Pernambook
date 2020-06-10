@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Brand from  './App/InterfacePresets/Left/Brand/Brand'
+import Brand from  '../App/InterfacePresets/Left/Brand/Brand'
 
 function Loading() {
     return (

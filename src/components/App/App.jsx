@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Content from './Content/Content'
 
-import WelcomePage from './WelcomePage/WelcomePage'
-import LoginRegisterPage from './LoginRegisterPage/LoginRegisterPage'
+import WelcomePage from '../WelcomePage/WelcomePage'
+import LoginRegisterPage from '../LoginRegisterPage/LoginRegisterPage'
 
 function App() {
     return (

@@ -943,23 +943,117 @@ h1, h2, h3, h4, h5, h6 {
 
                     outline: none;
                 }
-            .GoogleField {
+            .FacebookField {
+                margin-top: auto;
+            }
+            .FaebookField button {
                 display: flex;
 
                 padding: 15px;
 
-                margin-top: auto;
-
                 align-items: center;
             }
-            .GoogleField h4 {
-                margin: 0;
-            }
-            .GoogleField svg {
-                height: 20px;
-                width: 20px;
+            .FacebookField svg {
+                height: 30px;
+                width: 30px;
                 margin-right: 20px;
             }
-            .GoogleField h4 {
-                text-shadow: none;
-            }
+
+
+
+
+/* LOADING PAGE */
+
+.LoadingPage {
+    height: 100%;
+    min-height: 100vh;
+    padding: 5% 0;
+}
+    .LoadingContent {
+        height: 100%;
+        min-height: 450px;
+        width: 40%;
+        min-width: 400px;
+        margin: auto;
+        text-align: center;
+
+        background: linear-gradient(to right, #f09819, #edde5d);
+        border-radius: 50px;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.377);
+        border: 2px solid white;
+
+        padding: 3% 0;
+    }
+    .LoadingContent .Brand {
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+    .LoadingContent img {
+        height: 150px;
+        width: 150px;
+    }
+    .LoadingContent img:last-child {
+        height: 100px;
+        width: 100px;
+    }
+    .LoadingContent h1 {
+        margin-bottom: 5%;
+    }
+
+
+
+
+
+
+/* WELCOME PAGE */
+
+.WelcomePage {
+    display: flex;
+
+    height: 100%;
+    min-height: 100vh;
+
+    padding: 5%;
+}
+    .WelcomeContent {
+        display: flex;
+        flex-direction: column;
+
+        min-height: 70vh;
+        
+        width: 100%;
+
+        margin: auto 0;
+
+        text-align: center;
+
+        background: linear-gradient(to right, #f2994a, #f2c94c);
+        border-radius: 40px;
+        border: 2px solid white;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.336);
+    }
+        .WelcomePage div {
+            padding: 15px;
+        }
+        .WelcomePage .Brand img {
+            height: 100px;
+            width: 100px;
+        }
+        .WelcomeText {
+            margin: auto;
+        }
+        .WelcomeButtons {
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: space-around;
+
+            padding: 10px 5%;
+        }
+        .WelcomeButtons a {
+            width: 100%;
+        }
+        .WelcomeButtons button {
+            height: 70px;
+            width: 100%;
+        }

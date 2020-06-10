@@ -2,27 +2,21 @@ import React from 'react'
 
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
-import Home from './HomePage/HomePage'
-import Search from './SearchPage/SearchPage'
-import Friends from './FriendsPage/FriendsPage'
-import Messages from './MessagesPage/MessagesPage'
-import Profile from './ProfilePage/ProfilePage'
+import Content from './Content/Content'
 
-import Login from './login'
+import WelcomePage from '../WelcomePage/WelcomePage'
+import LoginRegisterPage from '../LoginRegisterPage/LoginRegisterPage'
 
 function AppSmartphone() {
     return (
         <div className='AppSmartphone'>
             <Router>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/search' component={Search} />
-                <Route exact path='/friends' component={Friends} />
-                <Route exact path='/messages' component={Messages} />
-                <Route exact path='/profile' component={Profile} />
-
-                <Route exact path='/login' component={() => {return <Login title='Log In' />}} />
-                <Route exact path='/register' component={() => {return <Login title='Register' />}} />
+                <Route exact path='/' component={WelcomePage} />
+                <Route exact path='/login' component={() => {return <LoginRegisterPage title='Log In' />}} />
+                <Route exact path='/register' component={() => {return <LoginRegisterPage title='Register' />}} />
             </Router>
+
+            {window.location.pathname !== '/login' && window.location.pathname !== '/register' && <Content />}
         </div>
     )
 }
