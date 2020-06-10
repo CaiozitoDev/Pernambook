@@ -791,28 +791,20 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                     outline: none;
                 }
-            .GoogleField {
+            .FacebookField {
                 margin-top: auto;
             }
-            .GoogleField button {
+            .FaebookField button {
                 display: flex;
 
                 padding: 15px;
 
                 align-items: center;
-
-                width: 100%;
             }
-            .GoogleField h4 {
-                margin: 0;
-            }
-            .GoogleField svg {
+            .FacebookField svg {
                 height: 30px;
                 width: 30px;
                 margin-right: 20px;
-            }
-            .GoogleField h4 {
-                text-shadow: none;
             }
             .SwitchPageButton {
                 position: relative;

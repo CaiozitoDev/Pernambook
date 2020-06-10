@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 
-import {Person, Lock} from '@material-ui/icons'
+import {Person, Lock, Facebook} from '@material-ui/icons'
 
 import Brand from '../InterfacePresets/Left/Brand/Brand'
 
 import Zoom from '@material-ui/core/Zoom'
 
 import axios from 'axios'
+
+import FacebookLogin from 'react-facebook-login'
 
 function LoginRegisterPage(props) {
     // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
@@ -46,7 +48,7 @@ function LoginRegisterPage(props) {
 
         if(inputValues.username.length < 4 || inputValues.password.length < 4) {
             setTitle('Min length: 4 characters')
-        } else if(inputValues.username.search(' ') !== -1 || inputValues.password.search(' ') !== -1) {
+        } else if(inputValues.password.search(' ') !== -1) {
             setTitle('Spaces are not allowed')
         } else {
             axios.post(isLoginPage, inputValues).then(response => {
@@ -63,13 +65,22 @@ function LoginRegisterPage(props) {
         }
     }
 
-    // FUNÇÃO QUE CUIDA DA AUTENTICAÇÃO PELA API DO GOOGLE (EM PRODUÇÃO AINDA)
-    function handleGoogleLoginRegisterData() {
+    // FUNÇÃO QUE CUIDA DA AUTENTICAÇÃO PELA API DO FACEBOOK
+    function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
         setTitle('Loading...')
 
-        axios.get('/google').then(response => {
-            console.log('foi emmm')
-        })
+        axios.post('/facebook', {name, userID, url})
+            .then(response => {
+                if(response.data.redirect) {
+                    localStorage.setItem('local_token', response.data.token)
+                    window.location = '/home'
+                } else {
+                    console.log(response.data)
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (
@@ -90,12 +101,17 @@ function LoginRegisterPage(props) {
                             </div>
                             <button className='btn btn-lg btn-block btn-outline-danger' onClick={handlePostLoginRegisterData}>{props.title}</button>
                         </form>
-                        <a href='http://localhost:5000/google' onClick={handleGoogleLoginRegisterData} className='GoogleField'>
-                            <button className='btn btn-lg btn-primary'>
-                                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" class="svg-inline--fa fa-google fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg> 
-                                <h4>{props.title} with Google</h4>
-                            </button>
-                        </a>
+                        <div className='FacebookField'>
+                            <FacebookLogin
+                                appId="2592642841005355"
+                                autoLoad={false}
+                                fields="name,email,picture"
+                                callback={handleFacebookLoginRegisterData}
+                                cssClass='btn btn-lg btn-primary w-100'
+                                icon={<Facebook />}
+                                textButton={window.location.pathname == '/login' ? 'Login with Facebook' : 'Register with Facebook'}
+                            />
+                        </div>
                         {window.location.pathname == '/login' ?
                             <a href='/register' className='SwitchPageButton'>
                                 <button className='btn btn-sm btn-warning'>Not registered? Register here</button>
