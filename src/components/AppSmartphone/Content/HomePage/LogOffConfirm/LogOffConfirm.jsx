@@ -3,6 +3,12 @@ import React from 'react'
 import {Close} from '@material-ui/icons'
 
 function LogOffConfirm() {
+
+    function handleLogOut() {
+        localStorage.removeItem('local_token')
+        window.location = '/'
+    }
+
     return (
         <div className='LogOffConfirm'>
             <div className='LogOffConfirmMenu'>
@@ -10,11 +16,9 @@ function LogOffConfirm() {
                     <Close style={{fill: 'white'}} />
                 </div>
                 <h2>Confirm exiting</h2>
-                <form action='/logoff' method='POST'>
-                    <div className='LogOffConfirmButtons'>
-                        <button type='submit' value='exit'>Exit</button>
-                    </div>
-                </form>
+                <div className='LogOffConfirmButtons'>
+                    <button onClick={handleLogOut}>Exit</button>
+                </div>
             </div>
         </div>
     )

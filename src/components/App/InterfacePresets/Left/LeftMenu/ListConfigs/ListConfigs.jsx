@@ -6,7 +6,7 @@ function ListConfigs() {
     return (
         <div className='ListConfigs'>
             <ul>
-                <a href='/'>
+                <a href='/home'>
                     <li>
                         <Home />
                         <h4>Home page</h4>

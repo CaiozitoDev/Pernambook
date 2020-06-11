@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             border: 3px double rgb(240, 183, 183);
         }
-            .PostHeader, .PostFooter form{
+            .PostHeader, .PostFooter {
                 display: flex;
                 align-items: center;
                 padding-left: 2%;
@@ -256,13 +256,13 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             .PostFooter {
                 padding: 0;
             }
-                .PostFooter form {
+                .PostFooter {
                     justify-content: space-around;
                 }
-                .PostFooter form * {
+                .PostFooter * {
                     cursor: pointer;
                 }
-                .PostFooter form button {
+                .PostFooter button {
                     background: transparent;
                     border: none;
                     width: 100%;

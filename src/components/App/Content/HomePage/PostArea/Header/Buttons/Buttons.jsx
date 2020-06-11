@@ -1,6 +1,12 @@
 import React from 'react'
 
 function Buttons() {
+
+    function handleLogOut() {
+        localStorage.removeItem('local_token')
+        window.location = '/'
+    }
+
     return (
         <nav className='Nav'>
             <p>Made with ❤ by CuscuzComCharque Productions</p>
@@ -12,11 +18,9 @@ function Buttons() {
                     <a href=''>Support</a>
                 </li>
                 <li>
-                    <form action='/logoff' method='POST'>
-                        <button className='btn btn-large btn-outline-light' value='exit'>
-                            Logoff
-                        </button>
-                    </form>
+                    <button className='btn btn-large btn-outline-light' onClick={handleLogOut}>
+                        Logoff
+                    </button>
                 </li>
             </ul>
         </nav>

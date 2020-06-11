@@ -21,17 +21,15 @@ function PostFooter() {
 
     return (
         <div className='PostFooter'>
-            <form action='/postbuttons' method='POST'>
-                <button onClick={() => handleIconClick('ThumbUp', iconClick.ThumbUp)} className='ThumbUpButton' name='postfooterbutton' value='like'>
-                    <ThumbUp style={{fill: iconClick.ThumbUp ? 'cyan' : null}} />
-                </button>
-                <button onClick={() => handleIconClick('FavoriteBorder', iconClick.FavoriteBorder)} className='FavoriteBorderButton' name='postfooterbutton' value='love'>
-                    {iconClick.FavoriteBorder ? <Favorite color='secondary' /> : <FavoriteBorder />}
-                </button>
-                <button onClick={() => {handleIconClick('Comment', iconClick.Comment)}} className='CommentButton' name='postfooterbutton' value='comment'>
-                    <Comment style={{fill: iconClick.Comment ? 'orange' : null}} />
-                </button>
-            </form>
+            <button onClick={() => handleIconClick('ThumbUp', iconClick.ThumbUp)} className='ThumbUpButton' name='postfooterbutton' value='like'>
+                <ThumbUp style={{fill: iconClick.ThumbUp ? 'cyan' : null}} />
+            </button>
+            <button onClick={() => handleIconClick('FavoriteBorder', iconClick.FavoriteBorder)} className='FavoriteBorderButton' name='postfooterbutton' value='love'>
+                {iconClick.FavoriteBorder ? <Favorite color='secondary' /> : <FavoriteBorder />}
+            </button>
+            <button onClick={() => {handleIconClick('Comment', iconClick.Comment)}} className='CommentButton' name='postfooterbutton' value='comment'>
+                <Comment style={{fill: iconClick.Comment ? 'orange' : null}} />
+            </button>
         </div>
     )
 }

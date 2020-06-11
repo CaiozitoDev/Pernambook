@@ -16,10 +16,12 @@ function LoginRegisterPage(props) {
 
    const [inputValues, setInputValues] = useState({
        username: '',
-       password: ''
+       password: '',
    })
 
    const [title, setTitle] = useState(props.title)
+
+   const [photo, setPhoto] = useState(undefined)
 
 
    // MUDA A ROTA DO POST (FETCH) DEPENDENDO DA URL ATUAL DA PAGINA
@@ -42,26 +44,50 @@ function LoginRegisterPage(props) {
        })
    }
 
+   // MANIPULA OS DADOS DO ARQUIVO DE FOTO PASSADO
+   function handleProfilePhoto(event) {
+        const files = event.target.files
+        const myImage = files[0]
+
+        if(!myImage.type.match('image/png') && !myImage.type.match('image/jpg') && !myImage.type.match('image/jpeg')) {
+          alert('Sorry, only images .JPEG, .JPG and .PNG are allowed')
+          return
+        } else if(myImage.size > (5000*1024)) {
+            alert('Sorry, the max allowed size for images is 5MB')
+            return
+        } else {
+            setPhoto(myImage)
+        }
+
+   }
+
    // FUNÇÃO QUE REDIRECIONA PARA A HOME QUANDO O USUÁRIO É LOGADO/REGISTRADO
    function handlePostLoginRegisterData() {
        setTitle('Loading...')
 
        if(inputValues.username.length < 4 || inputValues.password.length < 4) {
-           setTitle('Min length: 4 characters')
+            setTitle('Min length: 4 characters')
        } else if(inputValues.password.search(' ') !== -1) {
-           setTitle('Spaces are not allowed')
+            setTitle('Spaces are not allowed')
+       } else if(photo == undefined) {
+            setTitle('Please, insert an photo')
        } else {
-           axios.post(isLoginPage, inputValues).then(response => {
-               console.log(isLoginPage)
-               if(response.data.redirect) { 
-                   localStorage.setItem('local_token', response.data.token)           
-                   window.location = '/home'
-               } else {
-                   setTitle(response.data.message)
-               }
-           }).catch((err) => {
-               console.log(err)
-           })
+            let data = new FormData()
+
+            for(let key in inputValues) {data.append(key, inputValues[key])}
+            data.append('fileimage', photo) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
+
+            axios.post(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
+                .then(response => {
+                    if(response.data.redirect) { 
+                        localStorage.setItem('local_token', response.data.token)           
+                        window.location = '/home'
+                    } else {
+                        setTitle(response.data.message)
+                    }
+                }).catch((err) => {
+                    console.log(err)
+                })
        }
    }
 
@@ -84,8 +110,6 @@ function LoginRegisterPage(props) {
    }
 
 
-
-
     return (
         <div className='LoginPage' onLoad={handleIsLoginPage}>
             <Zoom in='true' timeout={1000} >
@@ -102,6 +126,13 @@ function LoginRegisterPage(props) {
                                 <Lock />
                                 <input type='password' placeholder='Password' name='password' onChange={handleInputValues} value={inputValues.password} />
                             </div>
+                            {window.location.pathname == '/register' &&
+                                <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id='photoInput' onChange={handleProfilePhoto} name='photo' />
+                                    <label class="custom-file-label" for='photoInput'>Your profile photo</label>
+                                </div>
+                            </div>}
                             <button className='btn btn-lg btn-block btn-outline-danger' onClick={handlePostLoginRegisterData}>{props.title}</button>
                         </form>
                         <div className='FacebookField'>
