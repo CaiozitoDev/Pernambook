@@ -11,7 +11,7 @@ function ProfilePage() {
         <div className='ProfilePage'>
             <InterfacePresets />
 
-            <Zoom in='true' timeout={1000}>
+            <Zoom in={true} timeout={1000}>
                 <div className='ProfileContent'>
                     <h1>Profile</h1>
                     <UserProfile />

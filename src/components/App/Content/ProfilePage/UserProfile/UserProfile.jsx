@@ -3,7 +3,7 @@ import React from 'react'
 function UserProfile() {
     return (
         <div className='UserProfile'>
-            <img src={window.location.origin + '/fds/EWkV9JuWAAIqrZh.jpg'} />
+            <img src={window.location.origin + '/fds/EWkV9JuWAAIqrZh.jpg'} alt='img' />
             <div className='UserInfo'>
                 <h2>Caio Felipe</h2>
                 <h4>@CaioReidaFarofa</h4>

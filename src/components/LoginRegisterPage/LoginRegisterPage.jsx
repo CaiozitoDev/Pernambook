@@ -69,7 +69,7 @@ function LoginRegisterPage(props) {
             setTitle('Min length: 4 characters')
        } else if(inputValues.password.search(' ') !== -1) {
             setTitle('Spaces are not allowed')
-       } else if(photo == undefined) {
+       } else if(window.location.pathname == '/register' && photo == undefined) {
             setTitle('Please, insert an photo')
        } else {
             let data = new FormData()
@@ -112,7 +112,7 @@ function LoginRegisterPage(props) {
 
     return (
         <div className='LoginPage' onLoad={handleIsLoginPage}>
-            <Zoom in='true' timeout={1000} >
+            <Zoom in={true} timeout={1000} >
                 <div className='LoginMenu'>
                     <Brand />
                     <div className='LoginRegisterData'>

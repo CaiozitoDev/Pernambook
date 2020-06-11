@@ -4,10 +4,10 @@ import Zoom from '@material-ui/core/Zoom'
 
 function Friend() {
     return (
-        <Zoom in='true'>
+        <Zoom in={true} >
             <div className='Friend'>
                 <li>
-                    <img src={window.location.origin + '/fds/EWk-zuhXgAAaZGx.jpg'} />
+                    <img src={window.location.origin + '/fds/EWk-zuhXgAAaZGx.jpg'} alt='img' />
                     <div className='UserInfo'>
                         <h3>Caio Felipe</h3>
                         <p>@CaioReidaFarofa</p>

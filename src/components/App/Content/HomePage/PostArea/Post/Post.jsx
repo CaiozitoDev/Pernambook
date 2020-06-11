@@ -10,7 +10,7 @@ function Post(props) {
     
 
     return (
-        <Zoom in='true' timeout={1000}>
+        <Zoom in={true} timeout={1000}>
             <div className='Post'>
                 <PostHeader />
                 <PostBody postbodytext={props.postbodytext}/>

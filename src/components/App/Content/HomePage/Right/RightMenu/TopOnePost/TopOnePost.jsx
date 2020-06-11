@@ -4,11 +4,11 @@ import Zoom from '@material-ui/core/Zoom'
 
 function TopOnePost() {
     return (
-        <Zoom in='true' timeout={1500}>
+        <Zoom in={true} timeout={1500}>
             <div className='TopOnePost'>
                 <div className='TopPostHeader'>
                     <span className='TopOneNumber'>#1</span>
-                    <img src={window.location.origin + '/fds/EXq0a0EXQAAUmjt.jpg'} className='PostUserIcon' />
+                    <img src={window.location.origin + '/fds/EXq0a0EXQAAUmjt.jpg'} className='PostUserIcon' alt='img' />
                     <h6>Caio Felipe</h6>
                     <p>@CaioReidaFarofa</p>
                 </div>
