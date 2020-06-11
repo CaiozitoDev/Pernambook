@@ -865,3 +865,30 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     }
 
 
+
+
+/* NOT AUTHORIZED PAGE */
+
+.NotAuthorizedPage {
+    display: flex;
+
+    padding: 5%;
+
+    height: 100vh;
+}
+    .NotAuthorizedContent svg {
+        height: 100px;
+        width: 100px;
+    }
+    .NotAuthorizedContent {
+        text-align: center;
+
+        margin: auto;
+    }
+    .NotAuthorizedButtons {
+        display: flex;
+
+        justify-content: space-around;
+
+        margin: 20px;
+    }

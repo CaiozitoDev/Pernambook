@@ -1069,3 +1069,31 @@ h1, h2, h3, h4, h5, h6 {
             height: 70px;
             width: 100%;
         }
+
+
+
+/* NOT AUTHORIZED PAGE */
+
+.NotAuthorizedPage {
+    display: flex;
+
+    padding: 5%;
+
+    height: 100vh;
+}
+    .NotAuthorizedContent svg {
+        height: 100px;
+        width: 100px;
+    }
+    .NotAuthorizedContent {
+        text-align: center;
+
+        margin: auto;
+    }
+    .NotAuthorizedButtons {
+        display: flex;
+
+        justify-content: space-around;
+
+        margin: 20px;
+    }

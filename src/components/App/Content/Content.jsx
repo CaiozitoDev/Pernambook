@@ -9,6 +9,8 @@ import FriendsPage from './FriendsPage/FriendsPage'
 
 import LoadingPage from '../../LoadingPage/Loading'
 
+import NotAuthorizedPage from '../../NotAuthorizedPage/NotAuthorizedPage'
+
 import axios from 'axios'
 
 function Content() {
@@ -30,10 +32,10 @@ function Content() {
     } else {
         return (
             <Router>
-                <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <div>Connection not authorized</div>}} />
-                <Route exact path='/profile' component={() => {return isAuth ? <ProfilePage /> : <div>Connection not authorized</div>}} />
-                <Route exact path='/messages' component={() => {return isAuth ? <MessagesPage /> : <div>Connection not authorized</div>}}/>
-                <Route exact path='/friends' component={() => {return isAuth ? <FriendsPage /> : <div>Connection not authorized</div>}}/>
+                <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <NotAuthorizedPage />}} />
+                <Route exact path='/profile' component={() => {return isAuth ? <ProfilePage /> : <NotAuthorizedPage />}} />
+                <Route exact path='/messages' component={() => {return isAuth ? <MessagesPage /> : <NotAuthorizedPage />}}/>
+                <Route exact path='/friends' component={() => {return isAuth ? <FriendsPage /> : <NotAuthorizedPage />}}/>
             </Router>
         )
     }
