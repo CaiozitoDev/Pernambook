@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import {handleMyProfileData} from '../../../../../functions/LoadProfilePhoto'
 
 function MyProfile() {
+    const [myProfileData, setMyProfileData] = useState({
+        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+        username: ''
+    })
+
+    useEffect(() => {
+        handleMyProfileData().then(data => {
+            setMyProfileData(data)
+        })
+    })
+    
+
     return (
         <a href='/profile'>
             <div className='MyProfile'>
-                <img src={window.location.origin + '/fds/95791762_2894799623888750_6357181261760430080_n.jpg'} className='PostUserIcon' alt='img' />
+                <img src={myProfileData.src} className='PostUserIcon' alt='img' />
                 <div>
-                    <h4>Caio Felipe</h4>
-                    <p>@CaioReidaFarofa</p>
+                    <h4>{myProfileData.username}</h4>
                 </div>
             </div>
         </a>

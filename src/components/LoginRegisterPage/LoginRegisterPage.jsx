@@ -16,7 +16,7 @@ function LoginRegisterPage(props) {
 
    const [inputValues, setInputValues] = useState({
        username: '',
-       password: '',
+       password: ''
    })
 
    const [title, setTitle] = useState(props.title)
@@ -90,7 +90,7 @@ function LoginRegisterPage(props) {
                 })
        }
    }
-
+ 
    // FUNÇÃO QUE CUIDA DA AUTENTICAÇÃO PELA API DO FACEBOOK
    function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
        setTitle('Loading...')
