@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import Resizer from 'react-image-file-resizer'
+
 import {Person, Lock, Facebook} from '@material-ui/icons'
 
 import Brand from '../App/InterfacePresets/Left/Brand/Brand'
@@ -10,6 +12,8 @@ import axios from 'axios'
 
 import FacebookLogin from 'react-facebook-login'
 
+import imgCompression from 'browser-image-compression'
+ 
 function LoginRegisterPage(props) {
    // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
    const [isLoginPage, setIsLoginPage] = useState('/registerdata')
@@ -78,18 +82,27 @@ function LoginRegisterPage(props) {
             let data = new FormData()
 
             for(let key in inputValues) {data.append(key, inputValues[key])}
-            data.append('fileimage', photo) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
 
-            axios.post(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
-                .then(response => {
-                    if(response.data.redirect) { 
-                        localStorage.setItem('local_token', response.data.token)           
-                        window.location = '/home'
-                    } else {
-                        setTitle(response.data.message)
-                    }
-                }).catch((err) => {
-                    console.log(err)
+            const compressOptions = { 
+                maxSizeMB: 0.5,
+                maxWidthOrHeight: 200
+            }
+
+            imgCompression(photo, compressOptions)
+                .then(compressed => {
+                    data.append('fileimage', compressed) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
+
+                    axios.post(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
+                        .then(response => {
+                            if(response.data.redirect) { 
+                                localStorage.setItem('local_token', response.data.token)           
+                                window.location = '/home'
+                            } else {
+                                setTitle(response.data.message)
+                            }
+                        }).catch((err) => {
+                            console.log(err)
+                        })
                 })
        }
    }
