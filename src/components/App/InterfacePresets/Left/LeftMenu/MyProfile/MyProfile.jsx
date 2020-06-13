@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import {handleMyProfileData} from '../../../../../functions/LoadProfilePhoto'
+import {handleMyProfileData} from '../../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
 
-function MyProfile() {
+function MyProfile(props) {
     const [myProfileData, setMyProfileData] = useState({
         src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
         username: ''
@@ -16,7 +16,7 @@ function MyProfile() {
     
 
     return (
-        <a href='/profile'>
+        <a href={`/profile/${props.id}`}>
             <div className='MyProfile'>
                 <img src={myProfileData.src} className='PostUserIcon' alt='img' />
                 <div>

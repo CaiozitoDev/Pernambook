@@ -33,9 +33,9 @@ function Content() {
         return (
             <Router>
                 <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <NotAuthorizedPage />}} />
-                <Route exact path='/profile' component={() => {return isAuth ? <ProfilePage /> : <NotAuthorizedPage />}} />
-                <Route exact path='/messages' component={() => {return isAuth ? <MessagesPage /> : <NotAuthorizedPage />}}/>
-                <Route exact path='/friends' component={() => {return isAuth ? <FriendsPage /> : <NotAuthorizedPage />}}/>
+                <Route exact path='/profile/:id' component={() => {return isAuth ? <ProfilePage /> : <NotAuthorizedPage />}} />
+                <Route exact path='/messages/:id' component={() => {return isAuth ? <MessagesPage /> : <NotAuthorizedPage />}}/>
+                <Route exact path='/friends/:id' component={() => {return isAuth ? <FriendsPage /> : <NotAuthorizedPage />}}/>
             </Router>
         )
     }

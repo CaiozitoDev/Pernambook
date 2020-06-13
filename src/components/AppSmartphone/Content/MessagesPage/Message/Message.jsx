@@ -4,7 +4,7 @@ import Zoom from '@material-ui/core/Zoom'
 
 function Message() {
     return (
-        <Zoom in={true} >
+        <Zoom in={true} timeout={1000}>
             <div className='Message'>
                 <img src={window.location.origin + '/fds/EXq0a0EXQAAUmjt.jpg'} alt='img' />
                 <div className='MessageText' >

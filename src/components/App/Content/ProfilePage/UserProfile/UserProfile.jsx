@@ -1,12 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
+import {handleMyProfileData} from '../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
+
+import { useParams } from 'react-router-dom'
 
 function UserProfile() {
+    const [userData, setUserData] = useState({
+        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+        username: '',
+        age: '',
+    })
+
+    const {id} = useParams()
+
+    useEffect(() => {
+        // IMPORTA A PROFILE PHOTO
+        handleMyProfileData().then(data => {
+            setUserData(preValue => {
+                return {...preValue, src: data.src}
+            })
+        })
+        // IMPORTA O RESTO DOS DADOS
+        axios.get(`/profile/${id}`)
+        .then(response => {
+            setUserData(preValue => {
+                return {
+                    ...preValue,
+                    username: response.data.username,
+                }
+            })
+        })
+        .catch(err => {console.log(err)})
+    })
+
     return (
         <div className='UserProfile'>
-            <img src={window.location.origin + '/fds/EWkV9JuWAAIqrZh.jpg'} alt='img' />
+            <img src={userData.src} alt='img' />
             <div className='UserInfo'>
-                <h2>Caio Felipe</h2>
-                <h4>@CaioReidaFarofa</h4>
+                <h2>{userData.username}</h2>
                 <div className='UserExtraInfo'>
                     <table>
                         <tr>
@@ -18,7 +50,7 @@ function UserProfile() {
                         <tr>
                             <td className='TableTitle'><h4>Age:</h4></td>
                             <td className='TableResult'>
-                                <h4>17</h4>
+                                <h4>{userData.age}</h4>
                             </td>
                         </tr>
                     </table>

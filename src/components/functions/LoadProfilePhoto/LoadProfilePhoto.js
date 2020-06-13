@@ -1,10 +1,12 @@
 import axios from 'axios'
 
+import jwt from 'jsonwebtoken'
+
 export const handleMyProfileData = function() {
-    let token = localStorage.getItem('local_token')
+    let {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
 
     return (
-        axios.post('/profile-photo', {token})
+        axios.get(`/profile-photo/${db_user_id}`)
             .then(response => {
                 let userProfileConfig = response.data
 
@@ -13,6 +15,5 @@ export const handleMyProfileData = function() {
             .catch(err => {
                 console.log(err)
             })
-
     )
 }

@@ -65,8 +65,11 @@ function LoginRegisterPage(props) {
    function handlePostLoginRegisterData() {
        setTitle('Loading...')
 
+        // VERIFICAÇÕES DOS DADOS PASSADOS NO LOGIN-REGISTER
        if(inputValues.username.length < 4 || inputValues.password.length < 4) {
             setTitle('Min length: 4 characters')
+       } else if(inputValues.username.length > 15) {
+            setTitle('Max length: 15 characters')
        } else if(inputValues.password.search(' ') !== -1) {
             setTitle('Spaces are not allowed')
        } else if(window.location.pathname == '/register' && photo == undefined) {

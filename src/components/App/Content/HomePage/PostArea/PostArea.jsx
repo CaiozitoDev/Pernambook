@@ -9,7 +9,8 @@ function PostArea() {
     const [bodyText, setBodyText ] = useState([])
 
     function handleBodyText() {
-        axios.get('/teste').then(response => {
+        axios.get('/posts').then(response => {
+            console.log(response.data)
             setBodyText(response.data)
         })
     }

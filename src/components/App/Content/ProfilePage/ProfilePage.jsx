@@ -1,7 +1,6 @@
 import React from 'react'
 
 import InterfacePresets from '../../InterfacePresets/InterfacePresets'
-
 import UserProfile from './UserProfile/UserProfile'
 
 import Zoom from '@material-ui/core/Zoom'

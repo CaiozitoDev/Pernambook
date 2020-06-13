@@ -1,17 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import SearchIcon from '@material-ui/icons/Search';
 
 import Zoom from '@material-ui/core/Zoom'
 
+import {handleMyProfileData} from '../../../functions/LoadProfilePhoto/LoadProfilePhoto'
+
 function SearchMenu(props){
+    const [userData, setUserData] = useState({
+        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+        username: ''
+    })
+
+    useEffect(() => {
+        handleMyProfileData().then(data => {
+            setUserData(preValue => {
+                return {...preValue, src: data.src, username: data.username}
+            })
+        })
+    })
+
     return(
         <Zoom in='true'>
             <div className='SearchPageHeader'>
-                <img src={window.location.origin + '/fds/95791762_2894799623888750_6357181261760430080_n.jpg'} className='PostUserIcon' onClick={() => {
+                <img src={userData.src} className='PostUserIcon' onClick={() => {
                     document.querySelector('.Left').classList.add('isLeftClicked')
                     document.querySelector('.LeftMenu').classList.add('isLeftMenuClicked')}}
-                 />
+                alt='img' />
                 <div className='SearchMenu'>
                     <span> <SearchIcon style={{fill: 'white'}}/> </span>
                     <input type='text' placeholder='Search' />
