@@ -7,13 +7,14 @@ import PostBody from './PostBody/PostBody'
 import PostFooter from './PostFooter/PostFooter'
 
 function Post(props) {
-    
-
     return (
         <Zoom in={true} timeout={1000}>
             <div className='Post'>
-                <PostHeader />
-                <PostBody postbodytext={props.postbodytext}/>
+                <PostHeader 
+                    username={props.postdata.headerusername}
+                    src={props.postdata.headerphoto}
+                />
+                <PostBody postbodytext={props.postdata.bodytext}/>
                 <PostFooter />
             </div>
         </Zoom>

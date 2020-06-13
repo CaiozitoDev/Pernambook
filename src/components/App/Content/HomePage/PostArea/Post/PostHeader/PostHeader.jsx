@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
-function PostHeader() {
+function PostHeader(props) {
+
     return (
         <div className='PostHeader'>
-            <img src={window.location.origin + '/fds/EWsm1wUU4Agql-Z.jpg'} className='PostUserIcon' alt='img' />
+            <img src={props.src} className='PostUserIcon' alt='img' />
             <a href=''>
-                <h5>Caio Felipe</h5>
-                <p>@CaioReidaFarofa</p>
+                <h5>{props.username}</h5>
             </a>
         </div>
     )

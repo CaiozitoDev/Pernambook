@@ -8,22 +8,21 @@ import axios from 'axios'
 function PostArea() {
     const [bodyText, setBodyText ] = useState([])
 
-    function handleBodyText() {
+    useEffect(() => {
         axios.get('/posts').then(response => {
-            console.log(response.data)
             setBodyText(response.data)
         })
-    }
-
-    useEffect(handleBodyText)
+        .catch(err => {console.log(err)})
+    })
 
     return (
         <div className='col-5 PostArea'>
             <Header />
             <h1>Home page</h1>
 
+            {/* MAPPING DE TODOS OS POSTS NA POST AREA, O PARAM "POST" É UM OBJETO COM OS DADOS DE CADA POST */}
             {bodyText.map((post) => {
-                return <Post postbodytext={post.postbodytext} />
+                return <Post postdata={post} />
             })}
         </div>
     )
