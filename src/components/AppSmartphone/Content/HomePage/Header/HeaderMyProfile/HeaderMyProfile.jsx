@@ -22,7 +22,7 @@ function HeaderMyProfile() {
             document.querySelector('.LeftMenu').classList.add('isLeftMenuClicked')
         }}>
             <img src={userData.src} className='PostUserIcon' alt='img' />
-            <div>
+            <div className='HeaderUserInfo'>
                 <h5>{userData.username}</h5>
             </div>
         </div>

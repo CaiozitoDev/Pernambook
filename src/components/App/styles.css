@@ -255,10 +255,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             }
             .PostFooter {
                 padding: 0;
+                justify-content: space-around;
             }
-                .PostFooter {
-                    justify-content: space-around;
-                }
                 .PostFooter * {
                     cursor: pointer;
                 }
@@ -268,17 +266,26 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     width: 100%;
                     height: 100%;
                     outline: 0;
-                    padding: 10px;
+                    padding: 10px 10px 0;
+                }
+                .LikeDiv, .LoveDiv, .CommentDiv {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
+                .LikeDiv span, .LoveDiv span, .CommentDiv span {
+                    font-size: 0.7rem;
+                    font-weight: bold;
+                    margin: 0 auto;
+                }
+                .LoveDiv {
+                    border-left: 2px solid white;
+                    border-right: 2px solid white;
                 }
 
                     /* ICONS */
                     .ThumbUpButton:hover {
                         color: #00bdaa;
-                    }
-                    .PostFooter .FavoriteBorderButton {
-                        border-left: 2px solid white;
-                        border-right: 2px solid white;
-
                     }
                     .FavoriteBorderButton:hover {
                         color: red;

@@ -1,11 +1,32 @@
 import React, {useState} from 'react'
 
 import {Add, ArrowBack} from '@material-ui/icons';
-
 import {Zoom, Fab} from '@material-ui/core'
 
+import axios from 'axios'
+
+import jwt from 'jsonwebtoken'
+
 function NewPostForm() {
+    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+
     const [textAreaClick, setTextAreaClick] = useState(false)
+
+    const [txtValue, setTxtValue] = useState('')
+
+    function handleTxtValue(e) {
+        const {name, value} = e.target
+
+        setTxtValue(value)
+    }
+
+    function handlePostData() {
+        axios.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(err => {console.log(err)})
+    }
 
     return (
         <div className='NewPostForm'>
@@ -18,13 +39,17 @@ function NewPostForm() {
                 </div>
                 <h1>Post area</h1>
             </div>
-            <form action='/newpost' method='POST'>
-                <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onClick={() => {
+            <form onSubmit={(e) => {e.preventDefault()}} onBlur={() => {setTimeout(() => {setTextAreaClick(false); setTxtValue('')}, 1000)}}>
+                <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onFocus={() => {
                     setTextAreaClick(true)  // QUANDO CLICAR
-                }} required name='txtarea'> 
+                }} name='txtarea' onChange={handleTxtValue} value={txtValue}> 
                 </textarea>
                 <Zoom in={textAreaClick}>
-                    <Fab className='AddPostButton' onClick={() => { setTextAreaClick(false)}} type='submit'>
+                    <Fab onClick={() => {
+                        setTextAreaClick(false)
+                        document.querySelector('.NewPostForm').classList.remove('isNewPostFormClicked')
+                        return handlePostData()
+                    }} type='submit' className='AddPostButton'>
                         <Add />
                     </Fab>
                 </Zoom>

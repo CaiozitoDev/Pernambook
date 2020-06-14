@@ -6,12 +6,15 @@ import PostHeader from './PostHeader/PostHeader'
 import PostBody from './PostBody/PostBody'
 import PostFooter from './PostFooter/PostFooter'
 
-function Post() {
+function Post(props) {
     return (
         <Zoom in={true} timeout={1000}>
             <div className='Post'>
-                <PostHeader />
-                <PostBody />
+                <PostHeader 
+                    username={props.postdata.headerusername}
+                    src={props.postdata.headerphoto}
+                />
+                <PostBody postbodytext={props.postdata.bodytext}/>
                 <PostFooter />
             </div>
         </Zoom>

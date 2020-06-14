@@ -122,9 +122,12 @@ h1, h2, h3, h4, h5, h6 {
             .MyProfile .UserDiv {
                 display: flex;
             }
-            .MyProfile .UserInfo {
-                padding: 0px 10px;
-            }
+                .UserDiv img {
+                    margin-right: 10px;
+                }
+                .UserInfo {
+                    align-items: center;
+                }
                 .LeftMenu .MyProfile p {
                     text-align: left;
                 }
@@ -178,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 
     margin-right: 5px;
 
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.884);
 
     text-align: center;
     
@@ -294,7 +297,9 @@ h1, h2, h3, h4, h5, h6 {
 .PostArea {
     margin: 0;
     width: 100%;
-    padding: 10px 10px 100px;
+    padding: 10px 4% 100px;
+
+    min-height: 100vh;
 }
     .PostArea h1 {
         text-align: center;
@@ -341,14 +346,16 @@ h1, h2, h3, h4, h5, h6 {
     }
         .HeaderMyProfile * {
             margin: 0;
+            align-items: center;
         }
         .HeaderMyProfile img {
             margin-right: 10px;
             height: 40px;
             width: 40px;
         }
-        .HeaderMyProfile p {
-            font-size: 0.9rem;
+        .HeaderUserInfo {
+            display: flex;
+            align-items: center;
         }
 
     
@@ -498,10 +505,8 @@ h1, h2, h3, h4, h5, h6 {
         }
         .PostFooter {
             padding: 0;
+            justify-content: space-around;
         }
-            .PostFooter {
-                justify-content: space-around;
-            }
             .PostFooter button {
                 background: transparent;
                 border: none;
@@ -510,13 +515,22 @@ h1, h2, h3, h4, h5, h6 {
                 height: 100%;
 
                 outline: 0;
-                padding: 10px;
+                padding: 10px 10px 0;
             }
-                /* ICONS */
-                .PostFooter .FavoriteBorderButton {
-                    border-left: 2px solid white;
-                    border-right: 2px solid white;
-                }
+            .LikeDiv, .LoveDiv, .CommentDiv {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .LikeDiv span, .LoveDiv span, .CommentDiv span {
+                font-size: 0.7rem;
+                font-weight: bold;
+                margin: 0 auto;
+            }
+            .LovDiv {
+                border-left: 2px solid white;
+                border-right: 2px solid white;
+            }
     
 
 

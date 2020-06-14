@@ -1,18 +1,16 @@
 import React, {useState} from 'react'
 
-import Resizer from 'react-image-file-resizer'
-
 import {Person, Lock, Facebook} from '@material-ui/icons'
 
 import Brand from '../App/InterfacePresets/Left/Brand/Brand'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import axios from 'axios'
-
 import FacebookLogin from 'react-facebook-login'
 
 import imgCompression from 'browser-image-compression'
+
+import AxiosLoginRegisterSchema from '../functions/AxiosLoginRegisterSchema'
  
 function LoginRegisterPage(props) {
    // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
@@ -69,6 +67,10 @@ function LoginRegisterPage(props) {
    function handlePostLoginRegisterData() {
        setTitle('Loading...')
 
+       let data = new FormData()
+
+       for(let key in inputValues) {data.append(key, inputValues[key])}
+
         // VERIFICAÇÕES DOS DADOS PASSADOS NO LOGIN-REGISTER
        if(inputValues.username.length < 4 || inputValues.password.length < 4) {
             setTitle('Min length: 4 characters')
@@ -78,11 +80,9 @@ function LoginRegisterPage(props) {
             setTitle('Spaces are not allowed')
        } else if(window.location.pathname == '/register' && photo == undefined) {
             setTitle('Please, insert an photo')
+       } else if(window.location.pathname == '/login') {
+            AxiosLoginRegisterSchema(isLoginPage, data)
        } else {
-            let data = new FormData()
-
-            for(let key in inputValues) {data.append(key, inputValues[key])}
-
             const compressOptions = { 
                 maxSizeMB: 0.5,
                 maxWidthOrHeight: 200
@@ -92,17 +92,7 @@ function LoginRegisterPage(props) {
                 .then(compressed => {
                     data.append('fileimage', compressed) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
 
-                    axios.post(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
-                        .then(response => {
-                            if(response.data.redirect) { 
-                                localStorage.setItem('local_token', response.data.token)           
-                                window.location = '/home'
-                            } else {
-                                setTitle(response.data.message)
-                            }
-                        }).catch((err) => {
-                            console.log(err)
-                        })
+                    AxiosLoginRegisterSchema(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
                 })
        }
    }
@@ -111,18 +101,7 @@ function LoginRegisterPage(props) {
    function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
        setTitle('Loading...')
 
-       axios.post('/facebook', {name, userID, url})
-           .then(response => {
-               if(response.data.redirect) {
-                   localStorage.setItem('local_token', response.data.token)
-                   window.location = '/home'
-               } else {
-                   console.log(response.data)
-               }
-           })
-           .catch(err => {
-               console.log(err)
-           })
+        AxiosLoginRegisterSchema('/facebook', {name, userID, url})
    }
 
 
