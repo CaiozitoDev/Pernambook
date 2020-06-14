@@ -4,6 +4,7 @@ export default function AxiosLoginRegisterSchema(route, data, header) {
     axios.post(route, data, header && header)
     .then(response => {
         if(response.data.redirect) {
+            console.log(response.data)
             localStorage.setItem('local_token', response.data.token)
             window.location = '/home'
         } else {

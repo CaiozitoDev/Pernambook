@@ -12,19 +12,19 @@ function ListConfigs(props) {
                         <h4>Home page</h4>
                     </li>
                 </a>
-                <a href={`/profile/${props.id}`}>
+                <a href={`/profile/${props.username}`}>
                     <li>
                         <Person />
                         <h4>Profile</h4>
                     </li>
                 </a>
-                <a href={`/messages/${props.id}`}>
+                <a href={`/messages/${props.username}`}>
                     <li>
                         <Email />
                         <h4>Messages</h4>
                     </li>
                 </a>
-                <a href={`/friends/${props.id}`}>
+                <a href={`/friends/${props.username}`}>
                     <li>
                         <Group />
                         <h4>Friends</h4>

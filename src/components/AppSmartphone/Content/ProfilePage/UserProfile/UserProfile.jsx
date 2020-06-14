@@ -15,22 +15,17 @@ function UserProfile() {
         age: '',
     })
 
-    const {id} = useParams()
+    const {username} = useParams()
 
     useEffect(() => {
-        // IMPORTA A PROFILE PHOTO
-        handleMyProfileData().then(data => {
-            setUserData(preValue => {
-                return {...preValue, src: data.src}
-            })
-        })
-        // IMPORTA O RESTO DOS DADOS
-        axios.get(`/profile/${id}`)
+        // IMPORTA OS DADOS
+        axios.get(`/profile/${username}`)
         .then(response => {
             setUserData(preValue => {
                 return {
                     ...preValue,
-                    username: response.data.username,
+                    src: response.data.src,
+                    username: response.data.username
                 }
             })
         })

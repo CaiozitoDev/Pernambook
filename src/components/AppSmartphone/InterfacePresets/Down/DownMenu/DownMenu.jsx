@@ -7,7 +7,7 @@ import Zoom from '@material-ui/core/Zoom'
 import jwt from 'jsonwebtoken'
 
 function DownMenu() {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
 
     return (
         <div className='DownMenu'>
@@ -24,12 +24,12 @@ function DownMenu() {
                                 <Search />
                             </li>
                         </a>
-                        <a href={`/friends/${db_user_id}`}>
+                        <a href={`/friends/${username}`}>
                             <li>
                                 <Group />
                             </li>
                         </a>
-                        <a href={`/messages/${db_user_id}`}>
+                        <a href={`/messages/${username}`}>
                             <li>
                                 <Email />
                             </li>

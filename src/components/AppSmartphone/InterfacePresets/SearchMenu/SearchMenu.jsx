@@ -9,13 +9,12 @@ import {handleMyProfileData} from '../../../functions/LoadProfilePhoto/LoadProfi
 function SearchMenu(props){
     const [userData, setUserData] = useState({
         src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
-        username: ''
     })
 
     useEffect(() => {
         handleMyProfileData().then(data => {
             setUserData(preValue => {
-                return {...preValue, src: data.src, username: data.username}
+                return {...preValue, src: data.src}
             })
         })
     })

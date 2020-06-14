@@ -7,7 +7,7 @@ function LeftMenuOptions(props) {
         <div className='LeftMenuOptions'>
             <ul>
                 <li>
-                    <a href={`/profile/${props.id}`}>
+                    <a href={`/profile/${props.username}`}>
                         <Person style={{fill: 'white'}}/>
                         <h4>Profile</h4>
                     </a>
@@ -19,13 +19,13 @@ function LeftMenuOptions(props) {
                     </a>
                 </li>
                 <li>
-                    <a href={`/friends/${props.id}`}>
+                    <a href={`/friends/${props.username}`}>
                         <Group style={{fill: 'white'}}/>
                         <h4>Friends</h4>
                     </a>
                 </li>
                 <li>
-                    <a href={`/messages/${props.id}`}>
+                    <a href={`/messages/${props.username}`}>
                         <Email style={{fill: 'white'}}/>
                         <h4>Messages</h4>
                     </a>

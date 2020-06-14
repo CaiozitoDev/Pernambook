@@ -16,7 +16,7 @@ function MyProfile(props) {
     
 
     return (
-        <a href={`/profile/${props.id}`}>
+        <a href={`/profile/${props.username}`}>
             <div className='MyProfile'>
                 <img src={myProfileData.src} className='PostUserIcon' alt='img' />
                 <div>

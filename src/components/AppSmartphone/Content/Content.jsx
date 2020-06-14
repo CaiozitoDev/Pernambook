@@ -28,16 +28,20 @@ function Content() {
             })
     })
 
+    const PrivateRoute = ({component: Component, ...rest}) => (
+        <Route {...rest} component={(props) => {return isAuth ? (<Component {...props} />) : (<NotAuthorizedPage />)}} />
+    )
+
     if(isAuth == undefined) {
         return <LoadingPage />
     } else {
         return (
             <Router>
-                <Route exact path='/home' component={() => {return isAuth ? <HomePage /> : <NotAuthorizedPage />}} /> 
-                <Route exact path='/search' component={() => {return isAuth ? <SearchPage /> : <NotAuthorizedPage />}} />
-                <Route exact path='/friends/:id' component={() => {return isAuth ? <FriendsPage /> : <NotAuthorizedPage />}} />
-                <Route exact path='/messages/:id' component={() => {return isAuth ? <MessagesPage /> : <NotAuthorizedPage />}} />
-                <Route exact path='/profile/:id' component={() => {return isAuth ? <ProfilePage /> : <NotAuthorizedPage />}} />
+                <PrivateRoute exact path='/home' component={HomePage} />
+                <PrivateRoute exact path='/search' component={SearchPage} />
+                <PrivateRoute exact path='/profile/:username' component={ProfilePage} />
+                <PrivateRoute exact path='/messages/:username' component={MessagesPage} />
+                <PrivateRoute exact path='/friends/:username' component={FriendsPage} /> 
             </Router>
         )
     }

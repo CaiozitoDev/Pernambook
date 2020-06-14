@@ -3,6 +3,8 @@ import React, {useState} from 'react'
 // ICONS DO POST FOOTER
 import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'
 
+import axios from 'axios'
+
 function PostFooter() {
     // FUNÇÃO E HOOK PRA TROCA DE ÍCONES E CORES DOS BOTÕES DO POST FOOTER
     const [iconClick, setIconClick] = useState({

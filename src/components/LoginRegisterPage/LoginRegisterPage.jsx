@@ -68,7 +68,6 @@ function LoginRegisterPage(props) {
        setTitle('Loading...')
 
        let data = new FormData()
-
        for(let key in inputValues) {data.append(key, inputValues[key])}
 
         // VERIFICAÇÕES DOS DADOS PASSADOS NO LOGIN-REGISTER
@@ -76,7 +75,7 @@ function LoginRegisterPage(props) {
             setTitle('Min length: 4 characters')
        } else if(inputValues.username.length > 15) {
             setTitle('Max length: 15 characters')
-       } else if(inputValues.password.search(' ') !== -1) {
+       } else if(inputValues.password.search(' ') !== -1 || inputValues.username.search(' ') !== -1) {
             setTitle('Spaces are not allowed')
        } else if(window.location.pathname == '/register' && photo == undefined) {
             setTitle('Please, insert an photo')
