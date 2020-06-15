@@ -6,7 +6,7 @@ import Post from './Post/Post'
 import axios from 'axios'
 
 function PostArea() {
-    const [bodyText, setBodyText ] = useState([])
+    const [bodyText, setBodyText] = useState([])
 
     useEffect(() => {
         axios.get('/posts').then(response => {

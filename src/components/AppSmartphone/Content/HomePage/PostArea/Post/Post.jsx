@@ -15,7 +15,7 @@ function Post(props) {
                     src={props.postdata.headerphoto}
                 />
                 <PostBody postbodytext={props.postdata.bodytext}/>
-                <PostFooter />
+                <PostFooter postid={props.postdata._id} />
             </div>
         </Zoom>
     )
