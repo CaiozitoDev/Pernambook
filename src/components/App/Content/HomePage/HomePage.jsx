@@ -4,11 +4,13 @@ import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 import PostArea from './PostArea/PostArea'
 import Right from './Right/Right'
+import CommentPage from './PostArea/Post/CommentPage/CommentPage'
 
 function HomePage() {
     return (
         <div className='HomePage'>
             <InterfacePresets />
+            <CommentPage />
 
             <PostArea />
             <Right />

@@ -80,7 +80,7 @@ function LoginRegisterPage(props) {
        } else if(window.location.pathname == '/register' && photo == undefined) {
             setTitle('Please, insert an photo')
        } else if(window.location.pathname == '/login') {
-            AxiosLoginRegisterSchema(isLoginPage, data)
+            AxiosLoginRegisterSchema(isLoginPage, data).then(data => {setTitle(data.result)})
        } else {
             const compressOptions = { 
                 maxSizeMB: 0.5,
@@ -92,6 +92,7 @@ function LoginRegisterPage(props) {
                     data.append('fileimage', compressed) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
 
                     AxiosLoginRegisterSchema(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
+                        .then(data => {setTitle(data.result)})
                 })
        }
    }
@@ -100,7 +101,7 @@ function LoginRegisterPage(props) {
    function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
        setTitle('Loading...')
 
-        AxiosLoginRegisterSchema('/facebook', {name, userID, url})
+        AxiosLoginRegisterSchema('/facebook', {name, userID, url}).then(data => {setTitle(data.result)})
    }
 
 

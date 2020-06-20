@@ -899,3 +899,28 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         margin: 20px;
     }
+
+
+
+
+
+/* AREA DE COMMENTS DOS POSTS */
+.CommentPage {
+    position: fixed;
+
+    min-height: 100vh;
+    min-width: 100vw;
+
+    z-index: 7;
+
+    background-color: rgba(0, 0, 0, 0.616);
+}
+    .CommentArea {
+        width: 50%;
+
+        height: 100vh;
+
+        margin: auto;
+
+        background-color: red;
+    }

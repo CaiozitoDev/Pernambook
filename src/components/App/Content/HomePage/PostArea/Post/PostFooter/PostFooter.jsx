@@ -5,80 +5,88 @@ import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'
 
 import axios from 'axios'
 
-function PostFooter(props) {
-    // FUNÇÃO E HOOK PRA TROCA DE ÍCONES E CORES DOS BOTÕES DO POST FOOTER
-    const [iconClick, setIconClick] = useState({
-        ThumbUp: false,
-        FavoriteBorder: false,
-        Comment: false
-    })
+import jwt from 'jsonwebtoken'
 
-    const [iconValue, setIconValues] = useState({
+function PostFooter(props) {
+    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+
+    // FUNÇÃO E HOOK PRA TROCA DE ÍCONES E CORES DOS BOTÕES DO POST FOOTER
+    const [reactions, setReactions] = useState({
         like: 0,
         love: 0,
-        comment: 0
+        comment: 0,
+        isLikeClicked: false,
+        isLoveClicked: false,
+        isCommentClicked: false
     })
+
+    const [isDisabled, setIsDisabled] = useState(false)
 
     // VALORES INICIAIS DOS BOTÕES PASSSADOS PELO SERVER
     useEffect(() => {
-        axios.post('/post-buttons', {postid: props.postid})
+        axios.post('/post-buttons', {postid: props.postid , db_user_id: db_user_id})
             .then(response => {
-                setIconValues({
+                setReactions({
                     like: response.data.like,
                     love: response.data.love,
-                    comment: response.data.comment
+                    comment: response.data.comment,
+                    isLikeClicked: response.data.isLikeClicked,
+                    isLoveClicked: response.data.isLoveClicked
                 })
             })
     })
 
     // ATUALIZA OS ICONES QUANDO CLICA
-    function handleIconClick(IconClickName, IconClickValue) {
-        setIconClick(prevValue => {
+    function handleIconClick(isIconClicked, iconName) {
+        const lastValue = reactions[isIconClicked]
+        setReactions(preValue => {
             return {
-                ...prevValue, [IconClickName]: !IconClickValue
+                ...preValue, [isIconClicked]: !lastValue
             }
-        }) 
+        })
+
+        handlePostValues(isIconClicked, iconName)
     }
 
     // INPUT PRO SERVER PARA INCREMENTAR OS VALORES NO BANCO DE DADOS QUANDO CLICA
-    function handlePostValues(buttonValue, isButtonClicked) {
-        axios.patch('/post-buttons', {buttonValue, postid: props.postid, isButtonClicked})
-            .then(response => {
-                console.log(response.data)
-                axios.patch()
-            })
-            .catch(err => {console.log(err)})
+    function handlePostValues(isIconClicked, iconName) {
+        setIsDisabled(true)
+        if(iconName !== 'comment') {
+            const isButtonClicked = !reactions[isIconClicked]
+            axios.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
+                .then(response => {
+                    console.log(response.data)
+                    setIsDisabled(false)
+                })
+                .catch(err => {console.log(err)})
+        }
     }
 
     return (
         <div className='PostFooter'>
             <div className='LikeDiv'>
                 <button onClick={() => {
-                    handleIconClick('ThumbUp', iconClick.ThumbUp)
-                    handlePostValues('like', iconClick.ThumbUp)
-                }} className='ThumbUpButton' name='postfooterbutton'>
-                    <ThumbUp style={{fill: iconClick.ThumbUp ? 'cyan' : null}} />
+                    handleIconClick('isLikeClicked', 'like')
+                }} className='ThumbUpButton' name='postfooterbutton' disabled={isDisabled}>
+                    <ThumbUp style={{fill: reactions.isLikeClicked ? 'cyan' : null}} />
                 </button>
-                <span className='LikeValue'>{iconValue.like}</span>
+                <span className='LikeValue'>{reactions.like}</span>
             </div>
 
             <div className='LoveDiv'>
                 <button onClick={() => {
-                    handleIconClick('FavoriteBorder', iconClick.FavoriteBorder)
-                    handlePostValues('love', iconClick.FavoriteBorder)
+                    handleIconClick('isLoveClicked', 'love')
                 }} className='FavoriteBorderButton' name='postfooterbutton'>
-                    {iconClick.FavoriteBorder ? <Favorite color='secondary' /> : <FavoriteBorder />}
+                    {reactions.isLoveClicked ? <Favorite color='secondary' /> : <FavoriteBorder />}
                 </button>
-                <span className='LoveValue'>{iconValue.love}</span>
+                <span className='LoveValue'>{reactions.love}</span>
             </div>
 
             <div className='CommentDiv'>
-                <button onClick={() => {
-                    handleIconClick('Comment', iconClick.Comment)
-                }} className='CommentButton' name='postfooterbutton'>
-                    <Comment style={{fill: iconClick.Comment ? 'orange' : null}} />
+                <button className='CommentButton' name='postfooterbutton'>
+                    <Comment style={{fill: reactions.isCommentClicked && 'orange'}} />
                 </button>
-                <span className='CommentValue'>{iconValue.comment}</span>
+                <span className='CommentValue'>{reactions.comment}</span>
             </div>
         </div>
     )
