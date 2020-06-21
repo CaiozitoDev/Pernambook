@@ -256,7 +256,7 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 10px;
     }
 
-    .NewPostForm .AddPostButton {
+    .NewPostForm .AddPostButton, .NewCommentForm button {
         position: absolute;
         bottom: -10px;
         right: 20px;
@@ -592,7 +592,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-.SearchContent, .ProfileContent, .FriendsContent, .MessagesContent {
+.SearchContent, .ProfileContent, .FriendsContent, .MessagesContent, .CommentArea {
     padding: 150px 5% 100px;
 
 }
@@ -1114,3 +1114,75 @@ h1, h2, h3, h4, h5, h6 {
 
         margin: 20px;
     }
+
+
+
+
+
+/* COMMENT PAGE */
+.CommentPage {
+    min-height: 100vh;
+    height: 100%;
+}
+.CommentContent {
+    background-color: pink;
+
+    padding: 3% 5%;
+
+    border-radius: 30px;
+}
+    .Comments {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: auto;
+    }
+        .Comment {
+            display: flex;
+            flex-wrap: wrap;
+
+            background-color: white;
+
+            border-radius: 20px;
+
+            border: 2px solid red;
+
+            padding: 10px;
+
+            margin-bottom: 10px;
+        }
+        .Comment:last-child {
+            margin-bottom: auto;
+        }
+            .CommentHeader {
+                display: flex;
+
+                align-items: center;
+
+                margin-right: 10%;
+            }
+                .CommentHeader img {
+                    height: 30px;
+                    width: 30px;
+
+                    margin-right: 10px;
+                }
+            .CommentBody p {
+                margin: 0;
+            }
+        .NewCommentForm {
+            position: relative;
+
+            margin-top: 5%;
+        } 
+            .NewCommentForm textarea {
+                width: 100%;
+
+                border-radius: 20px;
+
+                outline: none;
+
+                padding: 5px;
+
+                resize: none;
+            }

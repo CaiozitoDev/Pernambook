@@ -83,9 +83,11 @@ function PostFooter(props) {
             </div>
 
             <div className='CommentDiv'>
-                <button className='CommentButton' name='postfooterbutton'>
-                    <Comment style={{fill: reactions.isCommentClicked && 'orange'}} />
-                </button>
+                <a href={`/comments/${props.postid}`} >
+                    <button className='CommentButton' name='postfooterbutton'>
+                        <Comment style={{fill: reactions.isCommentClicked && 'orange'}} />
+                    </button>
+                </a>
                 <span className='CommentValue'>{reactions.comment}</span>
             </div>
         </div>

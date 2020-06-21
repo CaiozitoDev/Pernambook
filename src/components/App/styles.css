@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     font-size: 1.2rem;
                 }
 
-            .NewPostForm button {
+            .NewPostForm button, .NewCommentForm button {
                 position: absolute;
 
                 bottom: -10px;
@@ -479,7 +479,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 /* PROFILE PAGE */
 
-.ProfileContent, .FriendsContent, .MessagesContent {
+.ProfileContent, .FriendsContent, .MessagesContent, .CommentArea {
     width: 60%;
 
     margin-left: 40%;
@@ -905,22 +905,67 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 
 /* AREA DE COMMENTS DOS POSTS */
-.CommentPage {
-    position: fixed;
+.CommentContent {
+    background-color: pink;
 
-    min-height: 100vh;
-    min-width: 100vw;
+    padding: 3% 5%;
 
-    z-index: 7;
+    border-radius: 30px;
 
-    background-color: rgba(0, 0, 0, 0.616);
+
 }
-    .CommentArea {
-        width: 50%;
+    .Comments {
+        display: flex;
+        flex-direction: column;
 
-        height: 100vh;
-
-        margin: auto;
-
-        background-color: red;
+        margin-bottom: auto;
     }
+        .Comment {
+            display: flex;
+            flex-wrap: wrap;
+
+            background-color: white;
+
+            border-radius: 20px;
+
+            border: 2px solid red;
+
+            padding: 10px;
+
+            margin-bottom: 10px;
+        }
+        .Comment:last-child {
+            margin-bottom: auto;
+        }
+            .CommentHeader {
+                display: flex;
+
+                align-items: center;
+
+                margin-right: 10%;
+            }
+                .CommentHeader img {
+                    height: 30px;
+                    width: 30px;
+
+                    margin-right: 10px;
+                }
+            .CommentBody p {
+                margin: 0;
+            }
+        .NewCommentForm {
+            position: relative;
+
+            margin-top: 5%;
+        } 
+            .NewCommentForm textarea {
+                width: 100%;
+
+                border-radius: 20px;
+
+                outline: none;
+
+                padding: 5px;
+
+                resize: none;
+            }

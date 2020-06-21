@@ -6,6 +6,7 @@ import HomePage from './HomePage/HomePage'
 import ProfilePage from './ProfilePage/ProfilePage'
 import MessagesPage from './MessagesPage/MessagesPage'
 import FriendsPage from './FriendsPage/FriendsPage'
+import CommentPage from './CommentPage/CommentPage'
 
 import LoadingPage from '../../LoadingPage/Loading'
 
@@ -40,6 +41,7 @@ function Content() {
                 <PrivateRoute exact path='/profile/:username' component={ProfilePage} />
                 <PrivateRoute exact path='/messages/:username' component={MessagesPage} />
                 <PrivateRoute exact path='/friends/:username' component={FriendsPage} /> 
+                <PrivateRoute exact path='/comments/:postid' component={CommentPage} />
             </Router>
         )
     }
