@@ -332,6 +332,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             border-bottom: 1px solid #fae7cb;
             padding-bottom: 5%;
             margin-bottom: 0;
+
+            text-align: center;
         }
 
         .TopOnePost {
@@ -906,12 +908,15 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 /* AREA DE COMMENTS DOS POSTS */
 .CommentContent {
-    background-color: pink;
-
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    
     padding: 3% 5%;
 
     border-radius: 30px;
 
+    border: 1px solid white;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.603);
 
 }
     .Comments {
@@ -924,11 +929,10 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             display: flex;
             flex-wrap: wrap;
 
-            background-color: white;
+            background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
+            border: 2px solid white;
             border-radius: 20px;
-
-            border: 2px solid red;
 
             padding: 10px;
 
@@ -968,4 +972,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 padding: 5px;
 
                 resize: none;
+
+                border: 2px solid bisque;
             }

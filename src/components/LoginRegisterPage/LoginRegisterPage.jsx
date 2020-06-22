@@ -101,7 +101,7 @@ function LoginRegisterPage(props) {
    function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
        setTitle('Loading...')
 
-        AxiosLoginRegisterSchema('/facebook', {name, userID, url}).then(data => {setTitle(data.result)})
+        AxiosLoginRegisterSchema('/facebook', {name, userID, url}).then(data => {setTitle(data.result)}) 
    }
 
 
@@ -135,6 +135,7 @@ function LoginRegisterPage(props) {
                                 appId="2592642841005355"
                                 autoLoad={false}
                                 fields="name,email,picture"
+                                isMobile={false}
                                 callback={handleFacebookLoginRegisterData}
                                 cssClass='btn btn-lg btn-primary w-100'
                                 icon={<Facebook />}

@@ -23,6 +23,8 @@ function CommentPage() {
 
     const [isDisable, setIsDisable] = useState(false)
 
+    const [errorMessage, setErrorMessage] = useState('')
+
     const {postid} = useParams()
 
     useEffect(() => {
@@ -39,12 +41,18 @@ function CommentPage() {
     }
 
     function handleCommentData() {
-        setIsDisable(true)
-        axios.post('/addcomment', {postid, txtValue, db_user_id}).then(response => {
-            console.log(response.data)
-            setIsDisable(false)
-        })
-        .catch(err => {return console.log(err)})
+        if(txtValue == '') {
+            setErrorMessage('Text area is empty')
+        } else {
+            setIsDisable(true)
+            axios.post('/addcomment', {postid, txtValue, db_user_id}).then(response => {
+                console.log(response.data)
+                setTxtValue('')
+                setIsDisable(false)
+                setErrorMessage('')
+            })
+            .catch(err => {return console.log(err)})
+        }
     }
 
     return (
@@ -65,6 +73,7 @@ function CommentPage() {
                         </div>
 
                         <div className='NewCommentForm'>
+                            <h6>{errorMessage}</h6>
                             <textarea rows={3} placeholder='Write a comment' name='commenttxtarea' onChange={handleTxtArea} value={txtValue} ></textarea>
                             <Zoom in={true}>
                                 <Fab onClick={handleCommentData} disabled={isDisable}>
