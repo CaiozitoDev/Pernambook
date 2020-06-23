@@ -230,6 +230,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 .PostHeader a {
                     display: flex;
                     flex-wrap: wrap;
+                    margin-right: auto;
                 }
                 .PostHeader p {
                     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.671);
@@ -243,6 +244,16 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 }
                 .PostHeader p {
                     opacity: 0.8;
+                }
+                button.AddFriendPost {
+                    margin: 0;
+                    background: transparent;
+                    border: none;
+
+                    outline: 0;
+                }
+                .AddFriendPost:hover {
+                    color: rgb(255, 134, 134);
                 }
 
             .PostBody, .PostFooter {
@@ -612,6 +623,49 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 .FriendsContent {
     padding: 5% 5% 5% 0;
 }
+    .FriendRequestArea {
+        display: flex;
+        flex-direction: column;
+
+        background-color: purple;
+
+        border-radius: 20px;
+        border: 2px solid white;
+
+        padding: 10px;
+
+        margin-bottom: 5%;
+    }
+        .FriendRequestArea h5 {
+            margin: auto;
+        }
+        .FriendRequestList {
+            display: flex;
+            flex-wrap: wrap;
+
+            padding: 5px 0;
+        }
+        .FriendRequest {
+            display: flex;
+
+            border-radius: 100px;
+
+            padding: 5px;
+
+            margin-bottom: 5px;
+
+            background-color: pink;
+
+            min-width: 195px;
+
+            align-items: center;
+
+            border: 2px solid white;
+        }
+            .FriendRequest img {
+                margin-right: 5px;
+            }
+
     .Friend li {
         display: flex;
 
