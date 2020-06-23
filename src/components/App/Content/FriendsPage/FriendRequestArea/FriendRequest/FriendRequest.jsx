@@ -13,9 +13,22 @@ function FriendRequest(props) {
     function handleRequestResult(result) {
         setIsDisabled(true)
 
-        axios.post('/friendrequestresult', {result: result, db_user_id: db_user_id, userid: props.requestdata.userid})
-            .then(response => {
+        const accept = {
+            result: result,
+            db_user_id: db_user_id,
+            userid: props.requestdata.userid,
+            username: props.requestdata.username,
+            photo: props.requestdata.photo
+        }
+        const rejeit = {
+            result: result,
+            db_user_id: db_user_id,
+            userid: props.requestdata.userid
+        }
 
+        axios.post('/friendrequestresult', result ? accept : rejeit)
+            .then(response => {
+                console.log('Request sent')
             })
             .catch(err => {console.log(err)})
     }
