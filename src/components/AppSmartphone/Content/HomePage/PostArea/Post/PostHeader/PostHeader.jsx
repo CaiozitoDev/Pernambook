@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {PersonAdd, EmojiPeople} from '@material-ui/icons'
+import {PersonAdd, EmojiPeople, Check} from '@material-ui/icons'
 
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
@@ -10,19 +10,33 @@ function PostHeader(props) {
 
     const [areFriends, setAreFriends] = useState(false)
 
+    const [isDisabled, setIsDisabled] = useState(false)
+
+    const [activeIcon, setActiveIcon] = useState(<PersonAdd />)
+
     useEffect(() => {
         axios.post('/arefriends', {postuserid: props.postuserid, db_user_id: db_user_id}).then(response => {
-            setAreFriends(response.data)
+            if(response.data == 'sent') {
+                setActiveIcon(<Check />)
+                setIsDisabled(true)
+            } else {
+                setAreFriends(response.data)
+            }
         })
         .catch(err => {console.log(err)})
     })
 
     function handleFriendRequest() {
-        axios.patch('/friendrequest', {db_user_id: db_user_id, postuserid: props.postuserid})
+        setIsDisabled(true)
+
+        if(!areFriends) {
+            axios.patch('/friendrequest', {db_user_id: db_user_id, postuserid: props.postuserid})
             .then(response => {
                 console.log(response.data)
+                setActiveIcon(<Check />)
             })
             .catch(err => {console.log(err)})
+        }
     }
 
     return (
@@ -31,9 +45,11 @@ function PostHeader(props) {
             <a href={`/profile/${props.username}`}>
                 <h5>{props.username}</h5>
             </a>
-            <div className='AddFriendPost' onClick={handleFriendRequest}>
-            {!areFriends ? <PersonAdd /> : <div> Friends <EmojiPeople /> </div>}
-            </div>
+            {props.postuserid !== db_user_id &&
+                <button className='AddFriendPost' onClick={handleFriendRequest} disabled={isDisabled}>
+                    {!areFriends ? activeIcon : <div> Friends <EmojiPeople /> </div>}
+                </button>
+            }
         </div>
     )
 }

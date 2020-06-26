@@ -484,6 +484,7 @@ h1, h2, h3, h4, h5, h6 {
             .PostHeader a {
                 display: flex;
                 flex-wrap: wrap;
+                margin-right: auto;
             }
                 .PostUserIcon {
                     height: 50px;
@@ -492,8 +493,12 @@ h1, h2, h3, h4, h5, h6 {
                 
                     border: 2px solid white;
                 }
-                .AddFriendPost:hover {
-                    color: rgb(255, 134, 134);
+                button.AddFriendPost {
+                    margin: 0;
+                    background: transparent;
+                    border: none;
+
+                    outline: 0;
                 }
         .PostBody, .PostFooter {
             padding: 10px;
@@ -756,6 +761,49 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100vh;
 }
+.FriendRequestArea {
+    display: flex;
+    flex-direction: column;
+
+    background-color: purple;
+
+    border-radius: 20px;
+    border: 2px solid white;
+
+    padding: 10px;
+
+    margin-bottom: 5%;
+}
+    .FriendRequestArea h5 {
+        margin: auto;
+    }
+    .FriendRequestList {
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: 5px 0;
+    }
+    .FriendRequest {
+        display: flex;
+
+        border-radius: 100px;
+
+        padding: 5px;
+
+        margin-bottom: 5px;
+
+        background-color: pink;
+
+        width: 100%;
+
+        align-items: center;
+
+        border: 2px solid white;
+    }
+        .FriendRequest img {
+            margin-right: 15px;
+        }
+
     .FriendsMenu h1 {
         text-align: center;
     }

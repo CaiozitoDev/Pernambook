@@ -13,7 +13,7 @@ function UserProfile() {
     })
 
     const {username} = useParams()
-
+    
     useEffect(() => {
         // IMPORTA OS DADOS
         axios.get(`/profile/${username}`)
