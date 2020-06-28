@@ -1176,7 +1176,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-/* COMMENT PAGE */
+/*   PAGE */
 .CommentPage {
     min-height: 100vh;
     height: 100%;
@@ -1211,15 +1211,14 @@ h1, h2, h3, h4, h5, h6 {
 
             margin-bottom: 10px;
         }
+            .Comment a {
+                margin-right: 10%;
+            }
         .Comment:last-child {
             margin-bottom: auto;
         }
             .CommentHeader {
                 display: flex;
-
-                align-items: center;
-
-                margin-right: 10%;
             }
                 .CommentHeader img {
                     height: 30px;
@@ -1227,8 +1226,9 @@ h1, h2, h3, h4, h5, h6 {
 
                     margin-right: 10px;
                 }
-            .CommentBody p {
+            .CommentBody p, h6 {
                 margin: 0;
+                align-items: center;
             }
         .NewCommentForm {
             position: relative;

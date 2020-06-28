@@ -5,16 +5,17 @@ import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 import FriendRequestArea from './FriendRequestArea/FriendRequestArea'
 import Friend from './Friend/Friend'
 
+import {useParams} from 'react-router-dom'
+
 import axios from 'axios'
-import jwt from 'jsonwebtoken'
 
 function FriendsPage() {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
-
     const [userList, setUserList] = useState([])
 
+    const {username} = useParams()
+
     useEffect(() => {
-        axios.post('/friendlist', {db_user_id}).then(response => {
+        axios.get(`/friendlist/${username}`).then(response => {
             setUserList(response.data)
         })
         .catch(err => {console.log(err)})

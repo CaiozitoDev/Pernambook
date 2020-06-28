@@ -21,7 +21,7 @@ function FriendRequestArea() {
     return (
         <Zoom in={true} timeout={1000}>
             <div className='FriendRequestArea'>
-                <h5>Friend requests</h5>
+                <h5>Friend requests: {requestArray.length}</h5>
                 <div className='FriendRequestList'>
                     {requestArray.map(request => {
                         return <FriendRequest requestdata={request} />

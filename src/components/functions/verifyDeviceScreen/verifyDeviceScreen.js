@@ -39,13 +39,19 @@ function verifyDeviceScreen() {
     }
     
     if(CorrectScreen == 'desktop') {
-        CorrectDevice = <AppDesktop />
-        require('../../App/styles.css')  // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
+        CorrectDevice = {
+            component: <AppDesktop />,
+            style: 'desktop'
+        }
+        //require('../../App/styles.css')  // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
     } /* else if(CorrectScreen == 'tablet') {
         CorrectDevice = <AppTablet /> 
     } */ else {
-        CorrectDevice = <AppSmartphone />
-        require('../../AppSmartphone/phone.css') // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
+        CorrectDevice = {
+            component: <AppSmartphone />,
+            style: 'mobile'
+        }
+        //require('../../AppSmartphone/phone.css') // APLICAR O ESTILO NO QUE FOI ESCOLHIDO
     }
 
     return CorrectDevice

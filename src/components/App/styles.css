@@ -992,6 +992,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             margin-bottom: 10px;
         }
+        .Comment h6, p {
+            margin: 0;
+        }
         .Comment:last-child {
             margin-bottom: auto;
         }
@@ -1008,8 +1011,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                     margin-right: 10px;
                 }
-            .CommentBody p {
-                margin: 0;
+            .CommentBody {
+                display: flex;
+                align-items: center;
             }
         .NewCommentForm {
             position: relative;
