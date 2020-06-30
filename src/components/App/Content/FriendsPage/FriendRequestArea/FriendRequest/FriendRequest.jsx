@@ -29,6 +29,7 @@ function FriendRequest(props) {
         axios.post('/friendrequestresult', result ? accept : rejeit)
             .then(response => {
                 console.log(response.data)
+                setIsDisabled(false)
             })
             .catch(err => {console.log(err)})
     }

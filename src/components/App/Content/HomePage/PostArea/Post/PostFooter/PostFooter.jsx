@@ -24,7 +24,7 @@ function PostFooter(props) {
 
     // VALORES INICIAIS DOS BOTÕES PASSSADOS PELO SERVER
     useEffect(() => {
-        axios.post('/post-buttons', {postid: props.postid , db_user_id: db_user_id})
+        axios.post('/post-buttons', {postid: props.postid, db_user_id: db_user_id})
             .then(response => {
                 setReactions({
                     like: response.data.like,
