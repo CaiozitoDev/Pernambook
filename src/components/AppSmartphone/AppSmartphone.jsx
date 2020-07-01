@@ -7,9 +7,11 @@ import Content from './Content/Content'
 import WelcomePage from '../WelcomePage/WelcomePage'
 import LoginRegisterPage from '../LoginRegisterPage/LoginRegisterPage'
 
+import AppSmartphoneStyle from '../mobile-style'
+
 function AppSmartphone() {
     return (
-        <div className='AppSmartphone'>
+        <AppSmartphoneStyle className='AppSmartphone'>
             <Router>
                 <Route exact path='/' component={WelcomePage} />
                 <Route exact path='/login' component={() => {return <LoginRegisterPage title='Log In' />}} />
@@ -17,7 +19,7 @@ function AppSmartphone() {
             </Router>
 
             {window.location.pathname !== '/login' && window.location.pathname !== '/register' && <Content />}
-        </div>
+        </AppSmartphoneStyle>
     )
 }
 

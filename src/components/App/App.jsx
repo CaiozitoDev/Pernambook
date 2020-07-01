@@ -7,9 +7,11 @@ import Content from './Content/Content'
 import WelcomePage from '../WelcomePage/WelcomePage'
 import LoginRegisterPage from '../LoginRegisterPage/LoginRegisterPage'
 
+import AppStyle from '../desktop-style'
+
 function App() {
     return (
-        <div className='App'>
+        <AppStyle className='App'>
             <Router> 
                 <Route exact path='/' component={WelcomePage} /> 
                 <Route exact path='/login' component={() => {return <LoginRegisterPage title='Log In' />}}/>
@@ -17,7 +19,7 @@ function App() {
             </Router>
 
             {window.location.pathname !== '/login' && window.location.pathname !== '/register' && <Content />}
-        </div>
+        </AppStyle>
     )
 }
 
