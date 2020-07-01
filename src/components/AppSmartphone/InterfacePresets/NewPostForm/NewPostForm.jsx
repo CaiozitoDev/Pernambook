@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 
-import {Add, ArrowBack} from '@material-ui/icons';
+import {Add, ArrowBack, ApartmentOutlined} from '@material-ui/icons';
 import {Zoom, Fab} from '@material-ui/core'
 
-import axios from 'axios'
+import api from '../../../../services/API_CONFIG'
 
 import jwt from 'jsonwebtoken'
 
@@ -21,7 +21,7 @@ function NewPostForm() {
     }
 
     function handlePostData() {
-        axios.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
+        api.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
             .then(response => {
                 console.log(response.data)
             })

@@ -1,8 +1,9 @@
-import axios from 'axios'
+/* import axios from 'axios' */
+import api from '../../services/API_CONFIG'
 
 export default function AxiosLoginRegisterSchema(route, data, header) {
     return (
-        axios.post(route, data, header && header)
+        api.post(route, data, header && header)
         .then(response => {
             if(response.data.redirect) {
                 console.log(response.data)

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 
-import {handleMyProfileData} from '../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
+import api from '../../../../../services/API_CONFIG'
 
 import { useParams } from 'react-router-dom'
 
@@ -16,7 +15,7 @@ function UserProfile() {
     
     useEffect(() => {
         // IMPORTA OS DADOS
-        axios.get(`/profile/${username}`)
+        api.get(`/profile/${username}`)
         .then(response => {
             setUserData(preValue => {
                 return {

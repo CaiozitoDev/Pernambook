@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react'
 
 import Post from './Post/Post'
 
-import axios from 'axios'
+import api from '../../../../../services/API_CONFIG'
 
 function PostArea() {
     const [bodyText, setBodyText] = useState([])
 
     useEffect(() => {
-        axios.get('/posts').then(response => {
+        api.get('/posts').then(response => {
             setBodyText(response.data)
         })
         .catch(err => {console.log(err)})

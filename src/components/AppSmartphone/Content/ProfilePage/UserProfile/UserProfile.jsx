@@ -6,7 +6,7 @@ import {handleMyProfileData} from '../../../../functions/LoadProfilePhoto/LoadPr
 
 import {useParams} from 'react-router-dom'
 
-import axios from 'axios'
+import api from '../../../../../services/API_CONFIG'
 
 function UserProfile() {
     const [userData, setUserData] = useState({
@@ -19,7 +19,7 @@ function UserProfile() {
 
     useEffect(() => {
         // IMPORTA OS DADOS
-        axios.get(`/profile/${username}`)
+        api.get(`/profile/${username}`)
         .then(response => {
             setUserData(preValue => {
                 return {

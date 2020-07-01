@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react'
 import TopOnePost from './TopOnePost/TopOnePost'
 import TopPost from './TopPosts/TopPosts'
 
-import axios from 'axios'
+import api from '../../../../../../../services/API_CONFIG'
 
 function RightMenuContent() {
     const [topPosts, setTopPosts] = useState([])
 
     useEffect(() => {
-        axios.get('/topposts').then(response => {
+        api.get('/topposts').then(response => {
             setTopPosts(response.data)
         })
         .catch(err => {console.log(err)})

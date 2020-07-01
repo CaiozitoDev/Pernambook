@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import AddIcon from '@material-ui/icons/Add';
 import {Zoom, Fab} from '@material-ui/core'
 
-import axios from 'axios'
+import api from '../../../../../../services/API_CONFIG'
 
 function NewPostForm(props) {
     const [textAreaClick, setTextAreaClick] = useState(false)
@@ -17,7 +17,7 @@ function NewPostForm(props) {
     }
 
     function handlePostData() {
-        axios.post('/newpost', {txtarea: txtValue, db_user_id: props.id})
+        api.post('/newpost', {txtarea: txtValue, db_user_id: props.id})
             .then(response => {
                 console.log(response.data)
             })

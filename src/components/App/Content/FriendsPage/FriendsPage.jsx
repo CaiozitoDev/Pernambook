@@ -7,7 +7,7 @@ import Friend from './Friend/Friend'
 
 import {useParams} from 'react-router-dom'
 
-import axios from 'axios'
+import api from '../../../../services/API_CONFIG'
 
 function FriendsPage() {
     const [userList, setUserList] = useState([])
@@ -15,7 +15,7 @@ function FriendsPage() {
     const {username} = useParams()
 
     useEffect(() => {
-        axios.get(`/friendlist/${username}`).then(response => {
+        api.get(`/friendlist/${username}`).then(response => {
             setUserList(response.data)
         })
         .catch(err => {console.log(err)})

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import {useParams} from 'react-router-dom'
 
-import axios from 'axios'
+import api from '../../../../../services/API_CONFIG'
 
 import {Zoom, Fab} from '@material-ui/core'
 import {Add} from '@material-ui/icons'
@@ -30,7 +30,7 @@ function NewCommentForm(props) {
             setIsDisable(true)
             setErrorMessage('Sending...')
 
-            axios.patch('/addcomment', {postid, txtValue, db_user_id}).then(response => {
+            api.patch('/addcomment', {postid, txtValue, db_user_id}).then(response => {
                 console.log(response.data)
                 setTxtValue('')
                 setIsDisable(false)

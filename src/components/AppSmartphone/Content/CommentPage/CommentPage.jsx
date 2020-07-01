@@ -12,7 +12,7 @@ import jwt from 'jsonwebtoken'
 
 import {useParams} from 'react-router-dom'
 
-import axios from 'axios'
+import api from '../../../../services/API_CONFIG'
 
 function CommentPage() { 
     const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
@@ -22,7 +22,7 @@ function CommentPage() {
     const {postid} = useParams()
 
     useEffect(() => {
-        axios.get(`/getpost/${postid}`).then(response => {
+        api.get(`/getpost/${postid}`).then(response => {
             setPostData(response.data)
         })
         .catch(err => {return console.log(err)})

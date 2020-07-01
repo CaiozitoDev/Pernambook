@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import {PersonAdd, EmojiPeople, Check} from '@material-ui/icons'
 
-import axios from 'axios'
+import api from '../../../../../../../services/API_CONFIG'
 import jwt from 'jsonwebtoken'
 
 function PostHeader(props) {
@@ -15,7 +15,7 @@ function PostHeader(props) {
     const [activeIcon, setActiveIcon] = useState(<PersonAdd />)
 
     useEffect(() => {
-        axios.post('/arefriends', {postuserid: props.postuserid, db_user_id: db_user_id}).then(response => {
+        api.post('/arefriends', {postuserid: props.postuserid, db_user_id: db_user_id}).then(response => {
             if(response.data == 'sent') {
                 setActiveIcon(<Check />)
                 setIsDisabled(true)
@@ -30,7 +30,7 @@ function PostHeader(props) {
         setIsDisabled(true)
 
         if(!areFriends) {
-            axios.patch('/friendrequest', {db_user_id: db_user_id, postuserid: props.postuserid})
+            api.patch('/friendrequest', {db_user_id: db_user_id, postuserid: props.postuserid})
             .then(response => {
                 console.log(response.data)
                 setActiveIcon(<Check />)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import {Zoom} from '@material-ui/core'
 
-import axios from 'axios'
+import api from '../../../../../../services/API_CONFIG'
 import jwt from 'jsonwebtoken'
 
 function FriendRequest(props) {
@@ -26,7 +26,7 @@ function FriendRequest(props) {
             userid: props.requestdata.userid
         }
 
-        axios.post('/friendrequestresult', result ? accept : rejeit)
+        api.post('/friendrequestresult', result ? accept : rejeit)
             .then(response => {
                 console.log(response.data)
                 setIsDisabled(false)

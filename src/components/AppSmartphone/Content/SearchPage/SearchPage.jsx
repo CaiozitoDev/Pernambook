@@ -7,13 +7,13 @@ import TopPost from './TopPost/TopPost'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import axios from 'axios'
+import api from '../../../../services/API_CONFIG'
 
 function Search() {
     const [topPosts, setTopPosts] = useState([])
 
     useEffect(() => {
-        axios.get('/topposts').then(response => {
+        api.get('/topposts').then(response => {
             setTopPosts(response.data)
             console.log(response.data)
         })

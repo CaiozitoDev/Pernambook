@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 // ICONS DO POST FOOTER
 import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'
 
-import axios from 'axios'
+import api from '../../../../../../../services/API_CONFIG'
 
 import jwt from 'jsonwebtoken'
 
@@ -24,7 +24,7 @@ function PostFooter(props) {
 
     // VALORES INICIAIS DOS BOTÕES PASSSADOS PELO SERVER
     useEffect(() => {
-        axios.post('/post-buttons', {postid: props.postid , db_user_id: db_user_id})
+        api.post('/post-buttons', {postid: props.postid , db_user_id: db_user_id})
             .then(response => {
                 setReactions({
                     like: response.data.like,
@@ -53,7 +53,7 @@ function PostFooter(props) {
         setIsDisabled(true)
         if(iconName !== 'comment') {
             const isButtonClicked = !reactions[isIconClicked]
-            axios.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
+            api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
                 .then(response => {
                     console.log(response.data)
                     setIsDisabled(false)

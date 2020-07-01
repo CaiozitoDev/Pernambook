@@ -7,7 +7,7 @@ import Content from './Content/Content'
 import WelcomePage from '../WelcomePage/WelcomePage'
 import LoginRegisterPage from '../LoginRegisterPage/LoginRegisterPage'
 
-import AppStyle from '../desktop-style'
+import AppStyle from '../../styles/desktop-style'
 
 function App() {
     return (
@@ -18,7 +18,9 @@ function App() {
                 <Route exact path='/register' component={() => {return <LoginRegisterPage title='Register' />}}/>
             </Router>
 
-            {window.location.pathname !== '/login' && window.location.pathname !== '/register' && <Content />}
+            {window.location.pathname !== '/login' && window.location.pathname !== '/register' && window.location.pathname !== '/' &&
+                <Content />
+            }
         </AppStyle>
     )
 }

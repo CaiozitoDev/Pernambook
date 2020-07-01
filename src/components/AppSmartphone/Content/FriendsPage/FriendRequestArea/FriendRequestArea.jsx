@@ -4,7 +4,7 @@ import {Zoom} from '@material-ui/core'
 
 import FriendRequest from './FriendRequest/FriendRequest'
 
-import axios from 'axios'
+import api from '../../../../../services/API_CONFIG'
 import jwt from 'jsonwebtoken'
 
 function FriendRequestArea() {
@@ -12,7 +12,7 @@ function FriendRequestArea() {
     const [requestArray, setRequestArray] = useState([])
 
     useEffect(() => {
-        axios.post('/getfriendrequest', {db_user_id}).then(response => {
+        api.post('/getfriendrequest', {db_user_id}).then(response => {
             setRequestArray(response.data)
         })
         .catch(err => {console.log(err)})

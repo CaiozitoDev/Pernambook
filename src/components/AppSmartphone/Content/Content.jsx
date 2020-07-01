@@ -13,13 +13,13 @@ import LoadingPage from '../../LoadingPage/Loading'
 
 import NotAuthorizedPage from '../../NotAuthorizedPage/NotAuthorizedPage'
 
-import axios from 'axios'
+import api from '../../../services/API_CONFIG'
 
 function Content() {
     const [isAuth, setIsAuth] = useState(undefined)
 
     useEffect(() => {
-        axios.post('/auth', {local_token: localStorage.getItem('local_token')})
+        api.post('/auth', {local_token: localStorage.getItem('local_token')})
             .then(response => {
                 console.log(response.data)
                 setIsAuth(response.data.authorized)
