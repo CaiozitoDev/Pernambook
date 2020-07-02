@@ -845,8 +845,7 @@ h1, h2, h3, h4, h5, h6 {
             outline: 0;
 
             margin-left: auto;
-        }
-        .Friend button:hover {
+
             color: red;
         }
         .Friend button svg {

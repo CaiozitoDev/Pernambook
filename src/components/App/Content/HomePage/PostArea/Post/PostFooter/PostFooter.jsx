@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 // ICONS DO POST FOOTER
 import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'

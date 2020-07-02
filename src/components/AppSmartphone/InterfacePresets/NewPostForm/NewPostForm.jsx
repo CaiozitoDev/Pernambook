@@ -25,7 +25,7 @@ function NewPostForm() {
     function handlePostData() {
         if(txtValue.length == 0) {
             setTitle('⚠ Min length: 1')
-        } else if(txtValue.length <= 400) {
+        } else if(txtValue.length > 400) {
             setTitle('⚠ Max length: 400')
         } else {
             api.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})

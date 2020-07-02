@@ -21,7 +21,7 @@ function NewPostForm(props) {
     function handlePostData() {
         if(txtValue.length == 0) {
             setTitle('⚠ Min length: 1')
-        } else if(txtValue.length <= 400) {
+        } else if(txtValue.length > 400) {
             setTitle('⚠ Max length: 400')
         } else {
             setTitle('Sending...')
