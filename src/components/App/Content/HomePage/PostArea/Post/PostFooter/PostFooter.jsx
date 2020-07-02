@@ -23,7 +23,7 @@ function PostFooter(props) {
     const [isDisabled, setIsDisabled] = useState(false)
 
     // VALORES INICIAIS DOS BOTÕES PASSSADOS PELO SERVER
-    useEffect(() => {
+    setInterval(() => {
         api.post('/post-buttons', {postid: props.postid, db_user_id: db_user_id})
             .then(response => {
                 setReactions({
@@ -34,7 +34,7 @@ function PostFooter(props) {
                     isLoveClicked: response.data.isLoveClicked
                 })
             })
-    })
+    }, 1000)
 
     // ATUALIZA OS ICONES QUANDO CLICA
     function handleIconClick(isIconClicked, iconName) {
@@ -51,15 +51,14 @@ function PostFooter(props) {
     // INPUT PRO SERVER PARA INCREMENTAR OS VALORES NO BANCO DE DADOS QUANDO CLICA
     function handlePostValues(isIconClicked, iconName) {
         setIsDisabled(true)
-        if(iconName !== 'comment') {
             const isButtonClicked = !reactions[isIconClicked]
-            api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
-                .then(response => {
-                    console.log(response.data)
-                    setIsDisabled(false)
-                })
-                .catch(err => {console.log(err)})
-        }
+
+        api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
+            .then(response => {
+                console.log(response.data)
+                setIsDisabled(false)
+            })
+            .catch(err => {console.log(err)})
     }
 
     return (

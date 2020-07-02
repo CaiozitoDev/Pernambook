@@ -814,6 +814,9 @@ h1, h2, h3, h4, h5, h6 {
         
             padding: 5px 10px;
         }
+        .Friend a {
+            text-decoration: none;
+        }
         .Friend img {
             height: 70px;
             width: 70px;

@@ -14,6 +14,8 @@ function NewPostForm() {
 
     const [txtValue, setTxtValue] = useState('')
 
+    const [title, setTitle] = useState('Post area')
+
     function handleTxtValue(e) {
         const {name, value} = e.target
 
@@ -21,11 +23,17 @@ function NewPostForm() {
     }
 
     function handlePostData() {
-        api.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
-            .then(response => {
-                console.log(response.data)
-            })
-            .catch(err => {console.log(err)})
+        if(txtValue.length == 0) {
+            setTitle('⚠ Min length: 1')
+        } else if(txtValue.length <= 400) {
+            setTitle('⚠ Max length: 400')
+        } else {
+            api.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(err => {console.log(err)})
+        }
     }
 
     return (
@@ -37,9 +45,13 @@ function NewPostForm() {
                 }}>
                     <ArrowBack style={{fill: 'white'}} />
                 </div>
-                <h1>Post area</h1>
+                <h1>{title}</h1>
             </div>
-            <form onSubmit={(e) => {e.preventDefault()}} onBlur={() => {setTimeout(() => {setTextAreaClick(false); setTxtValue('')}, 1000)}}>
+            <form onSubmit={(e) => {e.preventDefault()}} onBlur={() => {setTimeout(() => {
+                setTextAreaClick(false)
+                setTxtValue('')
+                setTitle('Post area')
+            }, 1000)}}>
                 <textarea placeholder="What's going on?" cols='50' rows={textAreaClick ? '6' : '2'} onFocus={() => {
                     setTextAreaClick(true)  // QUANDO CLICAR
                 }} name='txtarea' onChange={handleTxtValue} value={txtValue}> 

@@ -5,6 +5,8 @@ import TopPost from './TopPosts/TopPosts'
 
 import api from '../../../../../../../services/API_CONFIG'
 
+import {ExpandMore} from '@material-ui/icons'
+
 function RightMenuContent() {
     const [topPosts, setTopPosts] = useState([])
 
@@ -13,6 +15,15 @@ function RightMenuContent() {
             setTopPosts(response.data)
         })
         .catch(err => {console.log(err)})
+
+        document.querySelector('.TopPostArea').addEventListener('scroll', function(event) {
+            let element = event.target;
+            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+                document.querySelector('.Expand').style.visibility = 'hidden'
+            } else {
+                document.querySelector('.Expand').style.visibility = 'initial'
+            }
+        });
     })
 
     return (
@@ -24,6 +35,9 @@ function RightMenuContent() {
                     return <TopPost postdata={post} />
                 }
             })}
+            <div className='Expand'>
+                <ExpandMore />
+            </div>
         </div>
     )
 }

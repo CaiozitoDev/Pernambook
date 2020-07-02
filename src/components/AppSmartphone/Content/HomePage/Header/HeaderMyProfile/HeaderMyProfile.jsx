@@ -14,7 +14,7 @@ function HeaderMyProfile() {
                 return {...preValue, src: data.src, username: data.username}
             })
         })
-    })
+    }, [])
 
     return (
         <div className='HeaderMyProfile' onClick={() => {

@@ -58,8 +58,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         height: 100%;
         padding: 0 5% 200px;
 
-        overflow-y: scroll;
-
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.356);
 
         background: linear-gradient(65deg, #ffb385 30%, #fc4774 );
@@ -337,26 +335,44 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             text-align: center;
         }
+        .Expand {
+            display: flex;
+
+            position: absolute;
+            left: 0px;
+            bottom: 5px;
+
+            width: 100%;
+
+            justify-content: space-around;
+
+            box-sizing: border-box;
+        }
+            .Expand svg {
+                height: 70px;
+                width: 70px;
+
+                color: white;
+            }
 
         .TopOnePost {
             text-align: center;
 
             font-weight: bold;
+
+            position: relative;
         }
         .TopOnePost:hover, .TopPosts:hover {
             backdrop-filter: brightness(95%);
             border-radius: 15px;
         }
         .TopOnePost .TopOneNumber {
-            float: left;
+            position: absolute;
+            left: 5px;
 
             font-size: 2rem;
             
             color: white;
-        }
-        .TopOnePost img {
-            position: relative;
-            left: -20px;
         }
         /* TOP POST AREA */
         .TopPostArea {
@@ -676,6 +692,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     }
     .Friend li:hover {
         background-color: wheat;
+    }
+    .Friend a {
+        text-decoration: none;
     }
     .Friend img {
         height: 70px;

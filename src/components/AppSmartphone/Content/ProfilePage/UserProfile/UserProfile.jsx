@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import {handleMyProfileData} from '../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
-
 import {useParams} from 'react-router-dom'
 
 import api from '../../../../../services/API_CONFIG'
@@ -15,7 +13,7 @@ function UserProfile() {
         age: '',
     })
 
-    const {username} = useParams()
+    const {username} = useParams() 
 
     useEffect(() => {
         // IMPORTA OS DADOS
@@ -30,7 +28,7 @@ function UserProfile() {
             })
         })
         .catch(err => {console.log(err)})
-    })
+    }, [])
 
     return (
         <Zoom in={true} timeout={1000}>

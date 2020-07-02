@@ -26,7 +26,7 @@ function UserProfile() {
             })
         })
         .catch(err => {console.log(err)})
-    })
+    }, [])
 
     return (
         <div className='UserProfile'>

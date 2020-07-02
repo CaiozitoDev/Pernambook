@@ -132,7 +132,7 @@ function LoginRegisterPage(props) {
                         </form>
                         <div className='FacebookField'>
                             <FacebookLogin
-                                appId="2592642841005355"
+                                appId={process.env.REACT_APP_FB_APP_ID}
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 isMobile={false}

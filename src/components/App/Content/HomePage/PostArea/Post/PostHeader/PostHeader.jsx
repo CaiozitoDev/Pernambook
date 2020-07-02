@@ -24,7 +24,7 @@ function PostHeader(props) {
             }
         })
         .catch(err => {console.log(err)})
-    })
+    }, [])
 
     function handleFriendRequest() {
         setIsDisabled(true)

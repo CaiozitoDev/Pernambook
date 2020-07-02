@@ -12,7 +12,7 @@ function MyProfile(props) {
         handleMyProfileData().then(data => {
             setMyProfileData(data)
         })
-    })
+    }, [])
     
 
     return (

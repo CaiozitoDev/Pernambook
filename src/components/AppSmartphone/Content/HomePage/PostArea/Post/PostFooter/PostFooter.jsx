@@ -51,15 +51,14 @@ function PostFooter(props) {
     // INPUT PRO SERVER PARA INCREMENTAR OS VALORES NO BANCO DE DADOS QUANDO CLICA
     function handlePostValues(isIconClicked, iconName) {
         setIsDisabled(true)
-        if(iconName !== 'comment') {
-            const isButtonClicked = !reactions[isIconClicked]
-            api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
-                .then(response => {
-                    console.log(response.data)
-                    setIsDisabled(false)
-                })
-                .catch(err => {console.log(err)})
-        }
+        const isButtonClicked = !reactions[isIconClicked]
+
+        api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
+            .then(response => {
+                console.log(response.data)
+                setIsDisabled(false)
+            })
+            .catch(err => {console.log(err)})
     }
 
     return (
