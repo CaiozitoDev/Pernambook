@@ -816,6 +816,13 @@ h1, h2, h3, h4, h5, h6 {
         }
         .Friend a {
             text-decoration: none;
+
+            display: flex;
+
+            width: 100%;
+        }
+        .Friend a * {
+            display: flex;
         }
         .Friend img {
             height: 70px;
@@ -828,6 +835,23 @@ h1, h2, h3, h4, h5, h6 {
         }
         .Friend .UserInfo * {
             margin: 0;
+
+            align-items: center;
+        }
+        .Friend button {
+            background-color: transparent;
+            border: none;
+
+            outline: 0;
+
+            margin-left: auto;
+        }
+        .Friend button:hover {
+            color: red;
+        }
+        .Friend button svg {
+            height: 30px;
+            width: 30px;
         }
 
 
