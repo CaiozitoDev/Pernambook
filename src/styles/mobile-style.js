@@ -326,7 +326,7 @@ h1, h2, h3, h4, h5, h6 {
 
         position: relative;
 
-        background-color: rgba(255, 0, 0, 0.705);
+        background: linear-gradient(to right, #eb3349, #f45c43);
 
         backdrop-filter: blur(5px);
 
@@ -355,7 +355,7 @@ h1, h2, h3, h4, h5, h6 {
     
     /* LOGOFF */
     .LogOff {
-        background-color: rgba(255, 0, 0, 0.705);
+        background: linear-gradient(to right, #eb3349, #f45c43);
 
         backdrop-filter: blur(5px);
 
@@ -674,7 +674,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* TOP TRENDING POST */
 .TopTrendingPost {
-    background-color: burlywood;
+    background: linear-gradient(to right, #eb3349, #f45c43);
     border-radius: 30px;
 
     text-align: center;
@@ -703,6 +703,10 @@ h1, h2, h3, h4, h5, h6 {
 
         color: white;
     }
+    .TopTrendingPost h2, .TopTrendingPost h5 {
+        text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.377); 
+    }
+    
 
 
 /* TRENDING */
@@ -718,6 +722,9 @@ h1, h2, h3, h4, h5, h6 {
 }
     .Trending h2 {
         text-align: center;
+    }
+    .Trending h6, .Trending p {
+        text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.377); 
     }
 
     .Quotation {
@@ -759,7 +766,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
 
-    background-color: purple;
+    background: linear-gradient(to right, #fceabb, #f8b500);
 
     border-radius: 20px;
     border: 2px solid white;
@@ -767,6 +774,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
 
     margin-bottom: 5%;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.322); 
 }
     .FriendRequestArea h5 {
         margin: auto;
@@ -846,7 +855,7 @@ h1, h2, h3, h4, h5, h6 {
 
             margin-left: auto;
 
-            color: red;
+            color: white;
         }
         .Friend button svg {
             height: 30px;

@@ -36,6 +36,8 @@ function PostHeader(props) {
                 setActiveIcon(<Check />)
             })
             .catch(err => {console.log(err)})
+        } else {
+            setIsDisabled(false)
         }
     }
 

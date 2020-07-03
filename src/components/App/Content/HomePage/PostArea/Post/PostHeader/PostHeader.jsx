@@ -14,6 +14,8 @@ function PostHeader(props) {
 
     const [activeIcon, setActiveIcon] = useState(<PersonAdd />)
 
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
     useEffect(() => {
         api.post('/arefriends', {postuserid: props.postuserid, db_user_id: db_user_id}).then(response => {
             if(response.data == 'sent') {
@@ -36,6 +38,8 @@ function PostHeader(props) {
                 setActiveIcon(<Check />)
             })
             .catch(err => {console.log(err)})
+        } else {
+            setIsDisabled(false)
         }
     }
 

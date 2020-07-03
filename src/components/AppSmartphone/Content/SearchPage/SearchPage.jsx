@@ -15,7 +15,6 @@ function Search() {
     useEffect(() => {
         api.get('/topposts').then(response => {
             setTopPosts(response.data)
-            console.log(response.data)
         })
         .catch(err => {console.log(err)})
     })

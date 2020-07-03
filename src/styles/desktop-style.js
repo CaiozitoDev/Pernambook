@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
     /* LEFT MENU */
     .LeftMenu {
-        border: 3px solid white;
+        border: 5px double white;
         border-bottom: none;
 
         border-top-left-radius: 30px;
@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             }
 
         .LeftMenu hr {
-            border: 2px solid #fae7cb;
+            border: 2px solid white;
             border-radius: 10px;
         }
 
@@ -396,8 +396,13 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     margin: 0 10px 0 0;
                     border: 2px solid #fae7cb;
                 }
-                .TopPosts p {
+                .TopPosts p, .TopOnePost p {
                     line-height: 1.3;
+
+                    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.377);
+                }
+                .TopPosts h6 {
+                    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.377); 
                 }
 
 
@@ -587,7 +592,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         background: linear-gradient(to right, #f2994a, #f2c94c);
 
-        border-radius: 100px;
+        border-radius: 30px;
 
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.384);
 
@@ -619,9 +624,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 .ProfileContent h1, .MessagesContent h1, .FriendsContent h1 {
     text-align: center;
-    background-color: rgb(252, 251, 190);
+    background: linear-gradient(to right, #eacda3, #d6ae7b);
     border-radius: 100px;
-    border: 3px solid white;
+    border: 5px outset white;
 
     margin-bottom: 20px;
 }
@@ -638,7 +643,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         display: flex;
         flex-direction: column;
 
-        background-color: purple;
+        background: linear-gradient(to right, #fceabb, #f8b500);
 
         border-radius: 20px;
         border: 2px solid white;
@@ -646,6 +651,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         padding: 10px;
 
         margin-bottom: 5%;
+
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.322); 
     }
         .FriendRequestArea h5 {
             margin: auto;
@@ -724,6 +731,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         outline: 0;
 
         margin-left: auto;
+
+        color: white;
     }
     .Friend button:hover {
         color: red;

@@ -22,8 +22,11 @@ function PostFooter(props) {
 
     const [isDisabled, setIsDisabled] = useState(false)
 
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
     // VALORES INICIAIS DOS BOTÕES PASSSADOS PELO SERVER
-    setInterval(() => {
+    if(isRequestFinished) {
+        setIsRequestFinished(false)
         api.post('/post-buttons', {postid: props.postid, db_user_id: db_user_id})
             .then(response => {
                 setReactions({
@@ -33,8 +36,10 @@ function PostFooter(props) {
                     isLikeClicked: response.data.isLikeClicked,
                     isLoveClicked: response.data.isLoveClicked
                 })
+                setIsRequestFinished(true)
             })
-    }, 1000)
+            .catch(err => {console.log(err)})
+    }
 
     // ATUALIZA OS ICONES QUANDO CLICA
     function handleIconClick(isIconClicked, iconName) {
