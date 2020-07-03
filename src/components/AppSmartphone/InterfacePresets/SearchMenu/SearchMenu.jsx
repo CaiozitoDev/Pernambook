@@ -13,11 +13,9 @@ function SearchMenu(props){
 
     useEffect(() => {
         handleMyProfileData().then(data => {
-            setUserData(preValue => {
-                return {...preValue, src: data.src}
-            })
+            setUserData({src: data.src})
         })
-    })
+    }, [])
 
     return(
         <Zoom in='true'>

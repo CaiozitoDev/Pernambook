@@ -10,20 +10,27 @@ import {ExpandMore} from '@material-ui/icons'
 function RightMenuContent() {
     const [topPosts, setTopPosts] = useState([])
 
-    useEffect(() => {
-        api.get('/topposts').then(response => {
-            setTopPosts(response.data)
-        })
-        .catch(err => {console.log(err)})
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
 
-        document.querySelector('.TopPostArea').addEventListener('scroll', function(event) {
-            let element = event.target;
-            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-                document.querySelector('.Expand').style.visibility = 'hidden'
-            } else {
-                document.querySelector('.Expand').style.visibility = 'initial'
-            }
-        });
+    useEffect(() => {
+        if(isRequestFinished) {
+            setIsRequestFinished(false)
+            
+            api.get('/topposts').then(response => {
+                setTopPosts(response.data)
+                setIsRequestFinished(true)
+            })
+            .catch(err => {console.log(err)})
+
+            document.querySelector('.TopPostArea').addEventListener('scroll', function(event) {
+                let element = event.target;
+                if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+                    document.querySelector('.Expand').style.visibility = 'hidden'
+                } else {
+                    document.querySelector('.Expand').style.visibility = 'initial'
+                }
+            });
+        }
     })
 
     return (

@@ -12,12 +12,17 @@ import api from '../../../../services/API_CONFIG'
 function Search() {
     const [topPosts, setTopPosts] = useState([])
 
-    useEffect(() => {
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
+    if(isRequestFinished) {
+        setIsRequestFinished(false)
+        
         api.get('/topposts').then(response => {
             setTopPosts(response.data)
+            setIsRequestFinished(true)
         })
         .catch(err => {console.log(err)})
-    })
+    }
 
     return (
         <div className='Search'>

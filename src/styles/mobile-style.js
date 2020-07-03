@@ -533,6 +533,14 @@ h1, h2, h3, h4, h5, h6 {
                 border-left: 2px solid white;
                 border-right: 2px solid white;
             }
+    .LoadingImage {
+        display: flex;
+        
+        height: 30px;
+        width: 30px;
+
+        margin: auto;
+    }
     
 
 
@@ -683,6 +691,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid white;
 
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322); 
+
+    position: relative;
 }
     .TopTrendingPost * {
         padding: 10px;
@@ -696,7 +706,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .TopOneSpan {
         position: absolute;
-        left: 50px;
+        left: 20px;
 
         font-size: 3rem;
         font-weight: bolder;
@@ -762,6 +772,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100vh;
 }
+.FriendsContent h2 {
+    text-align: center;
+}
 .FriendRequestArea {
     display: flex;
     flex-direction: column;
@@ -806,10 +819,7 @@ h1, h2, h3, h4, h5, h6 {
         .FriendRequest img {
             margin-right: 15px;
         }
-
-    .FriendsMenu h1 {
-        text-align: center;
-    }
+        
         .Friend li {
             display: flex;
 

@@ -14,7 +14,7 @@ function MyProfile(props) {
                 return {...preValue, src: data.src, username: data.username}
             })
         })
-    })
+    }, [])
 
     return (
         <div className='MyProfile'>

@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 .PostArea {
     margin-left: calc(100% / 3);
 
-    padding-bottom: 50px;
+    padding-bottom: 80px;
 }
     .Header p {
         color: white;
@@ -293,6 +293,14 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     .CommentButton:hover {
                         color: orange;
                     }
+        .LoadingImage {
+            display: flex;
+
+            height: 30px;
+            width: 30px;
+
+            margin: auto;
+        }
     
 
 

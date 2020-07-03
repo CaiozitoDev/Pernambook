@@ -9,14 +9,20 @@ import jwt from 'jsonwebtoken'
 
 function FriendRequestArea() {
     const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    
     const [requestArray, setRequestArray] = useState([])
 
-    useEffect(() => {
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
+    if(isRequestFinished) {
+        setIsRequestFinished(false)
+
         api.post('/getfriendrequest', {db_user_id}).then(response => {
             setRequestArray(response.data)
+            setIsRequestFinished(true)
         })
         .catch(err => {console.log(err)})
-    })
+    }
 
     return (
         <Zoom in={true} timeout={1000}>

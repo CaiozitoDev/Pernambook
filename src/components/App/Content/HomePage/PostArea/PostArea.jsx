@@ -5,15 +5,23 @@ import Post from './Post/Post'
 
 import api from '../../../../../services/API_CONFIG'
 
-function PostArea() {
-    const [bodyText, setBodyText] = useState([])
+import InfiniteScroll from 'react-infinite-scroller'
 
-    useEffect(() => {
-        api.get('/posts').then(response => {
-            setBodyText(response.data)
+function PostArea() {
+    const [postArray, setpostArray] = useState([])
+
+    const [numberOfPosts, setNumberOfPosts] = useState(3)
+
+    function handleNumberOfPosts() {
+        api.get(`/posts?numberOfPosts=${numberOfPosts}`).then(response => {
+            setpostArray(response.data)
+
+            response.data.length == numberOfPosts && setNumberOfPosts(numberOfPosts + 1)
         })
         .catch(err => {console.log(err)})
-    })
+    }
+
+    useEffect(handleNumberOfPosts, [])
 
     return (
         <div className='col-5 PostArea'>
@@ -21,9 +29,17 @@ function PostArea() {
             <h1>Home page</h1>
 
             {/* MAPPING DE TODOS OS POSTS NA POST AREA, O PARAM "POST" É UM OBJETO COM OS DADOS DE CADA POST */}
-            {bodyText.map((post) => {
-                return <Post postdata={post} />
-            })}
+            <InfiniteScroll
+                pageStart={0}
+                loadMore={handleNumberOfPosts}
+                hasMore={true}
+                initialLoad={false}
+                loader={<img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+            >
+                {postArray.map((post) => {
+                    return <Post postdata={post} />
+                })}
+            </InfiniteScroll>
         </div>
     )
 }
