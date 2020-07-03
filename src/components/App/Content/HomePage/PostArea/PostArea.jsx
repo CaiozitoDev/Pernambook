@@ -13,8 +13,10 @@ function PostArea() {
     const [numberOfPosts, setNumberOfPosts] = useState(3)
 
     function handleNumberOfPosts() {
+        console.log('chegou')
         api.get(`/posts?numberOfPosts=${numberOfPosts}`).then(response => {
             setpostArray(response.data)
+            console.log(response.data.length)
 
             response.data.length == numberOfPosts && setNumberOfPosts(numberOfPosts + 1)
         })
