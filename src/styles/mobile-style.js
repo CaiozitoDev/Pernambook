@@ -504,6 +504,7 @@ h1, h2, h3, h4, h5, h6 {
         }
         .PostBody p {
             color: black;
+            word-break: break-all;
         }
         .PostFooter {
             padding: 0;
@@ -778,6 +779,9 @@ h1, h2, h3, h4, h5, h6 {
         padding: 20px 0;
 
     }
+        .TopPost p, .TopTrendingPost p {
+            word-break: break-all;
+        }
         .TopPost:last-child {
             border-bottom: 1px solid #fae7cb;
         }

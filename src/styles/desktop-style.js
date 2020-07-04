@@ -276,6 +276,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 border-top: 2px solid white;
                 border-bottom: 2px solid white;
             }
+                .PostBody p {
+                    word-break: break-all;
+                }
             .PostFooter {
                 padding: 0;
                 justify-content: space-around;
@@ -431,6 +434,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     line-height: 1.3;
 
                     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.377);
+                    
+                    word-break: break-all;
                 }
                 .TopPosts h6 {
                     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.377); 
@@ -1066,6 +1071,10 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             padding: 10px;
 
             margin-bottom: 10px;
+        }
+        .Comment a {
+            text-decoration: none;
+            color: white;
         }
         .Comment h6, p {
             margin: 0;
