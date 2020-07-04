@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
 import HomePage from './HomePage/HomePage'
 import ProfilePage from './ProfilePage/ProfilePage'
@@ -14,7 +14,12 @@ import NotAuthorizedPage from '../../NotAuthorizedPage/NotAuthorizedPage'
 
 import api from '../../../services/API_CONFIG'
 
+import jwt from 'jsonwebtoken'
+
 function Content() {
+    const {username} = jwt.decode(localStorage.getItem('local_token'))
+    username.replace(' ', '%20')
+
     const [isAuth, setIsAuth] = useState(undefined)
 
     useEffect(() => {
@@ -39,9 +44,12 @@ function Content() {
             <Router>
                 <PrivateRoute exact path='/home' component={HomePage} />
                 <PrivateRoute exact path='/profile/:username' component={ProfilePage} />
-                <PrivateRoute exact path='/messages/:username' component={MessagesPage} />
+                <PrivateRoute exact path='/messages' component={MessagesPage} />
                 <PrivateRoute exact path='/friends/:username' component={FriendsPage} /> 
                 <PrivateRoute exact path='/comments/:postid' component={CommentPage} />
+
+                <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${username}`} />}} />
+                <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${username}`} />}} />
             </Router>
         )
     }

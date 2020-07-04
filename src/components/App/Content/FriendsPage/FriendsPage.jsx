@@ -9,27 +9,37 @@ import {useParams} from 'react-router-dom'
 
 import api from '../../../../services/API_CONFIG'
 
+import jwt from 'jsonwebtoken'
+
 function FriendsPage() {
+    const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
+
     const [userList, setUserList] = useState([])
 
-    const {username} = useParams()
+    const {username: url_username} = useParams()
+
+    const [notFound, setNotFound] = useState(false)
 
     useEffect(() => {
-        api.get(`/friendlist/${username}`).then(response => {
-            setUserList(response.data)
+        api.get(`/friendlist/${url_username}`).then(response => {
+            setUserList(response.data.friendlist)
+
+            !response.data.success && setNotFound(true)
         })
         .catch(err => {console.log(err)})
     })
+    
     return (
         <div className='FriendsPage'>
             <InterfacePresets />
 
             <div className='FriendsContent'>
-                <h1>Friends</h1>
-                <FriendRequestArea />
+                <h1>{notFound ? 'User not found' : `${url_username} - friends`}</h1>
+
+                {url_username == username && <FriendRequestArea id={db_user_id} />}
                 
                 {userList.map(data => {
-                    return <Friend frienddata={data} />
+                    return <Friend frienddata={data} id={db_user_id} url_username={url_username} username={username} />
                 })}
             </div>
         </div> 

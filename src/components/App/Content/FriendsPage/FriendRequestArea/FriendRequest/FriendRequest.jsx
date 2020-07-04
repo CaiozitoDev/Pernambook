@@ -3,11 +3,8 @@ import React, { useState } from 'react'
 import {Zoom} from '@material-ui/core'
 
 import api from '../../../../../../services/API_CONFIG'
-import jwt from 'jsonwebtoken'
 
 function FriendRequest(props) {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
-
     const [isDisabled, setIsDisabled] = useState(false)
 
     function handleRequestResult(result) {
@@ -15,14 +12,14 @@ function FriendRequest(props) {
 
         const accept = {
             result: result,
-            db_user_id: db_user_id,
+            db_user_id: props.id,
             userid: props.requestdata.userid,
             username: props.requestdata.username,
             photo: props.requestdata.photo
         }
         const rejeit = {
             result: result,
-            db_user_id: db_user_id,
+            db_user_id: props.id,
             userid: props.requestdata.userid
         }
 

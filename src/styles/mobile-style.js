@@ -576,20 +576,52 @@ h1, h2, h3, h4, h5, h6 {
         /* DOWN MENU COMPONENTS */
         .DownMenuComponents {
             width: 100%;
+            height: 100%;
         }
-            .DownMenuComponents ul {
+            .DownMenuComponents * {
                 display: flex;
-
+            }
+            .DownMenuComponents ul {
                 justify-content: space-around;
                 margin: 0;
                 padding: 0;
+
+                height: 100%;
             }
                 .DownMenuComponents li {
-                    display: inline;
+                    list-style: none;
+                    
+                    height: 100%;
+                    width: 100%;
+
+                    position: relative;
+
+                    align-items: center;
                 }
                 .DownMenuComponents li svg {
                     height: 30px;
                     width: 30px;
+                }
+                .Notification {            
+                    position: absolute;
+                    bottom: 2px;
+                    right: -4px;
+
+                    height: 20px;
+                    width: 20px;
+
+                    font-weight: bold;
+                    color: red;
+
+                    background-color: white;
+
+                    border-radius: 100px;
+                    border: 1px solid red;
+
+                    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.356);
+
+                    align-items: center;
+                    justify-content: space-around;
                 }
 
 

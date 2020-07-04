@@ -133,12 +133,35 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                 border-radius: 100px;
 
+                position: relative;
             }
                 .ListConfigs li:hover {
                     background-color: rgba(0, 0, 0, 0.041);
                 }
                 .ListConfigs li h4 {
                     padding-left: 20px;
+                }
+                .Notification {
+                    display: flex;
+                    
+                    position: absolute;
+                    right: 20px;
+
+                    height: 20px;
+                    width: 20px;
+
+                    font-weight: bold;
+                    color: red;
+
+                    background-color: white;
+
+                    border-radius: 100px;
+                    border: 1px solid red;
+
+                    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.356);
+
+                    align-items: center;
+                    justify-content: space-around;
                 }
 
         /* MY PROFILE */

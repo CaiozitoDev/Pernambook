@@ -5,11 +5,8 @@ import {Zoom} from '@material-ui/core'
 import FriendRequest from './FriendRequest/FriendRequest'
 
 import api from '../../../../../services/API_CONFIG'
-import jwt from 'jsonwebtoken'
 
-function FriendRequestArea() {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
-    
+function FriendRequestArea(props) {
     const [requestArray, setRequestArray] = useState([])
 
     const [isRequestFinished, setIsRequestFinished] = useState(true)
@@ -17,7 +14,7 @@ function FriendRequestArea() {
     if(isRequestFinished) {
         setIsRequestFinished(false)
 
-        api.post('/getfriendrequest', {db_user_id}).then(response => {
+        api.post('/getfriendrequest', {db_user_id: props.id}).then(response => {
             setRequestArray(response.data)
             setIsRequestFinished(true)
         })
@@ -30,7 +27,7 @@ function FriendRequestArea() {
                 <h5>Friend requests: {requestArray.length}</h5>
                 <div className='FriendRequestList'>
                     {requestArray.map(request => {
-                        return <FriendRequest requestdata={request} />
+                        return <FriendRequest requestdata={request} id={props.id} />
                     })}
                 </div>
             </div>

@@ -14,7 +14,7 @@ function LeftMenu() {
         <div className='LeftMenu' onLoad={() => slideAnimation('LeftMenu')}>
             <NewPostForm id={db_user_id} />
             <hr />
-            <LeftOptions username={username} />
+            <LeftOptions username={username} id={db_user_id} />
             <MyProfile username={username} />
             <hr />
         </div>

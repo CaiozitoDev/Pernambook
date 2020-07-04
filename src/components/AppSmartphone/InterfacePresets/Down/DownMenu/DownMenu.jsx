@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import {Home, Search, Email, Group} from '@material-ui/icons'
 
@@ -6,8 +6,27 @@ import Zoom from '@material-ui/core/Zoom'
 
 import jwt from 'jsonwebtoken'
 
+import api from '../../../../../services/API_CONFIG'
+
 function DownMenu() {
     const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
+
+    const [friendNumber, setFriendNumber] = useState(0)
+
+    const [messageNumber, setMessageNumber] = useState(0)
+
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
+    if(isRequestFinished) {
+        setIsRequestFinished(false)
+        api.get(`/notification?db_user_id=${db_user_id}`).then(response => {
+            setFriendNumber(response.data.friend.value) 
+            setMessageNumber(response.data.message.value)
+
+            setIsRequestFinished(true)
+        })
+        .catch(err => {console.log(err)})
+    }
 
     return (
         <div className='DownMenu'>
@@ -27,11 +46,15 @@ function DownMenu() {
                         <a href={`/friends/${username}`}>
                             <li>
                                 <Group />
+
+                                <div className='Notification'>{friendNumber}</div>
                             </li>
                         </a>
-                        <a href={`/messages/${username}`}>
+                        <a href={`/messages`}>
                             <li>
                                 <Email />
+
+                                <div className='Notification'>{messageNumber}</div>
                             </li>
                         </a>
                     </ul>
