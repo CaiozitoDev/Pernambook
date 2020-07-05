@@ -449,6 +449,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     bottom: 0;
 
     width: 100%;
+
     height: 65px;
 
     z-index: 2;
@@ -474,17 +475,22 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         position: relative;
         top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
+        
+        display: flex;
+        align-items: center;
     }
         /* DOWN MENU COMPONENTS */
         .DownMenuComponents {
             display: flex;
             width: 100%;
             align-items: center;
+
+            position: relative;
         }
         
             /* DOWN MENU SEARCH */
             .DownMenuSearch {
-                width: 25%;
+                min-width: 25%;
                 display: flex;
 
                 border-radius: 100px;
@@ -492,6 +498,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 padding: 5px;
 
                 border: 2px solid white;
+
+                float: left;
             }
                 .DownMenuSearch input {
                     width: 100%;
@@ -736,14 +744,14 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     .Friend li:hover {
         background-color: wheat;
     }
-    .Friend a {
+    .FriendUserInfo {
         text-decoration: none;
 
-        display: flex;
-
         width: 100%;
+
+        align-items: center;
     }
-    .Friend a * {
+    .Friend a {
         display: flex;
     }
     .Friend img {
@@ -760,22 +768,29 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         align-items: center;
     }
-    .Friend button {
+    .ChatFriendButton {
+        margin-left: auto;
+    }
+    .ChatFriendButton:hover {
+        color: orange;
+    }
+    .DeleteFriendButton {
         background-color: transparent;
         border: none;
 
         outline: 0;
 
-        margin-left: auto;
-
         color: white;
     }
-    .Friend button:hover {
+    .DeleteFriendButton:hover {
         color: red;
     }
-    .Friend button svg {
+    .DeleteFriendButton svg {
         height: 30px;
         width: 30px;
+    }
+    .ChatFriendButton, .DeleteFriendButton {
+        margin: 0 5px;
     }
 
 
@@ -1118,45 +1133,39 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 border: 2px solid bisque;
             }
 
+
 .ChatContent {
-    display: flex;
+    margin-left: auto;
 
-    height: 90vh;
-
-    margin-left: 33%;
-
-    padding: 2%;
+    padding: 10% 1%;
 }
-    .Chat {
-        display: flex;
-        flex-direction: column;
-
-        width: 100%;
-
-        background-color: white;
-
-        border-radius: 20px;
-
-        position: relative;
-
-        border: 2px solid black;
-
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.603);
-    }
         .ChatHeader, .ChatMessages, .NewChatForm {
             display: flex;
         }
         .ChatHeader {
+            position: fixed;
+            top: 10px;
+
             padding: 5px 10px;
 
-            background-color: green;
+            background-color: purple;
 
             align-items: center;
 
-            border-bottom: 2px solid black;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+            border-radius: 30px;
+            border: 1px solid white;
+
+            width: 65%;
+
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.603);
         }
+            .ChatHeader a {
+                color: white;
+            }
+            .ChatHeader svg {
+                height: 40px;
+                width: 40px;
+            }
             .ChatHeader .PostUserIcon {
                 margin-right: 10px;
 
@@ -1166,19 +1175,23 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             .ChatHeader h4 {
                 margin: 0;
             }
+                .ChatHeaderInfo {
+                    display: flex;
+                    align-items: center;
+
+                    margin: auto;
+                }
         .ChatMessages {
             height: 100%;
             flex-direction: column;
 
-            padding: 10px;
-            padding-bottom: 60px;
-
-            overflow-y: scroll;
+            padding-top: 10px;
         }
             .ChatMessage {
                 background-color: red;
 
                 border-radius: 30px;
+                border: 1px solid white;
 
                 max-width: 80%;
 
@@ -1196,7 +1209,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     margin-right: 10px;
                 }
                 .ChatMessage p {
-                    word-break: break-all;   
+                    word-break: break-all;
+                    margin: 0; 
                 }
             .MyMessage {
                 margin-left: auto;
@@ -1211,27 +1225,24 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 margin-right: auto;
             }
         .NewChatForm {
-            position: absolute;
-
-            bottom: 0px;
-
             width: 100%;
-            padding: 5px 10px;
+            float: right;
+
+            margin-left: 10%;
         }
             .NewChatForm textarea {
                 width: 90%;
-
                 resize: none;
                 outline: 0;
 
-                border-radius: 10px;
+                border-radius: 30px;
+
+                padding: 5px 10px;
             }
             .NewChatForm button {
                 outline: 0;
 
-                height: 50px;
-                width: 50px;
-
-                margin: 0 auto;
+                height: 60px;
+                width: 60px;
             }
 `

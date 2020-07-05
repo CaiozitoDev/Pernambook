@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import {Delete} from '@material-ui/icons'
+import {Delete, Chat} from '@material-ui/icons'
 
 import api from '../../../../../services/API_CONFIG'
 
@@ -22,14 +22,17 @@ function Friend(props) {
         <Zoom in={true} timeout={1000}>
             <div className='Friend'>
                 <li>
-                    <a href={`/profile/${props.frienddata.username}`}>
+                    <a href={`/profile/${props.frienddata.username}`} className='FriendUserInfo'>
                         <img src={props.frienddata.photo} alt='img' />
                         <div className='UserInfo'>
                             <h3>{props.frienddata.username}</h3>
                         </div>
                     </a>
+                    <a href='' className='ChatFriendButton'>
+                        <Chat />
+                    </a>
                     {props.url_username == props.username &&
-                        <button className='DeleteFriend' onClick={deleteFriend} disabled={isDisabled}>
+                        <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
                             <Delete />
                         </button>
                     }

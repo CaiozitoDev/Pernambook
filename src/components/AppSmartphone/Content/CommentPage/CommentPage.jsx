@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import {InterfacePresets} from '../../InterfacePresets/InterfacePresets'
+import {SearchMenuPreset, LeftPreset, DownPreset} from '../../InterfacePresets/InterfacePresets'
 
 import Post from '../HomePage/PostArea/Post/Post'
 import Comment from './Comment/Comment'
@@ -30,7 +30,9 @@ function CommentPage() {
 
     return (
         <div className='CommentPage'>
-            <InterfacePresets title='Comments' />
+            <SearchMenuPreset title='Comments' />
+            <LeftPreset />
+            <DownPreset />
     
             <Zoom in={true} timeout={1000}>
                 <div className='CommentArea'>

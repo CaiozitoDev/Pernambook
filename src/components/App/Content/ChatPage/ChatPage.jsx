@@ -2,65 +2,44 @@ import React from 'react'
 
 import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
-import {Zoom, Fab} from '@material-ui/core'
-import {Send} from '@material-ui/icons'
+import {Zoom} from '@material-ui/core'
+import {KeyboardBackspace} from '@material-ui/icons'
 
 function ChatPage() {
     return (
         <div className='ChatPage'>
-            <InterfacePresets />
-            <div className='col-8 ChatContent'>
-                <div className='Chat'>
-                    <div className='ChatHeader'>
-                        <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon' />
-                        <h4>Os Cornos</h4>
-                    </div>
+            <InterfacePresets isChat={true} />
 
-                    <div className='ChatMessages'>
+            <div className='col-8 ChatContent'>
+                <Zoom in={true} timeout={1000}>
+                    <div className='ChatHeader'>
+                        <a href='/messages'><KeyboardBackspace /></a>
+                        <div className='ChatHeaderInfo'>
+                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon' />
+                            <h4>Os Cornos</h4>
+                        </div>
+                    </div>
+                </Zoom>
+
+                <div className='ChatMessages'>
+                    <Zoom in={true} timeout={1000}>
                         <div className='ChatMessage OtherMessage'>
                             <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
                             <p>dosfnoasdnfoasndfoasnfdnasodfn</p>
                         </div>
-                        <div className='ChatMessage MyMessage'>
+                    </Zoom>
+                    <Zoom in={true} timeout={1000}>
+                        <div className='ChatMessage OtherMessage'>
                             <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
                             <p>dosfnoasdnfoasndfoasnfdnasodfn</p>
                         </div>
+                    </Zoom>
+                    <Zoom in={true} timeout={1000}>
                         <div className='ChatMessage MyMessage'>
                             <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
+                            <p>dosfnoasdnfoasndfoasnfdnasodfnoasdifaiosdfiasfiasfiasdfasofaspodfiaosifaisjdpfoasijfijasdfpjsfijopisjdfpoasfjopsjpoijspoijopjojasdfbasfbiasdbfiasbdfisfbasidfbaisfdbaisbfdaisbdfausbdfasidfuabfpiasdbfaisdfbasibfaisfbiasbdfib</p>
                         </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                        <div className='ChatMessage MyMessage'>
-                            <img src='https://pbs.twimg.com/media/EcHLzwlUEAAf4dY?format=jpg&name=900x900' className='PostUserIcon'/>
-                            <p>dosfnoasdnfoasndfoasnfdnasodfdfbiasbdfiasbdfbasdifbisadbfiabsdfibasdifiasbdfiasbdfiasbdfibasdifbaisdbfiasdbfiasbdfiasdbfiasbfasubdfiasdufaidbfaisdfbisadbfaisdbfiasdbfn</p>
-                        </div>
-                    </div>
-
-                    <div className='NewChatForm'>
-                        <textarea placeholder='Send a message'></textarea>
-                        <Fab>
-                            <Send />
-                        </Fab>
-                    </div>
+                    </Zoom>
                 </div>
             </div>
         </div>

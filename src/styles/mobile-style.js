@@ -1330,7 +1330,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
 }
 .ChatContent {
-    padding: 150px 3% 100px;
+    padding: 150px 3% 80px;
 }
         .ChatHeader, .ChatMessages, .NewChatForm {
             display: flex;
@@ -1356,8 +1356,8 @@ h1, h2, h3, h4, h5, h6 {
                 color: white;
             }
             .ChatHeader svg {
-                height: 35px;
-                width: 35px;
+                height: 40px;
+                width: 40px;
             }
             .ChatHeader .PostUserIcon {
                 margin-right: 10px;
@@ -1384,6 +1384,7 @@ h1, h2, h3, h4, h5, h6 {
                 background-color: red;
 
                 border-radius: 30px;
+                border: 1px solid white;
 
                 max-width: 80%;
 
@@ -1433,7 +1434,7 @@ h1, h2, h3, h4, h5, h6 {
 
                 border-radius: 30px;
 
-                padding: 5px 10px;
+                padding: 5px 15px;
             }
             .NewChatForm button {
                 outline: 0;

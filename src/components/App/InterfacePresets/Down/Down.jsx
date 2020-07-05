@@ -2,10 +2,10 @@ import React from 'react'
 
 import DownMenu from './DownMenu/DownMenu'
 
-function Down() {
+function Down(props) {
     return (
         <div className='Down'>
-            <DownMenu />
+            <DownMenu isChat={props.isChat}/>
         </div>
     )
 }
