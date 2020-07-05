@@ -30,8 +30,8 @@ function NewPostFormPreset() {
 function DownPreset() {
     return <Down />
 }
-function SearchMenuPreset() {
-    return <SearchMenu />
+function SearchMenuPreset(props) {
+    return <SearchMenu title={props.title} />
 }
 
 export {

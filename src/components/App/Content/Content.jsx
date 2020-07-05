@@ -7,6 +7,7 @@ import ProfilePage from './ProfilePage/ProfilePage'
 import MessagesPage from './MessagesPage/MessagesPage'
 import FriendsPage from './FriendsPage/FriendsPage'
 import CommentPage from './CommentPage/CommentPage'
+import ChatPage from './ChatPage/ChatPage'
 
 import LoadingPage from '../../LoadingPage/Loading'
 
@@ -47,6 +48,7 @@ function Content() {
                 <PrivateRoute exact path='/messages' component={MessagesPage} />
                 <PrivateRoute exact path='/friends/:username' component={FriendsPage} /> 
                 <PrivateRoute exact path='/comments/:postid' component={CommentPage} />
+                <Route exact path='/chat' component={ChatPage} />
 
                 <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${username}`} />}} />
                 <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${username}`} />}} />

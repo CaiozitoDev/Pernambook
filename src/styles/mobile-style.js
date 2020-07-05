@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
         right: 0%;
     }
 
-    .LeftMenu::-webkit-scrollbar {
+    .LeftMenu::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar {
         display: none;
     }
         .LeftMenuHeader {
@@ -1322,5 +1322,125 @@ h1, h2, h3, h4, h5, h6 {
                 resize: none;
 
                 border: 2px solid bisque;
+            }
+
+
+.ChatPage {
+    height: 100%;
+    min-height: 100vh;
+}
+.ChatContent {
+    padding: 150px 3% 100px;
+}
+        .ChatHeader, .ChatMessages, .NewChatForm {
+            display: flex;
+        }
+        .ChatHeader {
+            position: fixed;
+            top: 100px;
+
+            padding: 5px 10px;
+
+            background-color: purple;
+
+            align-items: center;
+
+            border-radius: 30px;
+            border: 1px solid white;
+
+            width: 93%;
+
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.603);
+        }
+            .ChatHeader a {
+                color: white;
+            }
+            .ChatHeader svg {
+                height: 35px;
+                width: 35px;
+            }
+            .ChatHeader .PostUserIcon {
+                margin-right: 10px;
+
+                height: 40px;
+                width: 40px;
+            }
+            .ChatHeader h4 {
+                margin: 0;
+            }
+                .ChatHeaderInfo {
+                    display: flex;
+                    align-items: center;
+
+                    margin: auto;
+                }
+        .ChatMessages {
+            height: 100%;
+            flex-direction: column;
+
+            padding-top: 10px;
+        }
+            .ChatMessage {
+                background-color: red;
+
+                border-radius: 30px;
+
+                max-width: 80%;
+
+                padding: 15px;
+
+                margin-bottom: 10px;
+
+                box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.603);
+            }
+                .ChatMessage img {
+                    float: left;
+                    height: 40px;
+                    width: 40px;
+
+                    margin-right: 10px;
+                }
+                .ChatMessage p {
+                    word-break: break-all;
+                    margin: 0; 
+                }
+            .MyMessage {
+                margin-left: auto;
+                background-color: green;
+            }
+                .MyMessage img {
+                    float: right;
+                    margin-right: 0;
+                    margin-left: 10px;
+                }
+            .OtherMessage {
+                margin-right: auto;
+            }
+        .NewChatForm {
+            position: fixed;
+
+            bottom: 20px;
+
+            width: 93%;
+
+            align-items: center;
+        }
+            .NewChatForm textarea {
+                width: 85%;
+
+                resize: none;
+                outline: 0;
+
+                border-radius: 30px;
+
+                padding: 5px 10px;
+            }
+            .NewChatForm button {
+                outline: 0;
+
+                height: 60px;
+                width: 60px;
+
+                margin: 0 auto;
             }
 `

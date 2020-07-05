@@ -6,7 +6,7 @@ function DownMenuSearch() {
     return (
         <div className='DownMenuSearch'>
             <span> <SearchIcon style={{fill: 'white'}}/> </span>
-            <input type='text' placeholder='Search' />
+            <input type='text' placeholder='Find a profile' />
         </div>
     )
 }

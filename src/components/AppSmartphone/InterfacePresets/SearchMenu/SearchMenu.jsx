@@ -26,7 +26,7 @@ function SearchMenu(props){
                 alt='img' />
                 <div className='SearchMenu'>
                     <span> <SearchIcon style={{fill: 'white'}}/> </span>
-                    <input type='text' placeholder='Search' />
+                    <input type='text' placeholder='Find a profile' />
                 </div>
                 <h5>{props.title}</h5>
             </div>
