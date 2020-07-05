@@ -27,8 +27,8 @@ function NewPostFormAddButtonPreset() {
 function NewPostFormPreset() {
     return <NewPostForm />
 }
-function DownPreset() {
-    return <Down />
+function DownPreset(props) {
+    return <Down isChat={true} />
 }
 function SearchMenuPreset(props) {
     return <SearchMenu title={props.title} />

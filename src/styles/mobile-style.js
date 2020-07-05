@@ -872,11 +872,9 @@ h1, h2, h3, h4, h5, h6 {
         .Friend a {
             text-decoration: none;
 
-            display: flex;
-
             width: 100%;
         }
-        .Friend a * {
+        .Friend * {
             display: flex;
         }
         .Friend img {
@@ -893,17 +891,26 @@ h1, h2, h3, h4, h5, h6 {
 
             align-items: center;
         }
-        .Friend button {
+        .FriendButtons {
+        margin-left: auto;
+        }
+        .ChatFriendButton {
+            align-items: center;
+            color: white;
+
+            margin: 0px 5px;
+        }
+        .DeleteFriendButton {
             background-color: transparent;
             border: none;
 
             outline: 0;
 
-            margin-left: auto;
+            margin: 0 5px;
 
             color: white;
         }
-        .Friend button svg {
+        .DeleteFriendButton svg {
             height: 30px;
             width: 30px;
         }
@@ -1353,6 +1360,8 @@ h1, h2, h3, h4, h5, h6 {
             box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.603);
         }
             .ChatHeader a {
+                position: absolute;
+                left: 10px;
                 color: white;
             }
             .ChatHeader svg {
@@ -1418,11 +1427,7 @@ h1, h2, h3, h4, h5, h6 {
                 margin-right: auto;
             }
         .NewChatForm {
-            position: fixed;
-
-            bottom: 20px;
-
-            width: 93%;
+            width: 100%;
 
             align-items: center;
         }

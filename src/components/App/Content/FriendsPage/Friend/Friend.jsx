@@ -28,14 +28,16 @@ function Friend(props) {
                             <h3>{props.frienddata.username}</h3>
                         </div>
                     </a>
-                    <a href='' className='ChatFriendButton'>
-                        <Chat />
-                    </a>
-                    {props.url_username == props.username &&
-                        <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
-                            <Delete />
-                        </button>
-                    }
+                    <div className='FriendButtons'>
+                        <a href='' className='ChatFriendButton'>
+                            <Chat />
+                        </a>
+                        {props.url_username == props.username &&
+                            <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
+                                <Delete />
+                            </button>
+                        }
+                    </div>
                 </li>
             </div>
         </Zoom>

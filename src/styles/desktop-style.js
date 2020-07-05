@@ -751,7 +751,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         align-items: center;
     }
-    .Friend a {
+    .Friend * {
         display: flex;
     }
     .Friend img {
@@ -768,8 +768,12 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         align-items: center;
     }
-    .ChatFriendButton {
+    .FriendButtons {
         margin-left: auto;
+    }
+    .FriendButtons a {
+        align-items: center;
+        color: white;
     }
     .ChatFriendButton:hover {
         color: orange;
