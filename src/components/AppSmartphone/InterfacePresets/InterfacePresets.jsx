@@ -28,7 +28,7 @@ function NewPostFormPreset() {
     return <NewPostForm />
 }
 function DownPreset(props) {
-    return <Down isChat={true} />
+    return <Down isChat={props.isChat} chatid={props.chatid} chatData={props.chatData}/>
 }
 function SearchMenuPreset(props) {
     return <SearchMenu title={props.title} />

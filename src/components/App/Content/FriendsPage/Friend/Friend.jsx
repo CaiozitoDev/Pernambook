@@ -18,6 +18,17 @@ function Friend(props) {
         })
         .catch(err => {console.log(err)})
     }
+
+    function handleChatFriend() {
+        setIsDisabled(true)
+
+        api.get(`/chat?db_user_id=${props.id}&userid=${props.frienddata.userid}`).then(response => {
+            setIsDisabled(false)
+            window.location = '/chat/' + response.data
+        })
+        .catch(err => {console.log(err)})
+    }
+
     return (
         <Zoom in={true} timeout={1000}>
             <div className='Friend'>
@@ -29,9 +40,9 @@ function Friend(props) {
                         </div>
                     </a>
                     <div className='FriendButtons'>
-                        <a href='' className='ChatFriendButton'>
+                        <button className='ChatFriendButton' onClick={handleChatFriend} disabled={isDisabled}>
                             <Chat />
-                        </a>
+                        </button>
                         {props.url_username == props.username &&
                             <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
                                 <Delete />

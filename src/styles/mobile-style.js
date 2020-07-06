@@ -894,13 +894,7 @@ h1, h2, h3, h4, h5, h6 {
         .FriendButtons {
         margin-left: auto;
         }
-        .ChatFriendButton {
-            align-items: center;
-            color: white;
-
-            margin: 0px 5px;
-        }
-        .DeleteFriendButton {
+        .DeleteFriendButton, .ChatFriendButton {
             background-color: transparent;
             border: none;
 
@@ -909,6 +903,8 @@ h1, h2, h3, h4, h5, h6 {
             margin: 0 5px;
 
             color: white;
+
+            align-items: center;
         }
         .DeleteFriendButton svg {
             height: 30px;

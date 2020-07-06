@@ -778,13 +778,17 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     .ChatFriendButton:hover {
         color: orange;
     }
-    .DeleteFriendButton {
+    .DeleteFriendButton, .ChatFriendButton {
         background-color: transparent;
         border: none;
 
         outline: 0;
 
         color: white;
+
+        margin: 0px 5px;
+
+        align-items: center;
     }
     .DeleteFriendButton:hover {
         color: red;
@@ -792,9 +796,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     .DeleteFriendButton svg {
         height: 30px;
         width: 30px;
-    }
-    .ChatFriendButton, .DeleteFriendButton {
-        margin: 0 5px;
     }
 
 

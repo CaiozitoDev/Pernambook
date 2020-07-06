@@ -50,10 +50,11 @@ function Content() {
                 <PrivateRoute exact path='/messages' component={MessagesPage} />
                 <PrivateRoute exact path='/friends/:username' component={FriendsPage} />
                 <PrivateRoute exact path='/comments/:postid' component={CommentPage} />
-                <Route exact path='/chat' component={ChatPage} />
+                <PrivateRoute exact path='/chat/:chatid' component={ChatPage} />
 
                 <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${username}`} />}} />
                 <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${username}`} />}} />
+                <Route exact path='/chat' render={() => {return <Redirect to={`/messages`} />}} />
             </Router>
         )
     }

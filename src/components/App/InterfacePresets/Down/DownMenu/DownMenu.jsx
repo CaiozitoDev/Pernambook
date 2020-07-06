@@ -12,7 +12,7 @@ function DownMenu(props) {
         <div className='DownMenu' style={{paddingRight: !props.isChat ? '40px' : '0px'}}>
             <div className='DownMenuComponents'>
                 <DownMenuSearch />
-                {!props.isChat ? <DownMenuFriends /> : <NewChatForm />}
+                {!props.isChat ? <DownMenuFriends /> : <NewChatForm chatid={props.chatid} chatData={props.chatData} />}
             </div>
         </div>
     )
