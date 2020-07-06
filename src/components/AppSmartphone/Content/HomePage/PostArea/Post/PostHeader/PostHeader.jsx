@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {PersonAdd, EmojiPeople, Check} from '@material-ui/icons'
+import {PersonAdd, EmojiPeople, Check, Chat} from '@material-ui/icons'
 
 import api from '../../../../../../../services/API_CONFIG'
 import jwt from 'jsonwebtoken'
@@ -41,6 +41,16 @@ function PostHeader(props) {
         }
     }
 
+    function handleChatFriend() {
+        setIsDisabled(true)
+
+        api.get(`/chat?db_user_id=${db_user_id}&userid=${props.postuserid}`).then(response => {
+            setIsDisabled(false)
+            window.location = '/chat/' + response.data
+        })
+        .catch(err => {console.log(err)})
+    }
+
     return (
         <div className='PostHeader'>
             <img src={props.src} className='PostUserIcon' alt='img' />
@@ -48,9 +58,14 @@ function PostHeader(props) {
                 <h5>{props.username}</h5>
             </a>
             {props.postuserid !== db_user_id &&
-                <button className='AddFriendPost' onClick={handleFriendRequest} disabled={isDisabled}>
-                    {!areFriends ? activeIcon : <div> Friends <EmojiPeople /> </div>}
-                </button>
+                <div style={{margin: '0'}}>
+                    <button className='ChatFriendButton' disabled={isDisabled} onClick={handleChatFriend}>
+                        <Chat />
+                    </button>
+                    <button className='AddFriendPost' onClick={handleFriendRequest} disabled={isDisabled}>
+                        {!areFriends ? activeIcon : <div> Friends <EmojiPeople /> </div>}
+                    </button>
+                </div>
             }
         </div>
     )

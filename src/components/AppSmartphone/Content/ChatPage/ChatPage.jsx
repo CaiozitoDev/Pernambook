@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {SearchMenuPreset, LeftPreset, DownPreset} from '../../InterfacePresets/InterfacePresets'
 import ChatMessage from './ChatMessage/ChatMessage'
@@ -47,7 +47,7 @@ function ChatPage() {
     }
 
     return (
-        <div className='ChatPage'>
+        <div className='ChatPage' onLoad={() => {window.scrollTo(0,document.body.scrollHeight)}}>
             <SearchMenuPreset title='Chat' />
             <LeftPreset />
             <DownPreset isChat={true} chatid={chatid} chatData={{myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}/>

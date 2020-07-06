@@ -47,7 +47,7 @@ function ChatPage() {
     }
 
     return (
-        <div className='ChatPage'>
+        <div className='ChatPage' onLoad={() => {window.scrollTo(0,document.body.scrollHeight)}}>
             <InterfacePresets isChat={true} chatid={chatid} chatData={{myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}/>
 
             <div className='col-8 ChatContent'>
