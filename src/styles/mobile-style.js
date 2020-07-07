@@ -479,6 +479,8 @@ h1, h2, h3, h4, h5, h6 {
                 display: flex;
                 flex-wrap: wrap;
                 margin-right: auto;
+
+                text-decoration: none;
             }
                 .PostUserIcon {
                     height: 50px;
@@ -959,7 +961,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
 
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 
     min-height: 800px;
 }
@@ -971,7 +974,7 @@ h1, h2, h3, h4, h5, h6 {
 
         border-radius: 30px;
 
-        margin: auto 0;
+        margin: auto 0 20px;
 
         background-color: burlywood;
 
@@ -979,7 +982,7 @@ h1, h2, h3, h4, h5, h6 {
 
         min-height: 500px;
     }
-    .ProfileContent img {
+    .ProfileHeader img {
         height: 100px;
         width: 100px;
 
@@ -990,11 +993,16 @@ h1, h2, h3, h4, h5, h6 {
         margin: 10px auto;
     }
     .UserExtraInfo {
+        display: flex;
         width: 100%;
         min-height: 200px;
     }
+        .UserExtraInfo table {
+            height: 100%;
+            width: 100%;
+        }
         .UserExtraInfo td {
-            padding: 0 5%;
+            padding: 5%;
         }
         .TableTitle {
             margin-right: auto;
@@ -1005,7 +1013,9 @@ h1, h2, h3, h4, h5, h6 {
 
             border-radius: 100px;
         }
-
+.ProfileContent h2 {
+    text-align: center;
+}
 
 
 
@@ -1395,11 +1405,14 @@ h1, h2, h3, h4, h5, h6 {
 
                 max-width: 80%;
 
-                padding: 15px;
+                padding: 10px 15px;
 
                 margin-bottom: 10px;
 
                 box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.603);
+
+                overflow-wrap: break-word;
+
             }
                 .ChatMessage img {
                     float: left;
@@ -1409,8 +1422,7 @@ h1, h2, h3, h4, h5, h6 {
                     margin-right: 10px;
                 }
                 .ChatMessage p {
-                    word-break: break-all;
-                    margin: 0; 
+                    display: inline;
                 }
             .MyMessage {
                 margin-left: auto;

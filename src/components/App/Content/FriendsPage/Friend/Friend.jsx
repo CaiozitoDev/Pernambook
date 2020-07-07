@@ -32,7 +32,9 @@ function Friend(props) {
                         </div>
                     </a>
                     <div className='FriendButtons'>
-                        <ChatFriendButton db_user_id={props.id} postuserid={props.frienddata.userid} />
+                        {props.id !== props.frienddata.userid &&
+                            <ChatFriendButton db_user_id={props.id} postuserid={props.frienddata.userid} />
+                        }
                         {props.url_username == props.username &&
                             <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
                                 <Delete />

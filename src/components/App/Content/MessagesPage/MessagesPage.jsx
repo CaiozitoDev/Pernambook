@@ -29,7 +29,7 @@ function MessagesPage() {
             <InterfacePresets />
 
             <div className='MessagesContent'>
-                <h1>Messages</h1>
+                <h1>Messages: {messageData.length}</h1>
                 {messageData.map(message => {
                     return <Message data={message} />
                 })}

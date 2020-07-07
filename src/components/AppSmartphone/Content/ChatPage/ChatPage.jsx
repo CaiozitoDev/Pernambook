@@ -35,11 +35,24 @@ function ChatPage() {
     if(isRequestFinished) {
         setIsRequestFinished(false)
         api.get(`/chat/${chatid}`).then(response => {
-            setChatData({
-                myProfile: db_user_id == response.data.members[0].userid ? response.data.members[0] : response.data.members[1],
-                friendProfile: db_user_id !== response.data.members[0].userid ? response.data.members[0] : response.data.members[1],
-                messages: response.data.messages
-            })
+            if(response.data.found) {
+                setChatData({
+                    myProfile: db_user_id == response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.dpc.members[1],
+                    friendProfile: db_user_id !== response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.doc.members[1],
+                    messages: response.data.doc.messages
+                })
+            } else {
+                setChatData(preValue => {
+                    return {
+                        ...preValue,
+                        friendProfile: {
+                            userPhoto: 'https://image.flaticon.com/icons/png/512/718/718672.png',
+                            username: 'Chat not found',
+                            userid: ''
+                        } 
+                    }
+                })
+            }
 
             setIsRequestFinished(true)
         })

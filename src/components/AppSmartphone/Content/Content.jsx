@@ -33,7 +33,7 @@ function Content() {
             .catch((err) => {
                 console.log(err)
             })
-    })
+    }, [])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
         <Route {...rest} component={(props) => {return isAuth ? (<Component {...props} />) : (<NotAuthorizedPage />)}} />
