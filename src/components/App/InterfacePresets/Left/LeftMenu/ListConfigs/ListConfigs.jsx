@@ -13,10 +13,15 @@ function ListConfigs(props) {
 
     if(isRequestFinished) {
         setIsRequestFinished(false)
-        api.get(`/notification?db_user_id=${props.id}`).then(response => {
-            setFriendNumber(response.data.friend.value) 
-            setMessageNumber(response.data.message.value)
 
+        api.get(`/notification?db_user_id=${props.id}`).then(response => {
+            setFriendNumber(response.data) 
+            setIsRequestFinished(true)
+        })
+        .catch(err => {console.log(err)})
+
+        api.get(`/messagelist?db_user_id=${props.id}&notification=${true}`).then(response => {
+            setMessageNumber(response.data)
             setIsRequestFinished(true)
         })
         .catch(err => {console.log(err)})

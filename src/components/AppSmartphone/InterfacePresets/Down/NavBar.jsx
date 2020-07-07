@@ -20,9 +20,13 @@ function NavBar() {
     if(isRequestFinished) {
         setIsRequestFinished(false)
         api.get(`/notification?db_user_id=${db_user_id}`).then(response => {
-            setFriendNumber(response.data.friend.value) 
-            setMessageNumber(response.data.message.value)
+            setFriendNumber(response) 
+            setIsRequestFinished(true)
+        })
+        .catch(err => {console.log(err)})
 
+        api.get(`/messagelist?db_user_id=${db_user_id}&notification=${true}`).then(response => {
+            setMessageNumber(response.data)
             setIsRequestFinished(true)
         })
         .catch(err => {console.log(err)})

@@ -628,8 +628,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     .Message {
         padding: 15px 10px;
 
-        display: flex;
-
         margin-bottom: 30px;
 
         align-items: center;
@@ -644,6 +642,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     }
     .Message:hover {
         filter: brightness(90%);
+    }
+    .Message a {
+        display: flex;
     }
     .Message p {
         margin: 0;

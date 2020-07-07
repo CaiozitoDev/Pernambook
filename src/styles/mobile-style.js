@@ -924,11 +924,12 @@ h1, h2, h3, h4, h5, h6 {
     .Message {
         padding: 15px 10px;
 
-        display: flex;
-
         margin-bottom: 30px;
 
         align-items: center;
+    }
+    .Message a {
+        display: flex;
     }
     .Message p {
         margin: 0;

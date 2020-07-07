@@ -1,10 +1,10 @@
 import React from 'react'
 
-function DownMenuFriendChat() {
+function DownMenuFriendChat(props) {
     return (
         <div className='DownMenuFriendChat'>
-            <a href='/messages'>
-                <img src={window.location.origin + '/fds/EWscla8WsAAb5bc.jpg'} className='PostUserIcon'/>
+            <a href={`/chat/${props.data.chatid}`}>
+                <img src={props.data.user.userPhoto} className='PostUserIcon'/>
             </a>
         </div>
     )
