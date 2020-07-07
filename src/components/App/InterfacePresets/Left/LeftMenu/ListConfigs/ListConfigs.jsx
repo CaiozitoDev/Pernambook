@@ -9,23 +9,29 @@ function ListConfigs(props) {
 
     const [messageNumber, setMessageNumber] = useState(0)
 
-    const [isRequestFinished, setIsRequestFinished] = useState(true)
+    const [isFriendRequestFinished, setIsFriendRequestFinished] = useState(true)
+    const [isMessageRequestFinished, setIsMessageRequestFinished] = useState(true)
 
-    if(isRequestFinished) {
-        setIsRequestFinished(false)
+    if(isFriendRequestFinished) {
+        setIsFriendRequestFinished(false)
 
         api.get(`/notification?db_user_id=${props.id}`).then(response => {
             setFriendNumber(response.data) 
-            setIsRequestFinished(true)
-        })
-        .catch(err => {console.log(err)})
-
-        api.get(`/messagelist?db_user_id=${props.id}&notification=${true}`).then(response => {
-            setMessageNumber(response.data)
-            setIsRequestFinished(true)
+            setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }
+
+    if(isMessageRequestFinished) {
+        setIsMessageRequestFinished(false)
+        
+        api.get(`/messagelist?db_user_id=${props.id}&notification=${true}`).then(response => {
+            setMessageNumber(response.data)
+            setIsMessageRequestFinished(true)
+        })
+        .catch(err => {console.log(err)})
+    }
+
 
     return (
         <div className='ListConfigs'>

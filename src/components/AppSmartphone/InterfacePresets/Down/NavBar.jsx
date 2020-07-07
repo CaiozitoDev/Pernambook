@@ -15,19 +15,25 @@ function NavBar() {
 
     const [messageNumber, setMessageNumber] = useState(0)
 
-    const [isRequestFinished, setIsRequestFinished] = useState(true)
+    const [isFriendRequestFinished, setIsFriendRequestFinished] = useState(true)
+    const [isMessageRequestFinished, setIsMessageRequestFinished] = useState(true)
 
-    if(isRequestFinished) {
-        setIsRequestFinished(false)
+    if(isFriendRequestFinished) {
+        setIsFriendRequestFinished(false)
+
         api.get(`/notification?db_user_id=${db_user_id}`).then(response => {
-            setFriendNumber(response) 
-            setIsRequestFinished(true)
+            setFriendNumber(response.data) 
+            setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
+    }
 
+    if(isMessageRequestFinished) {
+        setIsMessageRequestFinished(false)
+        
         api.get(`/messagelist?db_user_id=${db_user_id}&notification=${true}`).then(response => {
             setMessageNumber(response.data)
-            setIsRequestFinished(true)
+            setIsMessageRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }

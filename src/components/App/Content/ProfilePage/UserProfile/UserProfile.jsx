@@ -1,50 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import api from '../../../../../services/API_CONFIG'
+import AreFriends from '../../../../AreFriends'
 
-import { useParams } from 'react-router-dom'
-
-function UserProfile() {
-    const [userData, setUserData] = useState({
-        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
-        username: '',
-        age: '',
-    })
-
-    const {username} = useParams()
-    
-    useEffect(() => {
-        // IMPORTA OS DADOS
-        api.get(`/profile/${username}`)
-        .then(response => {
-            setUserData(preValue => {
-                return {
-                    ...preValue,
-                    src: response.data.src,
-                    username: response.data.username
-                }
-            })
-        })
-        .catch(err => {console.log(err)})
-    }, [])
-
+function UserProfile(props) {
     return (
         <div className='UserProfile'>
-            <img src={userData.src} alt='img' />
+            <img src={props.data.src} alt='img' />
             <div className='UserInfo'>
-                <h2>{userData.username}</h2>
+                <h2>{props.data.username}</h2>
+
+                {props.userid !== props.db_user_id &&
+                    <AreFriends db_user_id={props.db_user_id} postuserid={props.userid} />
+                }
+
                 <div className='UserExtraInfo'>
                     <table>
                         <tr>
-                            <td className='TableTitle'><h4>Sex:</h4></td>
+                            <td className='TableTitle'><h4>N° Posts:</h4></td>
                             <td className='TableResult'>
-                                <h4>Male</h4>
+                                <h4>23</h4>
                             </td>
                         </tr>
                         <tr>
-                            <td className='TableTitle'><h4>Age:</h4></td>
+                            <td className='TableTitle'><h4>N° Friends</h4></td>
                             <td className='TableResult'>
-                                <h4>{userData.age}</h4>
+                                <h4>54</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className='TableTitle'><h4>Date of creation:</h4></td>
+                            <td className='TableResult'>
+                                <h4>2020-04-12</h4>
                             </td>
                         </tr>
                     </table>

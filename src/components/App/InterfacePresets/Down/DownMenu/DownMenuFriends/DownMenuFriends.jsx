@@ -12,7 +12,6 @@ function DownMenuFriends() {
 
     useEffect(() => {
         api.get(`/lastchat?db_user_id=${db_user_id}`).then(response => {
-            console.log(response.data)
             setChatList(response.data)
         })
         .catch(err => {console.log(err)})

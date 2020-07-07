@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 
 import Zoom from '@material-ui/core/Zoom'
 
-import {Delete, Chat} from '@material-ui/icons'
+import {Delete} from '@material-ui/icons'
 
 import api from '../../../../../services/API_CONFIG'
+
+import ChatFriendButton from '../../../../ChatFriendButton'
 
 function Friend(props) {
     const [isDisabled, setIsDisabled] = useState(false)
@@ -15,16 +17,6 @@ function Friend(props) {
         api.delete(`/deletefriend?db_user_id=${props.id}&userid=${props.frienddata.userid}`).then(response => {
             console.log(response.data)
             setIsDisabled(false)
-        })
-        .catch(err => {console.log(err)})
-    }
-
-    function handleChatFriend() {
-        setIsDisabled(true)
-
-        api.get(`/chat?db_user_id=${props.id}&userid=${props.frienddata.userid}`).then(response => {
-            setIsDisabled(false)
-            window.location = '/chat/' + response.data
         })
         .catch(err => {console.log(err)})
     }
@@ -40,9 +32,7 @@ function Friend(props) {
                         </div>
                     </a>
                     <div className='FriendButtons'>
-                        <button className='ChatFriendButton' onClick={handleChatFriend} disabled={isDisabled}>
-                            <Chat />
-                        </button>
+                        <ChatFriendButton db_user_id={props.id} postuserid={props.frienddata.userid} />
                         {props.url_username == props.username &&
                             <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
                                 <Delete />

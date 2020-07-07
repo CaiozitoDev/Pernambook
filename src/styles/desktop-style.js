@@ -644,6 +644,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         filter: brightness(90%);
     }
     .Message a {
+        text-decoration: none;
         display: flex;
     }
     .Message p {
