@@ -475,12 +475,22 @@ h1, h2, h3, h4, h5, h6 {
             .PostHeader * {
                 margin: 10px 10px 10px 0;
             }
+            .PostHeaderDate {
+                font-size: 0.8rem;
+            }
             .PostHeader a {
                 display: flex;
+                flex-direction: column;
+
                 flex-wrap: wrap;
                 margin-right: auto;
 
                 text-decoration: none;
+
+                color: white;
+            }
+            .PostHeader a * {
+                margin: 0;
             }
                 .PostUserIcon {
                     height: 50px;
@@ -715,6 +725,50 @@ h1, h2, h3, h4, h5, h6 {
             background-color: transparent;
         }
 
+.SearchTab {
+    position: initial;
+    top: 50px;
+    
+    width: 90%;
+    height: 50vh;
+
+    margin: 0 auto;
+
+    padding: 15px 10px;
+
+    border-radius: 30px;
+    border: 4px solid white;
+
+    background: linear-gradient(to right, #fe8c00, #f83600);
+
+    z-index: 5;
+
+    overflow-y: scroll;
+
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.529);
+}
+    .SearchTab h4 {
+        text-align: center;
+    }
+    .UserFiltered {
+        border: 2px solid white;
+        border-radius: 30px;
+
+        margin: 15px 0;
+        padding: 5px 10px;
+    }
+        .UserFiltered a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+            .UserFiltered img {
+                margin-right: 5px;
+                position: initial;
+            }
+
+
+
 /* TOP TRENDING POST */
 .TopTrendingPost {
     background: linear-gradient(to right, #eb3349, #f45c43);
@@ -923,6 +977,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100vh;
 }
+    .MessagesContent h1 {
+        text-align: center;
+    }
     .Message {
         padding: 15px 10px;
 
@@ -981,6 +1038,8 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
 
         min-height: 500px;
+
+        border: 2px solid white;
     }
     .ProfileHeader img {
         height: 100px;

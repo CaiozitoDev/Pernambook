@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.div`
 
-.LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar {
+.LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar, .SearchTab::-webkit-scrollbar {
     display: none;
 }
 
@@ -239,12 +239,22 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 .PostHeader * {
                     margin: 10px 10px 10px 0;
                 }
+                .PostHeaderDate {
+                    font-size: 0.8rem;
+                }
                 .PostHeader a {
                     display: flex;
+                    flex-direction: column;
+
                     flex-wrap: wrap;
                     margin-right: auto;
 
                     text-decoration: none;
+
+                    color: white;
+                }
+                .PostHeader a * {
+                    margin: 0;
                 }
                 .PostHeader p {
                     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.671);
@@ -544,6 +554,50 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     
                         transition: all 0.3s ease;
                     }
+
+
+.SearchTab {
+    position: fixed;
+    top: 0px;
+
+
+    height: 50vh;
+
+    padding: 15px 5px;
+
+    border-radius: 30px;
+    border: 4px solid white;
+
+    background: linear-gradient(to right, #fe8c00, #f83600);
+
+    z-index: 5;
+
+    overflow-y: scroll;
+
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.529);
+}
+    .SearchTab h4 {
+        text-align: center;
+    }
+    .UserFiltered {
+        border: 2px solid white;
+        border-radius: 30px;
+
+        margin: 15px;
+        padding: 5px 10px;
+    }
+    .UserFiltered:hover {
+        background-color: bisque;
+    }
+        .UserFiltered a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+            .UserFiltered img {
+                margin-right: 5px;
+            }
+
 
 
 

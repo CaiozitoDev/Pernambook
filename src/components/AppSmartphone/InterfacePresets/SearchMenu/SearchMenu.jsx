@@ -6,6 +6,10 @@ import Zoom from '@material-ui/core/Zoom'
 
 import {handleMyProfileData} from '../../../functions/LoadProfilePhoto/LoadProfilePhoto'
 
+import api from '../../../../services/API_CONFIG'
+
+import SearchTab from './SearchTab/SearchTab'
+
 function SearchMenu(props){
     const [userData, setUserData] = useState({
         src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
@@ -17,8 +21,36 @@ function SearchMenu(props){
         })
     }, [])
 
+    const [isInputClicked, setIsInputClicked] = useState(false)
+
+    const [txtValue, setTxtValue] = useState('')
+
+    const [foundUser, setFoundUser] = useState([])
+
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
+    function handleTxtValue(e) {
+        const {name, value} = e.target
+
+        setTxtValue(value)
+    }
+
+    useEffect(() => {
+        if(isInputClicked) {
+            if(isRequestFinished) {
+                setIsRequestFinished(false)
+
+                api.get(`/userfilter?username=${txtValue}`).then(response => {
+                    setFoundUser(response.data)
+                    setIsRequestFinished(true)
+                })
+                .catch(err => {console.log(err)})
+            }
+        }
+    })
+
     return(
-        <Zoom in='true'>
+        
             <div className='SearchPageHeader'>
                 <img src={userData.src} className='PostUserIcon' onClick={() => {
                     document.querySelector('.Left').classList.add('isLeftClicked')
@@ -26,11 +58,17 @@ function SearchMenu(props){
                 alt='img' />
                 <div className='SearchMenu'>
                     <span> <SearchIcon style={{fill: 'white'}}/> </span>
-                    <input type='text' placeholder='Find a profile' />
+                    <input type='text' placeholder='Find a profile' 
+                        onFocus={() => {setIsInputClicked(true)}}
+                        onBlur={() => {setIsInputClicked(false); setTxtValue('')}}
+                        onChange={handleTxtValue}
+                        value={txtValue}
+                     />
                 </div>
                 <h5>{props.title}</h5>
+                <SearchTab isClicked={isInputClicked} foundUser={foundUser} />
             </div>
-        </Zoom>
+        
     )
 }
 

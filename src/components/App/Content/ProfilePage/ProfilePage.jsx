@@ -38,7 +38,6 @@ function ProfilePage() {
         // IMPORTA OS DADOS
         api.get(`/profile/${username}`)
         .then(response => {
-            console.log(response.data)
             setUserData({
                 src: response.data.src,
                 username: response.data.username,
