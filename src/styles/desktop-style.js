@@ -558,8 +558,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
 .SearchTab {
     position: fixed;
-    top: 0px;
-
+    left: 0px;
+    bottom: 100px;
 
     height: 50vh;
 
