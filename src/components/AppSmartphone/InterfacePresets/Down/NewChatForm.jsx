@@ -41,15 +41,14 @@ function NewChatForm(props) {
                 .catch(err => {console.log(err)})
         }
     }
+
     return (
         <Zoom in={true} timeout={1000}>
-            <div className='DownMenu' style={{padding: '5px'}}>
-                <div className='NewChatForm'>
-                    <textarea placeholder='Send a message' onChange={handleTxtValue} value={txtValue} className='Chattxtarea'></textarea>
-                    <Fab onClick={postMessage} disabled={isDisabled}>
-                        <Send />
-                    </Fab>
-                </div>
+            <div className='NewChatForm'>
+                <textarea placeholder='Send a message' onChange={handleTxtValue} value={txtValue} className='Chattxtarea'></textarea>
+                <Fab onClick={postMessage} disabled={isDisabled}>
+                    <Send />
+                </Fab>
             </div>
         </Zoom>
     )

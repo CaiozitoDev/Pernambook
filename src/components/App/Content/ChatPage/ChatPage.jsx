@@ -37,7 +37,7 @@ function ChatPage() {
         api.get(`/chat/${chatid}`).then(response => {
             if(response.data.found) {
             setChatData({
-                myProfile: db_user_id == response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.dpc.members[1],
+                myProfile: db_user_id == response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.doc.members[1],
                 friendProfile: db_user_id !== response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.doc.members[1],
                 messages: response.data.doc.messages
             })

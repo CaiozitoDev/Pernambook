@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 
 import SearchIcon from '@material-ui/icons/Search';
 
-import Zoom from '@material-ui/core/Zoom'
+import {Slide} from '@material-ui/core'
 
 import {handleMyProfileData} from '../../../functions/LoadProfilePhoto/LoadProfilePhoto'
 
@@ -50,7 +50,7 @@ function SearchMenu(props){
     })
 
     return(
-        
+        <Slide direction='down' in={true} timeout={1000} mountOnEnter>
             <div className='SearchPageHeader'>
                 <img src={userData.src} className='PostUserIcon' onClick={() => {
                     document.querySelector('.Left').classList.add('isLeftClicked')
@@ -68,7 +68,7 @@ function SearchMenu(props){
                 <h5>{props.title}</h5>
                 <SearchTab isClicked={isInputClicked} foundUser={foundUser} />
             </div>
-        
+        </Slide>
     )
 }
 

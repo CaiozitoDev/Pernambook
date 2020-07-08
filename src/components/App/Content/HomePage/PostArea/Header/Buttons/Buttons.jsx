@@ -12,10 +12,10 @@ function Buttons() {
             <p>Made with ❤ by CuscuzComCharque Productions</p>
             <ul>
                 <li>
-                    <a href=''>About</a>
+                    <a href='https://github.com/CaiozitoDev' target='_blank'>GitHub</a>
                 </li>
                 <li>
-                    <a href=''>Support</a>
+                    <a href='https://www.instagram.com/itsme_caio/?hl=pt-br' target='_blank'>Support</a>
                 </li>
                 <li>
                     <button className='btn btn-large btn-outline-light' onClick={handleLogOut}>

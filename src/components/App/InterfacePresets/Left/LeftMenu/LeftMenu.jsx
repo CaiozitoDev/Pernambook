@@ -8,16 +8,20 @@ import slideAnimation from '../../../../functions/slideAnimation/slideAnimation'
 
 import jwt from 'jsonwebtoken'
 
+import {Slide} from '@material-ui/core'
+
 function LeftMenu() {
     const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
     return (
-        <div className='LeftMenu' onLoad={() => slideAnimation('LeftMenu')}>
-            <NewPostForm id={db_user_id} />
-            <hr />
-            <LeftOptions username={username} id={db_user_id} />
-            <MyProfile username={username} />
-            <hr />
-        </div>
+        <Slide direction='up' in={true} timeout={1000} mountOnEnter>
+            <div className='LeftMenu'>
+                <NewPostForm id={db_user_id} />
+                <hr />
+                <LeftOptions username={username} id={db_user_id} />
+                <MyProfile username={username} />
+                <hr />
+            </div>
+        </Slide>
     )
 }
 

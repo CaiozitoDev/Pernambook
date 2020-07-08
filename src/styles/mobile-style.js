@@ -577,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
 
         height: 100%;
 
-        padding: 5px 20px;
+        padding: 5px;
 
         box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.295) ;
         border: 2px solid white;

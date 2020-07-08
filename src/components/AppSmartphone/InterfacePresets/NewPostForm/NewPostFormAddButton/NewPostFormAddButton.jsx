@@ -6,7 +6,7 @@ import Zoom from '@material-ui/core/Zoom'
 
 function NewPostFormAddButton() {
     return (
-        <Zoom in={true}>
+        <Zoom in={true} timeout={1000}>
             <div className='NewPostFormAddButton' onClick={() => {document.querySelector('.NewPostForm').classList.add('isNewPostFormClicked')}}>
                 <PostAddIcon style={{fill: 'white'}} />
             </div>

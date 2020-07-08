@@ -39,37 +39,33 @@ function NavBar() {
     }
 
     return (
-        <div className='DownMenu'>
-            <div className='DownMenuComponents'>
-                <Zoom in={true}>
-                    <ul>
-                        <a href='/home'>
-                            <li>
-                                <Home /> 
-                            </li>
-                        </a>
-                        <a href='/search'>
-                            <li>
-                                <Search />
-                            </li>
-                        </a>
-                        <a href={`/friends/${username}`}>
-                            <li>
-                                <Group />
-
-                                <div className='Notification'>{friendNumber}</div>
-                            </li>
-                        </a>
-                        <a href={`/messages`}>
-                            <li>
-                                <Email />
-
-                                <div className='Notification'>{messageNumber}</div>
-                            </li>
-                        </a>
-                    </ul> 
-                </Zoom>
-            </div>
+        <div className='DownMenuComponents'>
+            <Zoom in={true}>
+                <ul>
+                    <a href='/home'>
+                        <li>
+                            <Home /> 
+                        </li>
+                    </a>
+                    <a href='/search'>
+                        <li>
+                            <Search />
+                        </li>
+                    </a>
+                    <a href={`/friends/${username}`}>
+                        <li>
+                            <Group />
+                            <div className='Notification'>{friendNumber}</div>
+                        </li>
+                    </a>
+                    <a href={`/messages`}>
+                        <li>
+                            <Email />
+                            <div className='Notification'>{messageNumber}</div>
+                        </li>
+                    </a>
+                </ul> 
+            </Zoom>
         </div>
     )
 }

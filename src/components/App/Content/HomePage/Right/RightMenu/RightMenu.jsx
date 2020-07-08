@@ -4,12 +4,16 @@ import slideAnimation from '../../../../../functions/slideAnimation/slideAnimati
 
 import RightMenuContent from './RightMenuContent/RightMenuContent'
 
+import {Slide} from '@material-ui/core'
+
 function RightMenu() {
     return (
-        <div className='RightMenu' onLoad={() => {slideAnimation('RightMenu')}}>
-            <h2>Most <span style={{color: 'red'}}>❤</span> posts</h2>
-            <RightMenuContent />
-        </div>
+        <Slide direction='down' in={true} timeout={1000}>
+            <div className='RightMenu'>
+                <h2>Most <span style={{color: 'red'}}>❤</span> posts</h2>
+                <RightMenuContent />
+            </div>
+        </Slide>
     )
 }
 

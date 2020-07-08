@@ -14,7 +14,7 @@ function Post(props) {
                     username={props.postdata.headerusername}
                     src={props.postdata.headerphoto}
                     postuserid={props.postdata.userid}
-                    date={props.postdata.date}
+                    date={props.postdata.date ? props.postdata.date : props.postdata.timestamp}
                 />
                 <PostBody postbodytext={props.postdata.bodytext}/>
                 <PostFooter postid={props.postdata._id} />

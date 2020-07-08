@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.div`
 
-.LeftMenu::-webkit-scrollbar, .TopPostArea::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar, .SearchTab::-webkit-scrollbar {
+.TopPostArea::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar {
     display: none;
 }
 
@@ -44,7 +44,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             height: 10%;
         }
         .Brand h1 {
-            font-size: 3em;
+            font-size: 3.5rem;
+            font-family: 'Bebas Neue', cursive;
         }
 
     /* LEFT MENU */
@@ -63,7 +64,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         background: linear-gradient(65deg, #ffb385 30%, #fc4774 );
 
         position: relative;
-        top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
+                            /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
     }
 
         /* NEW POST FORM */
@@ -372,7 +373,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         border-top: none;
 
         position: relative;
-        top: -100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
+                            /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
     }
         .RightMenu h2 {
             border-bottom: 1px solid #fae7cb;
@@ -486,7 +487,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         background: linear-gradient(to right, #ee097880, #ff6a0083);
 
         position: relative;
-        top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
+                            /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
         
         display: flex;
         align-items: center;
