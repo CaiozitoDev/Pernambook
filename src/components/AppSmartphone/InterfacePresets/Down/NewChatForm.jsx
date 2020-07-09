@@ -11,7 +11,7 @@ function NewChatForm(props) {
     const [isDisabled, setIsDisabled] = useState(false)
 
     function handleTxtValue(e) {
-        const {name, value} = e.target
+        const {value} = e.target
 
         setTxtValue(value)
     }
@@ -41,10 +41,16 @@ function NewChatForm(props) {
         }
     }
 
+    function onEnterPress(e) {
+        if(e.keyCode == 13 && e.shiftKey == false) {
+            postMessage()
+        }
+    }
+
     return (
         <Zoom in={true} timeout={1000}>
             <div className='NewChatForm'>
-                <textarea placeholder='Send a message' onChange={handleTxtValue} value={txtValue} className='Chattxtarea'></textarea>
+                <textarea placeholder='Send a message' onChange={handleTxtValue} value={txtValue} className='Chattxtarea' onKeyDown={onEnterPress}></textarea>
                 <Fab onClick={postMessage} disabled={isDisabled}>
                     <Send />
                 </Fab>
