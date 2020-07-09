@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.356);
 
-        background: linear-gradient(65deg, #ffb385 30%, #fc4774 );
+        background: linear-gradient(65deg, #ffb385 30%, #ff245b );
 
         position: relative;
                             /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.322);
 
-            background: #fae7cb;
+            background: linear-gradient(65deg, #ffdbad 5%, #ffe09d);
 
             border: 3px double rgb(240, 183, 183);
         }
@@ -246,6 +246,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 }
                 .PostHeaderDate {
                     font-size: 0.8rem;
+                    color: black;
                 }
                 .PostHeader a {
                     display: flex;
@@ -371,7 +372,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.377);
 
-        background: linear-gradient(65deg, #fae7cb 5%, #ff7272);
+        background: linear-gradient(65deg, #ffd59d 5%, #ff5757);
         
         border: 3px solid white;
         border-top: none;
@@ -490,7 +491,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         background: linear-gradient(to right, #ee097880, #ff6a0083);
 
-        position: relative;
+        
                             /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
         
         display: flex;
@@ -501,8 +502,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             display: flex;
             width: 100%;
             align-items: center;
-
-            position: relative;
         }
         
             /* DOWN MENU SEARCH */
@@ -1226,7 +1225,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
             padding: 5px 10px;
 
-            background-color: purple;
+            background-image: linear-gradient(to right bottom, #ff5900, #ff6c00, #ff7d00, #ff8c00, #ff9b00);
 
             align-items: center;
 
@@ -1255,10 +1254,14 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             }
                 .ChatHeaderInfo {
                     display: flex;
-                    align-items: center;
-
                     margin: auto;
                 }
+                    .ChatHeaderInfo a {
+                        display: flex;
+
+                        align-items: center;
+                        text-decoration: none;
+                    }
         .ChatMessages {
             height: 100%;
             flex-direction: column;
@@ -1266,7 +1269,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             padding-top: 10px;
         }
             .ChatMessage {
-                background-color: red;
+                background-image: linear-gradient(to right bottom, #ff4e00, #ff5b00, #ff6600, #ff7000, #ff7a00);
 
                 border-radius: 30px;
                 border: 1px solid white;
@@ -1277,7 +1280,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                 margin-bottom: 10px;
 
-                box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.603);
+                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.603);
 
                 overflow-wrap: break-word;
 
@@ -1294,7 +1297,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 }
             .MyMessage {
                 margin-left: auto;
-                background-color: green;
+                background-image: linear-gradient(to right bottom, #fff400, #ffde00, #ffc700, #ffb100, #ff9b00);
             }
                 .MyMessage img {
                     float: right;
@@ -1305,19 +1308,23 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 margin-right: auto;
             }
         .NewChatForm {
+            display: flex;
             width: 100%;
-            float: right;
-
-            margin-left: 10%;
         }
             .NewChatForm textarea {
-                width: 90%;
+                width: 80%;
+
                 resize: none;
                 outline: 0;
 
                 border-radius: 30px;
 
                 padding: 5px 10px;
+
+                margin-left: auto;
+            }
+            .NewChatForm textarea::placeholder {
+                font-weight: bold;
             }
             .NewChatForm button {
                 outline: 0;

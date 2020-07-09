@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.356);
 
-        background: linear-gradient(65deg, #ffb385 30%, #fc4774 );
+        background: linear-gradient(65deg, #ffb385 30%, #ff245b );
 
         position: relative;
         top: 100%;                    /* SETADOS DE BASE PRA CRIAR A ANIMAÇÃO DE SLIDE */
@@ -331,7 +331,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.377);
 
-        background: linear-gradient(65deg, #fae7cb 5%, #ff7272);
+        background: linear-gradient(65deg, #ffdbad 5%, #ffe09d);
+
+        background: linear-gradient(to right, #fe003fde, #ff6b66d3);
         
         border: 3px solid white;
         border-top: none;

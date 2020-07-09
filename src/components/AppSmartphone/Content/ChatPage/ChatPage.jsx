@@ -70,8 +70,10 @@ function ChatPage() {
                     <div className='ChatHeader'>
                         <a href='/messages'><KeyboardBackspace /></a>
                         <div className='ChatHeaderInfo'>
-                            <img src={chatData.friendProfile.userPhoto} className='PostUserIcon' />
-                            <h4>{chatData.friendProfile.username}</h4>
+                            <a href={`/profile/${chatData.friendProfile.username}`}>
+                                <img src={chatData.friendProfile.userPhoto} className='PostUserIcon' />
+                                <h4>{chatData.friendProfile.username}</h4>
+                            </a>
                         </div>
                     </div>
                 </Zoom>

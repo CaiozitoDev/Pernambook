@@ -477,6 +477,7 @@ h1, h2, h3, h4, h5, h6 {
             }
             .PostHeaderDate {
                 font-size: 0.8rem;
+                color: black;
             }
             .PostHeader a {
                 display: flex;
@@ -742,7 +743,9 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 30px;
     border: 4px solid white;
 
-    background: linear-gradient(to right, #fe8c00, #f83600);
+    background: linear-gradient(to right, #fe003fde, #ff6b66d3);
+
+    backdrop-filter: blur(5px);
 
     z-index: 5;
 
@@ -980,6 +983,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100vh;
 }
+    .MessageTitle {
+        border-radius: 30px;
+        border: 2px solid white;
+
+        background: linear-gradient(to right, #fe003fde, #ff6b66d3);
+    }
     .MessagesContent h1 {
         text-align: center;
     }
@@ -1418,7 +1427,7 @@ h1, h2, h3, h4, h5, h6 {
 
             padding: 5px 10px;
 
-            background-color: purple;
+            background-image: linear-gradient(to right bottom, #ff5900, #ff6c00, #ff7d00, #ff8c00, #ff9b00);
 
             align-items: center;
 
@@ -1449,10 +1458,16 @@ h1, h2, h3, h4, h5, h6 {
             }
                 .ChatHeaderInfo {
                     display: flex;
-                    align-items: center;
-
                     margin: auto;
                 }
+                    .ChatHeaderInfo a {
+                        display: flex;
+
+                        align-items: center;
+                        text-decoration: none;
+
+                        position: initial;
+                    }
         .ChatMessages {
             height: 100%;
             flex-direction: column;
@@ -1460,7 +1475,7 @@ h1, h2, h3, h4, h5, h6 {
             padding-top: 10px;
         }
             .ChatMessage {
-                background-color: red;
+                background-image: linear-gradient(to right bottom, #ff4e00, #ff5b00, #ff6600, #ff7000, #ff7a00);
 
                 border-radius: 30px;
                 border: 1px solid white;
@@ -1489,6 +1504,8 @@ h1, h2, h3, h4, h5, h6 {
             .MyMessage {
                 margin-left: auto;
                 background-color: green;
+
+                background-image: linear-gradient(to right bottom, #fff400, #ffde00, #ffc700, #ffb100, #ff9b00);
             }
                 .MyMessage img {
                     float: right;
@@ -1512,6 +1529,9 @@ h1, h2, h3, h4, h5, h6 {
                 border-radius: 30px;
 
                 padding: 5px 15px;
+            }
+            .NewChatForm textarea::placeholder {
+                font-weight: bold;
             }
             .NewChatForm button {
                 outline: 0;
