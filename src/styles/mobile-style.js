@@ -517,7 +517,7 @@ h1, h2, h3, h4, h5, h6 {
         }
         .PostBody p {
             color: black;
-            word-break: break-all;
+            word-break: break-word;
         }
         .PostFooter {
             padding: 0;
@@ -842,7 +842,7 @@ h1, h2, h3, h4, h5, h6 {
 
     }
         .TopPost p, .TopTrendingPost p {
-            word-break: break-all;
+            word-break: break-word;
         }
         .TopPost:last-child {
             border-bottom: 1px solid #fae7cb;
@@ -988,6 +988,8 @@ h1, h2, h3, h4, h5, h6 {
         border: 2px solid white;
 
         background: linear-gradient(to right, #fe003fde, #ff6b66d3);
+
+        margin-bottom: 50px;
     }
     .MessagesContent h1 {
         text-align: center;
@@ -1005,6 +1007,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .Message p {
         margin: 0;
+        color: white;
     }
     .Message:last-child {
         border-bottom: none;
