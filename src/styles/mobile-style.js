@@ -680,12 +680,15 @@ h1, h2, h3, h4, h5, h6 {
 
     backdrop-filter: blur(5px);
 }
-.SearchPageHeader img {
+.SearchPageHeader .SearchMenuIcon {
     position: absolute;
     left: 10px;
 
     height: 40px;
     width: 40px;
+
+    border-radius: 100px;
+    border: 2px solid white;
 }
 .SearchPageHeader h5 {
     text-align: center;
@@ -734,7 +737,7 @@ h1, h2, h3, h4, h5, h6 {
 
     margin: 0 auto;
 
-    padding: 15px 10px;
+    padding: 15px;
 
     border-radius: 30px;
     border: 4px solid white;

@@ -12,11 +12,14 @@ function PostArea() {
 
     const [numberOfPosts, setNumberOfPosts] = useState(10)
 
+    const [hasMore, setHasMore] = useState(true)
+ 
     function handleNumberOfPosts() {
         api.get(`/posts?numberOfPosts=${numberOfPosts}`).then(response => {
-            setpostArray(response.data)
+            setpostArray(response.data.posts)
 
-            response.data.length == numberOfPosts && setNumberOfPosts(numberOfPosts + 10)
+            numberOfPosts < response.data.postLength ? numberOfPosts && setNumberOfPosts(numberOfPosts + 10) :
+                setHasMore(false)
         })
         .catch(err => {console.log(err)})
     }
@@ -33,8 +36,8 @@ function PostArea() {
                 pageStart={0}
                 loadMore={handleNumberOfPosts}
                 hasMore={true}
-                initialLoad={false}
-                loader={<img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                initialLoad={true}
+                loader={hasMore ? <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/> : <h4 className='LoadingImage'>End</h4>}
             >
                 {postArray.map((post) => {
                     return <Post postdata={post} />

@@ -79,9 +79,9 @@ function ChatPage() {
                 <div className='ChatMessages'>
                     {chatData.messages.map(message => {
                         if(message.userid == db_user_id) {
-                            return <ChatMessage data={message} myMessage={true} />
+                            return <ChatMessage data={message} myMessage={true} photo={chatData.myProfile.userPhoto} />
                         } else {
-                            return <ChatMessage data={message} myMessage={false} />
+                            return <ChatMessage data={message} myMessage={false} photo={chatData.myProfile.userPhoto} />
                         }
                     })}
                 </div>

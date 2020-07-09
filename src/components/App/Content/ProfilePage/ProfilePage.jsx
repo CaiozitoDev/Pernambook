@@ -28,7 +28,9 @@ function ProfilePage() {
         date: ''
     })
 
-    const [numberOfPosts, setNumberOfPosts] = useState(5)
+    const [numberOfPosts, setNumberOfPosts] = useState(10)
+    
+    const [hasMore, setHasMore] = useState(true)
 
     const [userPosts, setUserPosts] = useState([])
 
@@ -50,19 +52,15 @@ function ProfilePage() {
         })
         .catch(err => {console.log(err)})
 
-        api.get(`/userpost?username=${username}`).then(response => {
-            setUserPosts(response.data)
-        })
-        .catch(err => {console.log(err)})
-
         handleNumberOfPosts()
     }, [])
 
     function handleNumberOfPosts() {
         api.get(`/userpost?username=${username}&numberOfPosts=${numberOfPosts}`).then(response => {
-            setUserPosts(response.data)
+            setUserPosts(response.data.posts)
 
-            response.data.length == numberOfPosts && setNumberOfPosts(numberOfPosts + 5)
+            numberOfPosts < response.data.postLength ? numberOfPosts && setNumberOfPosts(numberOfPosts + 10) :
+                setHasMore(false)
         })
         .catch(err => {console.log(err)})
     }
@@ -81,8 +79,8 @@ function ProfilePage() {
                                 pageStart={0}
                                 loadMore={handleNumberOfPosts}
                                 hasMore={true}
-                                initialLoad={false}
-                                loader={<img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                                initialLoad={true}
+                                loader={hasMore ? <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/> : <h4 className='LoadingImage'>End</h4>}
                             >
                                 {userPosts.map(post => {
                                     return <Post postdata={post} />

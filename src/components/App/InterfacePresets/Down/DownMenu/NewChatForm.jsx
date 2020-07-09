@@ -30,7 +30,6 @@ function NewChatForm(props) {
                     chatid: props.chatid, 
                     db_user_id: props.chatData.myProfile.userid,
                     username: props.chatData.myProfile.username, 
-                    userPhoto: props.chatData.myProfile.userPhoto,
                     messagetext: txtValue
                 })
                 .then(response => {

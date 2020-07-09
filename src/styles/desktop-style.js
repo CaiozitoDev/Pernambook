@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export default styled.div`
 
+html {
+    overflow-y: scroll;
+}
+
 .TopPostArea::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar {
     display: none;
 }

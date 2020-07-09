@@ -29,8 +29,7 @@ function NewChatForm(props) {
             api.post('/newmessage', {
                     chatid: props.chatid, 
                     db_user_id: props.chatData.myProfile.userid,
-                    username: props.chatData.myProfile.username, 
-                    userPhoto: props.chatData.myProfile.userPhoto,
+                    username: props.chatData.myProfile.username,
                     messagetext: txtValue
                 })
                 .then(response => {
