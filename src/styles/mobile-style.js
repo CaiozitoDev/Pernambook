@@ -656,7 +656,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* *******SEARCH PAGE********** */
-.Search {
+.SearchPage {
     min-height: 100vh;
     height: 100%;
 }
@@ -870,8 +870,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100vh;
 }
-.FriendsContent h2 {
+.FriendsContent h1 {
     text-align: center;
+    background: linear-gradient(to right, #eacda3, #d6ae7b);
+    border-radius: 100px;
+    border: 5px outset white;
+
+    margin-bottom: 20px;
 }
 .FriendRequestArea {
     display: flex;
@@ -955,6 +960,10 @@ h1, h2, h3, h4, h5, h6 {
         }
         .FriendButtons {
         margin-left: auto;
+        }
+        .FriendButtons a {
+        align-items: center;
+        color: white;
         }
         .DeleteFriendButton, .ChatFriendButton {
             background-color: transparent;
@@ -1089,6 +1098,9 @@ h1, h2, h3, h4, h5, h6 {
         }
 .ProfileContent h2 {
     text-align: center;
+}
+.SeeFriends {
+    margin-top: 30px;
 }
 
 

@@ -641,13 +641,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         border: 2px solid white;
     }
-    .ProfileHeader {
-        position: relative;
-    }
-    .ProfileHeader a {
-        position: absolute;
-        left: 0px;
-    }
     .ProfileHeader img {
         height: 100px;
         width: 100px;
@@ -683,6 +676,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         }
 .ProfileContent h2 {
     text-align: center;
+}
+.SeeFriends {
+    margin-top: 30px;
 }
 
 

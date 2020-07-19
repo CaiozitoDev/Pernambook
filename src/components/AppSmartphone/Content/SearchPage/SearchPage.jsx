@@ -25,7 +25,7 @@ function Search() {
     }
 
     return (
-        <div className='Search'>
+        <div className='SearchPage'>
             <InterfacePresets title='Search' />
 
             <div className='SearchContent'>
