@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
-import Post from '../../App/Content/HomePage/PostArea/Post/Post'
+import Post from '../../PostArea/Post/Post'
 import Comment from './Comment/Comment'
 import NewCommentForm from './NewCommentForm/NewCommentForm'
 

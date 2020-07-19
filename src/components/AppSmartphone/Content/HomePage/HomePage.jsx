@@ -2,7 +2,7 @@ import React from 'react'
 
 import Header from './Header/Header'
 import LogOffConfirm from './LogOffConfirm/LogOffConfirm'
-import PostArea from './PostArea/PostArea'
+import PostArea from '../../../PostArea/PostArea'
 
 import {
     LeftPreset as Left,
@@ -23,7 +23,7 @@ function Home() {
 
             <Header />
             <LogOffConfirm />    
-            <PostArea />
+            <PostArea device='smartphone'/>
         </div>
     )
 }

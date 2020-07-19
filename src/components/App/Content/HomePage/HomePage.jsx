@@ -2,7 +2,7 @@ import React from 'react'
 
 import InterfacePresets from '../../InterfacePresets/InterfacePresets'
 
-import PostArea from './PostArea/PostArea'
+import PostArea from '../../../PostArea/PostArea'
 import Right from './Right/Right'
 
 function HomePage() {
@@ -10,7 +10,7 @@ function HomePage() {
         <div className='HomePage'>
             <InterfacePresets />
 
-            <PostArea />
+            <PostArea device='desktop' />
             <Right />
         </div>
     )

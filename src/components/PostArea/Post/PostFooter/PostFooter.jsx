@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 // ICONS DO POST FOOTER
 import {ThumbUp, Favorite, Comment, FavoriteBorder} from '@material-ui/icons'
 
-import api from '../../../../../../../services/API_CONFIG'
+import api from '../../../../services/API_CONFIG'
 
 import jwt from 'jsonwebtoken'
 
@@ -56,7 +56,7 @@ function PostFooter(props) {
     // INPUT PRO SERVER PARA INCREMENTAR OS VALORES NO BANCO DE DADOS QUANDO CLICA
     function handlePostValues(isIconClicked, iconName) {
         setIsDisabled(true)
-        const isButtonClicked = !reactions[isIconClicked]
+            const isButtonClicked = !reactions[isIconClicked]
 
         api.patch('/post-buttons', {iconName, postid: props.postid, isButtonClicked, db_user_id})
             .then(response => {
@@ -87,7 +87,7 @@ function PostFooter(props) {
             </div>
 
             <div className='CommentDiv'>
-                <a href={`/comments/${props.postid}`}>
+                <a href={`/comments/${props.postid}`} >
                     <button className='CommentButton' name='postfooterbutton'>
                         <Comment style={{fill: reactions.isCommentClicked && 'orange'}} />
                     </button>

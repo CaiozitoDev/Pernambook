@@ -2,8 +2,8 @@ import React from 'react'
 
 import jwt from 'jsonwebtoken'
 
-import AreFriends from '../../../../../../AreFriends'
-import ChatFriendButton from '../../../../../../ChatFriendButton'
+import AreFriends from '../../../AreFriends'
+import ChatFriendButton from '../../../ChatFriendButton'
 
 function PostHeader(props) {
     const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))

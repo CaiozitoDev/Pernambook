@@ -1164,6 +1164,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         .Comment a {
             text-decoration: none;
             color: white;
+
+            margin-right: 15px;
         }
         .Comment h6, p {
             margin: 0;
@@ -1175,8 +1177,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 display: flex;
 
                 align-items: center;
-
-                margin-right: 10%;
             }
                 .CommentHeader img {
                     height: 30px;

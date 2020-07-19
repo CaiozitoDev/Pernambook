@@ -5,7 +5,7 @@ import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets
 
 import UserProfile from './UserProfile/UserProfile'
 
-import Post from '../../AppSmartphone/Content/HomePage/PostArea/Post/Post'
+import Post from '../../PostArea/Post/Post'
 
 import Zoom from '@material-ui/core/Zoom'
 
