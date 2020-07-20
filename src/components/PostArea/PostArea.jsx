@@ -7,21 +7,32 @@ import api from '../../services/API_CONFIG'
 
 import InfiniteScroll from 'react-infinite-scroller'
 
+import useFetch from '../../services/UseFetch'
+
 function PostArea(props) {
     const [postArray, setpostArray] = useState([])
 
     const [numberOfPosts, setNumberOfPosts] = useState(10)
 
     const [hasMore, setHasMore] = useState(true)
+
+    const {data} = useFetch(`/posts?numberOfPosts=${numberOfPosts}`)
  
     function handleNumberOfPosts() {
-        api.get(`/posts?numberOfPosts=${numberOfPosts}`).then(response => {
+        /* api.get(`/posts?numberOfPosts=${numberOfPosts}`).then(response => {
             setpostArray(response.data.posts)
 
             numberOfPosts < response.data.postLength ? numberOfPosts && setNumberOfPosts(numberOfPosts + 10) :
                 setHasMore(false)
         })
-        .catch(err => {console.log(err)})
+        .catch(err => {console.log(err)}) */
+
+        if(data !== undefined) {
+            setpostArray(data.posts)
+    
+            numberOfPosts < data.postLength ? numberOfPosts && setNumberOfPosts(numberOfPosts + 10) :
+            setHasMore(false)
+        }
     }
 
     useEffect(handleNumberOfPosts, [])
