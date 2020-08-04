@@ -11,6 +11,8 @@ import FacebookLogin from 'react-facebook-login'
 import imgCompression from 'browser-image-compression'
 
 import AxiosLoginRegisterSchema from '../functions/AxiosLoginRegisterSchema'
+
+import {Link} from 'react-router-dom'
  
 function LoginRegisterPage(props) {
    // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
@@ -143,13 +145,13 @@ function LoginRegisterPage(props) {
                             />
                         </div>
                         {window.location.pathname == '/login' ?
-                            <a href='/register' className='SwitchPageButton'>
+                            <Link to='/register' className='SwitchPageButton'>
                                 <button className='btn btn-sm btn-warning'>Not registered? Register here</button>
-                            </a>
+                            </Link>
                             :
-                            <a href='/login' className='SwitchPageButton'>
+                            <Link to='/login' className='SwitchPageButton'>
                                 <button className='btn btn-sm btn-warning'>Already have an account? Log here</button>
-                            </a>
+                            </Link>
                         }
                     </div>
                 </div>

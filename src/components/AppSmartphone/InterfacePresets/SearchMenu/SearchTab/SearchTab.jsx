@@ -6,6 +6,8 @@ import api from '../../../../../services/API_CONFIG'
 
 import InfiniteScroll from 'react-infinite-scroller'
 
+import {Link} from 'react-router-dom'
+
 function SearchTab(props) {
     const [foundUser, setFoundUser] = useState([])
 
@@ -48,10 +50,10 @@ function SearchTab(props) {
                         return (
                             <Zoom in={true} timeout={500}>
                                 <div className='UserFiltered'>
-                                    <a href={`/profile/${user.username}`}>
+                                    <Link to={`/profile/${user.username}`}>
                                         <img src={user.userPhoto} className='PostUserIcon' />
                                         <h3>{user.username}</h3>
-                                    </a>
+                                    </Link>
                                 </div>
                             </Zoom>
                         )

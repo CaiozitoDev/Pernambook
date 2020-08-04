@@ -8,6 +8,8 @@ import jwt from 'jsonwebtoken'
 
 import api from '../../../../services/API_CONFIG'
 
+import {Link} from 'react-router-dom'
+
 function NavBar() {
     const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
 
@@ -42,28 +44,28 @@ function NavBar() {
         <div className='DownMenuComponents'>
             <Zoom in={true}>
                 <ul>
-                    <a href='/home'>
+                    <Link to='/home'>
                         <li>
                             <Home /> 
                         </li>
-                    </a>
-                    <a href='/search'>
+                    </Link>
+                    <Link to='/search'>
                         <li>
                             <Search />
                         </li>
-                    </a>
-                    <a href={`/friends/${username}`}>
+                    </Link>
+                    <Link to={`/friends/${username}`}>
                         <li>
                             <Group />
                             <div className='Notification'>{friendNumber}</div>
                         </li>
-                    </a>
-                    <a href={`/messages`}>
+                    </Link>
+                    <Link to={`/messages`}>
                         <li>
                             <Email />
                             <div className='Notification'>{messageNumber}</div>
                         </li>
-                    </a>
+                    </Link>
                 </ul> 
             </Zoom>
         </div>

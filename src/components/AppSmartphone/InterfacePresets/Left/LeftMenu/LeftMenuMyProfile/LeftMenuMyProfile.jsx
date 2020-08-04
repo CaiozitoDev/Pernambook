@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import {handleMyProfileData} from '../../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
 
+import {Link} from 'react-router-dom'
+
 function MyProfile(props) {
     const [userData, setUserData] = useState({
         src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
@@ -18,14 +20,14 @@ function MyProfile(props) {
 
     return (
         <div className='MyProfile'>
-            <a href={`/profile/${props.username}`}>
+            <Link to={`/profile/${props.username}`}>
                 <div className='UserDiv'>
                     <img src={userData.src} className='PostUserIcon' alt='img' />
                     <div className='HeaderUserInfo'>
                         <h5>{userData.username}</h5>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }

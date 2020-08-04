@@ -1,7 +1,5 @@
 import React from 'react'
 
-import slideAnimation from '../../../../../functions/slideAnimation/slideAnimation'
-
 import RightMenuContent from './RightMenuContent/RightMenuContent'
 
 import {Slide} from '@material-ui/core'

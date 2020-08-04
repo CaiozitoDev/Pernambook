@@ -2,6 +2,8 @@ import React from 'react'
 
 import Brand from '../App/InterfacePresets/Left/Brand/Brand'
 
+import {Link} from 'react-router-dom'
+
 import Zoom from '@material-ui/core/Zoom'
 
 function WelcomePage() {
@@ -18,8 +20,8 @@ function WelcomePage() {
                             <h5>- Caio Felipe, 2020</h5>
                         </div>
                         <div className='WelcomeButtons'>
-                            <a href='/register' className='nav-link'><button className='btn btn-lg btn-primary'>Register</button></a>
-                            <a href='/login' className='nav-link'><button className='btn btn-lg btn-outline-danger'>Log In</button></a>
+                            <Link to='/register' className='nav-link'><button className='btn btn-lg btn-primary'>Register</button></Link>
+                            <Link to='/login' className='nav-link'><button className='btn btn-lg btn-outline-danger'>Log In</button></Link>
                         </div>
                     </div>
                 </div>

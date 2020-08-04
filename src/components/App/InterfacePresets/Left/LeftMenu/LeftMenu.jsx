@@ -4,8 +4,6 @@ import NewPostForm from './NewPostForm/NewPostForm'
 import LeftOptions from './ListConfigs/ListConfigs'
 import MyProfile from './MyProfile/MyProfile'
 
-import slideAnimation from '../../../../functions/slideAnimation/slideAnimation'
-
 import jwt from 'jsonwebtoken'
 
 import {Slide} from '@material-ui/core'

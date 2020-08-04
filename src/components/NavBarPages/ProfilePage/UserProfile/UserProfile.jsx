@@ -4,6 +4,8 @@ import Zoom from '@material-ui/core/Zoom'
 
 import AreFriends from '../../../AreFriends'
 
+import {Link} from 'react-router-dom'
+
 function UserProfile(props) {
     return (
         <Zoom in={true} timeout={1000}>
@@ -42,7 +44,7 @@ function UserProfile(props) {
                     </div>
                 </div>
                 
-                <a href={`/friends/${props.data.username}`} className='SeeFriends'><button className='btn btn-outline-light'>See {props.data.username} friends</button></a>
+                <Link to={`/friends/${props.data.username}`} className='SeeFriends'><button className='btn btn-outline-light'>See {props.data.username} friends</button></Link>
             </div>
         </Zoom>
     )

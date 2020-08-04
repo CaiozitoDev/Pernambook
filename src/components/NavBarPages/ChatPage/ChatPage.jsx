@@ -13,6 +13,8 @@ import {useParams} from 'react-router-dom'
 import api from '../../../services/API_CONFIG'
 import jwt from 'jsonwebtoken'
 
+import {Link} from 'react-router-dom'
+
 function ChatPage(props) {
     const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
 
@@ -74,12 +76,12 @@ function ChatPage(props) {
             <div className={`${props.device == 'desktop' && 'col-8'} ChatContent`}>
                 <Zoom in={true} timeout={1000}>
                     <div className='ChatHeader'>
-                        <a href='/messages'><KeyboardBackspace /></a>
+                        <Link to='/messages'><KeyboardBackspace /></Link>
                         <div className='ChatHeaderInfo'>
-                            <a href={`/profile/${chatData.friendProfile.username}`}>
+                            <Link to={`/profile/${chatData.friendProfile.username}`}>
                                 <img src={chatData.friendProfile.userPhoto} className='PostUserIcon' />
                                 <h4>{chatData.friendProfile.username}</h4>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </Zoom>

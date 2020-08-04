@@ -7,6 +7,8 @@ import api from '../../../../services/API_CONFIG'
 
 import jwt from 'jsonwebtoken'
 
+import {Link} from 'react-router-dom'
+
 function PostFooter(props) {
     const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
 
@@ -87,11 +89,11 @@ function PostFooter(props) {
             </div>
 
             <div className='CommentDiv'>
-                <a href={`/comments/${props.postid}`} >
+                <Link to={`/comments/${props.postid}`} >
                     <button className='CommentButton' name='postfooterbutton'>
                         <Comment style={{fill: reactions.isCommentClicked && 'orange'}} />
                     </button>
-                </a>
+                </Link>
                 <span className='CommentValue'>{reactions.comment}</span>
             </div>
         </div>

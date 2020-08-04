@@ -2,33 +2,35 @@ import React from 'react'
 
 import {Person, TrendingUp, Group, Email} from '@material-ui/icons'
 
+import {Link} from 'react-router-dom'
+
 function LeftMenuOptions(props) {
     return (
         <div className='LeftMenuOptions'>
             <ul>
                 <li>
-                    <a href={`/profile/${props.username}`}>
+                    <Link to={`/profile/${props.username}`}>
                         <Person style={{fill: 'white'}}/>
                         <h4>Profile</h4>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href='/search'>
+                    <Link to='/search'>
                         <TrendingUp style={{fill: 'white'}}/>
                         <h4>Trending</h4>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href={`/friends/${props.username}`}>
+                    <Link to={`/friends/${props.username}`}>
                         <Group style={{fill: 'white'}}/>
                         <h4>Friends</h4>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href={`/messages/${props.username}`}>
+                    <Link to={`/messages/${props.username}`}>
                         <Email style={{fill: 'white'}}/>
                         <h4>Messages</h4>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>

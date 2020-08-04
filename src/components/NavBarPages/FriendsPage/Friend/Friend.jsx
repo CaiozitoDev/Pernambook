@@ -8,6 +8,8 @@ import ChatFriendButton from '../../../ChatFriendButton'
 
 import api from '../../../../services/API_CONFIG'
 
+import {Link} from 'react-router-dom'
+
 function Friend(props) {
     const [isDisabled, setIsDisabled] = useState(false)
 
@@ -25,12 +27,12 @@ function Friend(props) {
         <Zoom in={true} timeout={1000}>
             <div className='Friend'>
                 <li>
-                    <a href={`/profile/${props.frienddata.username}`} className='FriendUserInfo'>
+                    <Link to={`/profile/${props.frienddata.username}`} className='FriendUserInfo'>
                         <img src={props.frienddata.photo} alt='img' />
                         <div className='UserInfo'>
                             <h4>{props.frienddata.username}</h4>
                         </div>
-                    </a>
+                    </Link>
                     <div className='FriendButtons'>
                         {props.id !== props.frienddata.userid &&
                             <ChatFriendButton db_user_id={props.id} postuserid={props.frienddata.userid} />

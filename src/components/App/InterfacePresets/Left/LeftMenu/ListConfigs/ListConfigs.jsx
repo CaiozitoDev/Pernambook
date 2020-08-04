@@ -4,6 +4,8 @@ import {Home, Person, Email, Group} from '@material-ui/icons'
 
 import api from '../../../../../../services/API_CONFIG'
 
+import {Link} from 'react-router-dom'
+
 function ListConfigs(props) {
     const [friendNumber, setFriendNumber] = useState(0)
 
@@ -36,34 +38,34 @@ function ListConfigs(props) {
     return (
         <div className='ListConfigs'>
             <ul>
-                <a href='/home'>
+                <Link to='/home'>
                     <li>
                         <Home />
                         <h4>Home page</h4>
                     </li>
-                </a>
-                <a href={`/profile/${props.username}`}>
+                </Link>
+                <Link to={`/profile/${props.username}`}>
                     <li>
                         <Person />
                         <h4>Profile</h4>
                     </li>
-                </a>
-                <a href={`/messages`}>
+                </Link>
+                <Link to={`/messages`}>
                     <li>
                         <Email />
                         <h4>Messages</h4>
 
                         <div className='Notification'>{messageNumber}</div>
                     </li>
-                </a>
-                <a href={`/friends/${props.username}`}>
+                </Link>
+                <Link to={`/friends/${props.username}`}>
                     <li>
                         <Group />
                         <h4>Friends</h4>
 
                         <div className='Notification'>{friendNumber}</div>
                     </li>
-                </a>
+                </Link>
             </ul>
         </div>
     )

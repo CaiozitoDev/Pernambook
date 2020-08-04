@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 import LeftMenuHeader from './LeftMenuHeader/LeftMenuHeader'
 import LeftMenuMyProfile from './LeftMenuMyProfile/LeftMenuMyProfile'
@@ -8,10 +8,6 @@ import jwt from 'jsonwebtoken'
 
 function LeftMenu() {
     const {username} = jwt.decode(localStorage.getItem('local_token'))
-
-    useEffect(() => {
-        console.log(document.querySelector('.LeftMenu').className)
-    })
 
     return (
         <div className='LeftMenu'>
