@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Buttons() {
-
     function handleLogOut() {
         localStorage.removeItem('local_token')
         window.location = '/'
