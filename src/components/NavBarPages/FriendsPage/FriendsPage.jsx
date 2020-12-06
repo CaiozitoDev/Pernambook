@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 
 import {InterfacePresets} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
@@ -10,10 +10,10 @@ import {useParams} from 'react-router-dom'
 
 import api from '../../../services/API_CONFIG'
 
-import jwt from 'jsonwebtoken'
+import {AuthContext} from '../../Contexts'
 
 function FriendsPage(props) {
-    const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id, username}} = useContext(AuthContext)
 
     const [userList, setUserList] = useState([])
 

@@ -6,7 +6,7 @@ import api from '../../../../../../services/API_CONFIG'
 
 import {Link} from 'react-router-dom'
 
-function ListConfigs(props) {
+function ListConfigs({id}) {
     const [friendNumber, setFriendNumber] = useState(0)
 
     const [messageNumber, setMessageNumber] = useState(0)
@@ -17,8 +17,8 @@ function ListConfigs(props) {
     if(isFriendRequestFinished) {
         setIsFriendRequestFinished(false)
 
-        api.get(`/notification?db_user_id=${props.id}`).then(response => {
-            setFriendNumber(response.data) 
+        api.get(`/notification?db_user_id=${id}`).then(response => {
+            setFriendNumber(response.data.friendsLength) 
             setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
@@ -27,8 +27,8 @@ function ListConfigs(props) {
     if(isMessageRequestFinished) {
         setIsMessageRequestFinished(false)
         
-        api.get(`/messagelist?db_user_id=${props.id}&notification=${true}`).then(response => {
-            setMessageNumber(response.data)
+        api.get(`/messagelist?db_user_id=${id}&notification=true`).then(response => {
+            setMessageNumber(response.data.notSawMessages)
             setIsMessageRequestFinished(true)
         })
         .catch(err => {console.log(err)})
@@ -44,7 +44,7 @@ function ListConfigs(props) {
                         <h4>Home page</h4>
                     </li>
                 </Link>
-                <Link to={`/profile/${props.username}`}>
+                <Link to={`/profile/${id}`}>
                     <li>
                         <Person />
                         <h4>Profile</h4>
@@ -58,7 +58,7 @@ function ListConfigs(props) {
                         <div className='Notification'>{messageNumber}</div>
                     </li>
                 </Link>
-                <Link to={`/friends/${props.username}`}>
+                <Link to={`/friends/${id}`}>
                     <li>
                         <Group />
                         <h4>Friends</h4>

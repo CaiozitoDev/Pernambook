@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 function DownMenuFriendChat(props) {
     return (
-        <Zoom in={true} timeout={1000}>
+        <Zoom in timeout={1000}>
             <div className='DownMenuFriendChat'>
                 <Link to={`/chat/${props.data.chatid}`}>
                     <img src={props.data.user.userPhoto} className='PostUserIcon'/>

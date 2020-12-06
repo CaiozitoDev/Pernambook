@@ -7,7 +7,7 @@ function InterfacePresets(props) {
     return (
         <div className='InterfacePresets'>
             <Left />
-            <Down isChat={props.isChat} chatid={props.chatid} chatData={props.chatData}  />
+            <Down />
         </div>
     )
 }

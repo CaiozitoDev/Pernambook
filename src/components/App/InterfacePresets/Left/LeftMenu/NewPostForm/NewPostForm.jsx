@@ -5,7 +5,7 @@ import {Zoom, Fab} from '@material-ui/core'
 
 import api from '../../../../../../services/API_CONFIG'
 
-function NewPostForm(props) {
+function NewPostForm({id}) {
     const [textAreaClick, setTextAreaClick] = useState(false)
 
     const [txtValue, setTxtValue] = useState('')
@@ -13,7 +13,7 @@ function NewPostForm(props) {
     const [title, setTitle] = useState('Post area')
 
     function handleTxtValue(e) {
-        const {name, value} = e.target
+        const value = e.target.value
 
         setTxtValue(value)
     }
@@ -25,19 +25,18 @@ function NewPostForm(props) {
             setTitle('⚠ Max length: 400')
         } else {
             setTitle('Sending...')
-            api.post('/newpost', {txtarea: txtValue, db_user_id: props.id})
+            api.post('/posts', {content: txtValue, db_user_id: id})
                 .then(response => {
-                    console.log(response.data)
                     setTitle('Post area')
-                })
-                .catch(err => {console.log(err)})
+                }).catch(err => {console.log(err)})
         }
     }
 
     return (
         // ABAIXO FAZ COM Q QUANDO SAIA DO FOCO, O TXTAREA DPS DE 1SEG VOLTA AO NORMAL E TENHA O TEXTO LIMPADO
         <div className='NewPostForm' onBlur={() => {setTimeout(() => {
-            setTextAreaClick(false); setTxtValue(''); setTitle('Post area')}, 1000)
+            setTextAreaClick(false); setTxtValue(''); setTitle('Post area')}
+        , 1000)
             document.querySelector('.LeftMenu').style.overflowY = 'initial'
         }}> 
             <h1>{title}</h1>

@@ -1,38 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 
 import SearchIcon from '@material-ui/icons/Search';
 
 import {Slide} from '@material-ui/core'
 
-import {handleMyProfileData} from '../../../functions/LoadProfilePhoto/LoadProfilePhoto'
-
 import SearchTab from './SearchTab/SearchTab'
 
-function SearchMenu(props){
-    const [userData, setUserData] = useState({
-        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
-    })
+import {AuthContext} from '../../../Contexts'
 
-    useEffect(() => {
-        handleMyProfileData().then(data => {
-            setUserData({src: data.src})
-        })
-    }, [])
+function SearchMenu(props) {
+    const {userData} = useContext(AuthContext)
+
+    if(!userData) {
+        userData.photo = 'https://i.ya-webdesign.com/images/loading-png-gif.gif'
+        userData.username = 'Not found'
+    }
 
     const [isInputClicked, setIsInputClicked] = useState(false)
 
     const [txtValue, setTxtValue] = useState('')
 
     function handleTxtValue(e) {
-        const {name, value} = e.target
+        const value = e.target.value
 
         setTxtValue(value)
     }
 
     return(
-        <Slide direction='down' in={true} timeout={1000} mountOnEnter>
+        <Slide direction='down' in timeout={1000} mountOnEnter>
             <div className='SearchPageHeader'>
-                <img src={userData.src} className='SearchMenuIcon' onClick={() => {
+                <img src={userData.photo} className='SearchMenuIcon' onClick={() => {
                     document.querySelector('.Left').classList.add('isLeftClicked')
                     document.querySelector('.LeftMenu').classList.add('isLeftMenuClicked')}}
                 alt='img' />

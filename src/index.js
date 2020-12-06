@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import CorrectDevice from './components/functions/verifyDeviceScreen/verifyDeviceScreen'
+import CurrentDeviceLayout from './components/functions/SwitchDeviceLayout/SwitchDeviceLayout'
 
-ReactDOM.render(CorrectDevice, document.querySelector('#root'))
+ReactDOM.render(<CurrentDeviceLayout />, document.querySelector('#root'))

@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import NavBar from '../NavBar'
 import NewChatForm from '../NewChatForm'
 
 import {Slide} from '@material-ui/core'
 
-function DownMenu(props) {
+import {ChatContext} from '../../../../Contexts'
+
+function DownMenu() {
+    const {isChat, chatId, chatData} = useContext(ChatContext)
+
     return (
-        <Slide direction='up' in={true} timeout={1000} mountOnEnter> 
+        <Slide direction='up' in timeout={1000} mountOnEnter> 
             <div className='DownMenu'>
-            {!props.isChat ?
+            {!isChat ?
                 <NavBar />
                 : 
-                <NewChatForm chatid={props.chatid} chatData={props.chatData}/>
+                <NewChatForm chatid={chatId} chatData={chatData}/>
             }
             </div>
         </Slide>

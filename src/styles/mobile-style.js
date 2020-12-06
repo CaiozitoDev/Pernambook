@@ -16,7 +16,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-
 /* HOME */
 .Home {
     height: 100%;
@@ -1106,8 +1105,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-
-        
+      
 /* LOGIN PAGE */
 .LoginPage {
     padding: 5%;
@@ -1115,6 +1113,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
 
     min-height: 700px;
+    min-width: 500px;
 }
     .LoginMenu {
         background: linear-gradient(to right, #f09819, #edde5d); 
@@ -1176,7 +1175,7 @@ h1, h2, h3, h4, h5, h6 {
 
                 text-shadow: none;
             }
-            .UsernameField, .PasswordField {
+            .UsernameField, .PasswordField, .LoginField {
                 display: flex;
 
                 border: 1px solid black;
@@ -1187,10 +1186,10 @@ h1, h2, h3, h4, h5, h6 {
 
                 margin-bottom: 5%;
             }
-                .UsernameField svg, .PasswordField svg {
+                .UsernameField svg, .PasswordField svg, .LoginField svg {
                     margin-right: 10px;
                 }
-                .UsernameField input, .PasswordField input {
+                .UsernameField input, .PasswordField input, .LoginField input {
                     border: none;
 
                     width: 100%;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import {Person, Lock, Facebook} from '@material-ui/icons'
+import {Person, Lock, Facebook, Create} from '@material-ui/icons'
 
 import Brand from '../App/InterfacePresets/Left/Brand/Brand'
 
@@ -10,36 +10,38 @@ import FacebookLogin from 'react-facebook-login'
 
 import imgCompression from 'browser-image-compression'
 
-import AxiosLoginRegisterSchema from '../functions/AxiosLoginRegisterSchema'
-
 import {Link} from 'react-router-dom'
- 
+
+import api from '../../services/API_CONFIG'
+
 function LoginRegisterPage(props) {
    // FUNÇÃO E HOOK PRA DEFINIR PRA QUAL ROTA O FORM VAI MANDAR OS DADOS DEPENDENDO SE A PAG É DE LOGIN OU REGISTRO
-   const [isLoginPage, setIsLoginPage] = useState('/registerdata')
+   const [currentPage, setCurrentPage] = useState('/register')
 
    const [inputValues, setInputValues] = useState({
-       username: '',
+       login: '',
        password: ''
+   })
+   const [username, setUsername] = useState('')
+   const [photo, setPhoto] = useState({
+       data: null,
+       filename: 'Your profile photo'
    })
 
    const [title, setTitle] = useState(props.title)
-
-   const [photo, setPhoto] = useState(undefined)
 
 
    // MUDA A ROTA DO POST (FETCH) DEPENDENDO DA URL ATUAL DA PAGINA
    function handleIsLoginPage() {
        if(window.location.pathname === '/login') {
-           setIsLoginPage(() => {
-               return '/logindata'
-           })
+           setCurrentPage('/login')
        }
    }
 
    // ATUALIZA AUTOMATICAMENTE OS VALUES DOS INPUTS
    function handleInputValues(event) {
        const {name, value} = event.target
+
        setInputValues(preValue => {
            return {
                ...preValue,
@@ -50,84 +52,117 @@ function LoginRegisterPage(props) {
 
    // MANIPULA OS DADOS DO ARQUIVO DE FOTO PASSADO
    function handleProfilePhoto(event) {
-        const files = event.target.files
-        const myImage = files[0]
+        const myImage = event.target.files[0];
 
-        if(!myImage.type.match('image/png') && !myImage.type.match('image/jpg') && !myImage.type.match('image/jpeg')) {
-          alert('Sorry, only images .JPEG, .JPG and .PNG are allowed')
-          return
-        } else if(myImage.size > (5000*1024)) {
-            alert('Sorry, the max allowed size for images is 5MB')
-            return
-        } else {
-            setPhoto(myImage)
+        if(myImage) {
+            if(['image/png', 'image/jpg', 'image/jpeg'].indexOf(myImage.type) == -1) {
+                alert('Sorry, only images .JPEG, .JPG and .PNG are allowed')
+            } else if(myImage.size > (5000*1024)) {
+                alert('Sorry, the max allowed size for images is 5MB')
+            } else {
+                setPhoto({
+                    data: myImage,
+                    filename: myImage.name.length > 18 ? myImage.name.substring(0, 15) + '...' : myImage.name
+                })
+            }
         }
-
    }
 
    // FUNÇÃO QUE REDIRECIONA PARA A HOME QUANDO O USUÁRIO É LOGADO/REGISTRADO
    function handlePostLoginRegisterData() {
        setTitle('Loading...')
 
-       let data = new FormData()
-       for(let key in inputValues) {data.append(key, inputValues[key])}
-
         // VERIFICAÇÕES DOS DADOS PASSADOS NO LOGIN-REGISTER
-       if(inputValues.username.length < 4 || inputValues.password.length < 4) {
+       if(inputValues.login.length < 4 || inputValues.password.length < 4) {
             setTitle('Min length: 4 characters')
-       } else if(inputValues.username.length > 15) {
+       } else if(inputValues.login.length > 15) {
             setTitle('Max length: 15 characters')
-       } else if(inputValues.password.search(' ') !== -1 || inputValues.username.search(' ') !== -1) {
+       } else if(inputValues.password.search(' ') !== -1 || inputValues.login.search(' ') !== -1) {
             setTitle('Spaces are not allowed')
-       } else if(window.location.pathname == '/register' && photo == undefined) {
+       } else if(window.location.pathname == '/register' && !photo.data) {
             setTitle('Please, insert an photo')
        } else if(window.location.pathname == '/login') {
-            AxiosLoginRegisterSchema(isLoginPage, data).then(data => {setTitle(data.result)})
+            upload({
+                login: inputValues.login,
+                password: inputValues.password
+            })
        } else {
             const compressOptions = { 
                 maxSizeMB: 0.5,
-                maxWidthOrHeight: 200
+                maxWidthOrHeight: 400
             }
 
-            imgCompression(photo, compressOptions)
-                .then(compressed => {
-                    data.append('fileimage', compressed) // SEMPRE UM NOME PRA COMBINAR COM O "UPLOAD.SINGLE" DO SERVER
-
-                    AxiosLoginRegisterSchema(isLoginPage, data, {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}})
-                        .then(data => {setTitle(data.result)})
+            imgCompression(photo.data, compressOptions)
+                .then(photo => {
+                    upload({
+                        login: inputValues.login,
+                        password: inputValues.password,
+                        username: username,
+                        photo
+                    })
                 })
        }
    }
  
    // FUNÇÃO QUE CUIDA DA AUTENTICAÇÃO PELA API DO FACEBOOK
-   function handleFacebookLoginRegisterData({name, userID, picture: {data: {url}}}) {
-       setTitle('Loading...')
+   function handleFacebookLoginRegisterData({name, fbId, picture: {data: {url}}, email}) {
+        setTitle('Loading...')
 
-        AxiosLoginRegisterSchema('/facebook', {name, userID, url}).then(data => {setTitle(data.result)}) 
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                return new File([blob], `fb_${name.split(' ').join('_')}`, {type: blob.type})
+            }).then(photo => {
+                upload({
+                  login: email,
+                  username: name,
+                  fbId,
+                  photo,
+                })
+            })
    }
 
+   function upload(userData) {
+        let data = new FormData()
+        let header =  {headers: {"Content-Type": `multipart/form-data; boundary=${data._boundary}`}}
+
+        for(let key in userData) {data.append(key, userData[key])}
+
+        api.post(currentPage, data, header).then(response => {
+            /* window.location = '/home' */
+        }).catch(err => {
+            setTitle(err.response.data.message)
+            console.log(err.response.data)
+        })
+   }
 
     return (
         <div className='LoginPage' onLoad={handleIsLoginPage}>
-            <Zoom in={true} timeout={1000} >
+            <Zoom in timeout={1000} >
                 <div className='LoginMenu'>
                     <Brand />
                     <div className='LoginRegisterData'>
                         <h1>{title}</h1>
                         <form onSubmit={(e) => {e.preventDefault()}}>
-                            <div className='UsernameField'>
+                            <div className='LoginField'>
                                 <Person />
-                                <input type='text' placeholder='Username' name='username' onChange={handleInputValues} value={inputValues.username} />
+                                <input type='text' placeholder='Login' name='login' onChange={handleInputValues} value={inputValues.login} />
                             </div>
                             <div className='PasswordField'>
                                 <Lock />
                                 <input type='password' placeholder='Password' name='password' onChange={handleInputValues} value={inputValues.password} />
                             </div>
                             {window.location.pathname == '/register' &&
-                                <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id='photoInput' onChange={handleProfilePhoto} name='photo' />
-                                    <label class="custom-file-label" for='photoInput'>Your profile photo</label>
+                            <div>
+                                <div className='UsernameField'>
+                                    <Create />
+                                    <input type='text' placeholder='Username' name='username' onChange={e => setUsername(e.target.value)} value={username} />
+                                </div>
+                                <div className="input-group mb-3" style={{maxWidth: '100%', overflowX: 'hidden'}}>
+                                    <div className="custom-file">
+                                        <input type="file" className="custom-file-input" id='photoInput' onChange={handleProfilePhoto} name='photo' multiple={false}/>
+                                        <label className="custom-file-label" htmlFor='photoInput'>{photo.filename}</label>
+                                    </div>
                                 </div>
                             </div>}
                             <button className='btn btn-lg btn-block btn-outline-danger' onClick={handlePostLoginRegisterData}>{props.title}</button>

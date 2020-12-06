@@ -17,10 +17,9 @@ function RightMenuContent() {
             setIsRequestFinished(false)
             
             api.get('/topposts').then(response => {
-                setTopPosts(response.data)
+                setTopPosts(response.data.posts)
                 setIsRequestFinished(true)
-            })
-            .catch(err => {console.log(err)})
+            }).catch(err => {console.log(err)})
 
             document.querySelector('.TopPostArea').addEventListener('scroll', function(event) {
                 let element = event.target;

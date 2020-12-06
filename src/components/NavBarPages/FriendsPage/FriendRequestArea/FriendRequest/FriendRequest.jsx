@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import {Zoom} from '@material-ui/core'
 
 import api from '../../../../../services/API_CONFIG'
-import jwt from 'jsonwebtoken'
+
+import {AuthContext} from '../../../../Contexts'
 
 function FriendRequest(props) {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [isDisabled, setIsDisabled] = useState(false)
 

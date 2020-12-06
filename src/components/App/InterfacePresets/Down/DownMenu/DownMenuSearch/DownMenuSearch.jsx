@@ -10,7 +10,7 @@ function DownMenuSearch() {
     const [txtValue, setTxtValue] = useState('')
 
     function handleTxtValue(e) {
-        const {name, value} = e.target
+        const value = e.target.value
 
         setTxtValue(value)
     }

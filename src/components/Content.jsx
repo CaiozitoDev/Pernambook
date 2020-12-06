@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
@@ -16,32 +16,16 @@ import LoadingPage from './LoadingPage/Loading'
 
 import NotAuthorizedPage from './NotAuthorizedPage/NotAuthorizedPage'
 
-import api from '../services/API_CONFIG'
-
-import jwt from 'jsonwebtoken'
+import {AuthContext} from './Contexts'
 
 function Content(props) {
-    const {username} = jwt.decode(localStorage.getItem('local_token'))
-    username.replace(' ', '%20')
-
-    const [isAuth, setIsAuth] = useState(undefined)
-
-    useEffect(() => {
-        api.post('/auth', {local_token: localStorage.getItem('local_token')})
-            .then(response => {
-                console.log(response.data)
-                setIsAuth(response.data.authorized)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
+    const {userData, authStatus} = useContext(AuthContext)
 
     const PrivateRoute = ({component: Component, ...rest}) => (
-        <Route {...rest} component={(props) => {return isAuth ? (<Component {...props} />) : (<NotAuthorizedPage />)}} />
+        <Route {...rest} component={(props) => {return authStatus == 'accepted' ? (<Component {...props} />) : (<NotAuthorizedPage />)}} />
     )
 
-    if(isAuth == undefined) {
+    if(authStatus == 'processing') {
         return <LoadingPage />
     } else {
         return (
@@ -54,8 +38,8 @@ function Content(props) {
                 <PrivateRoute exact path='/comments/:postid' component={() => {return <CommentPage device={props.device} />}} />
                 <PrivateRoute exact path='/chat/:chatid' component={() => {return <ChatPage device={props.device} />}} />
 
-                <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${username}`} />}} />
-                <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${username}`} />}} />
+                <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${userData.db_user_id}`} />}} />
+                <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${userData.db_user_id}`} />}} />
                 <Route exact path='/chat' render={() => {return <Redirect to={`/messages`} />}} />
             </Router>
         )

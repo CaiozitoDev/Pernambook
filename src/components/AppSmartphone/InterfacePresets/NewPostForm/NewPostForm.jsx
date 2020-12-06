@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 
-import {Add, ArrowBack, ApartmentOutlined} from '@material-ui/icons';
+import {Add, ArrowBack} from '@material-ui/icons';
 import {Zoom, Fab} from '@material-ui/core'
 
 import api from '../../../../services/API_CONFIG'
 
-import jwt from 'jsonwebtoken'
+import {AuthContext} from '../../../Contexts'
 
 function NewPostForm() {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [textAreaClick, setTextAreaClick] = useState(false)
 
@@ -17,7 +17,7 @@ function NewPostForm() {
     const [title, setTitle] = useState('Post area')
 
     function handleTxtValue(e) {
-        const {name, value} = e.target
+        const value = e.target.value
 
         setTxtValue(value)
     }
@@ -28,7 +28,7 @@ function NewPostForm() {
         } else if(txtValue.length > 400) {
             setTitle('⚠ Max length: 400')
         } else {
-            api.post('/newpost', {txtarea: txtValue, db_user_id: db_user_id})
+            api.post('/newpost', {content: txtValue, db_user_id})
                 .then(response => {
                     console.log(response.data)
                 })

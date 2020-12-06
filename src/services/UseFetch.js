@@ -1,14 +1,16 @@
 import useSWR from 'swr'
 import api from '../services/API_CONFIG'
 
-export default function useFetch(url) {
-    return (
-        useSWR(url, () => {
-            const result = api.get(url).then(response => {
+export default function UseFetch(url) {
+    const {data, mutate, error} = useSWR(url, () => {
+        return (
+            api.get(url).then(response => {
                 return response.data
+            }).catch(err => {
+                console.log(err)
             })
-    
-            return result
-        })
-    )
+        )
+    })
+
+    return {data, mutate, error}
 }

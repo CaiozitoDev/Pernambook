@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from 'react'
-
-import {handleMyProfileData} from '../../../../../functions/LoadProfilePhoto/LoadProfilePhoto'
+import React, { useContext } from 'react'
 
 import {Link} from 'react-router-dom'
 
-function MyProfile(props) {
-    const [userData, setUserData] = useState({
-        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
-        username: ''
-    })
+import {AuthContext} from '../../../../../Contexts'
 
-    useEffect(() => {
-        handleMyProfileData().then(data => {
-            setUserData(preValue => {
-                return {...preValue, src: data.src, username: data.username}
-            })
-        })
-    }, [])
+function MyProfile({db_user_id}) {
+    const {userData} = useContext(AuthContext)
+
+    if(!userData) {
+        userData.photo = 'https://i.ya-webdesign.com/images/loading-png-gif.gif'
+        userData.username = 'Not found'
+    }
 
     return (
         <div className='MyProfile'>
-            <Link to={`/profile/${props.username}`}>
+            <Link to={`/profile/${db_user_id}`}>
                 <div className='UserDiv'>
-                    <img src={userData.src} className='PostUserIcon' alt='img' />
+                    <img src={userData.photo} className='PostUserIcon' alt='img' />
                     <div className='HeaderUserInfo'>
                         <h5>{userData.username}</h5>
                     </div>

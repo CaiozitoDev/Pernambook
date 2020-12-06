@@ -5,13 +5,13 @@ import {Zoom, Fab} from '@material-ui/core'
 
 import api from '../../../../services/API_CONFIG'
 
-function NewChatForm(props) {
+function NewChatForm({chatData, chatId}) {
     const [txtValue, setTxtValue] = useState('')
 
     const [isDisabled, setIsDisabled] = useState(false)
 
     function handleTxtValue(e) {
-        const {value} = e.target
+        const value = e.target.value
 
         setTxtValue(value)
     }
@@ -27,10 +27,10 @@ function NewChatForm(props) {
             setIsDisabled(false)
         } else {
             api.post('/newmessage', {
-                    chatid: props.chatid, 
-                    db_user_id: props.chatData.myProfile.userid,
-                    username: props.chatData.myProfile.username,
-                    messagetext: txtValue
+                    chatid: chatId, 
+                    db_user_id: chatData.myProfile.userid,
+                    username: chatData.myProfile.username,
+                    content: txtValue
                 })
                 .then(response => {
                     console.log(response.data)
@@ -48,7 +48,7 @@ function NewChatForm(props) {
     }
 
     return (
-        <Zoom in={true} timeout={1000}>
+        <Zoom in timeout={1000}>
             <div className='NewChatForm'>
                 <textarea placeholder='Send a message' onChange={handleTxtValue} value={txtValue} className='Chattxtarea' onKeyDown={onEnterPress}></textarea>
                 <Fab onClick={postMessage} disabled={isDisabled}>

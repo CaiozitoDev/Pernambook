@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext} from 'react'
 
 import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
@@ -9,14 +9,14 @@ import NewCommentForm from './NewCommentForm/NewCommentForm'
 
 import {Zoom} from '@material-ui/core'
 
-import jwt from 'jsonwebtoken'
-
 import {useParams} from 'react-router-dom'
 
 import api from '../../../services/API_CONFIG'
 
+import {AuthContext} from '../../Contexts'
+
 function CommentPage(props) { 
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [postData, setPostData] = useState(undefined)
 

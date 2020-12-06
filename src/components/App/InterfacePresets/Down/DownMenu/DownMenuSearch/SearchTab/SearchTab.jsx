@@ -13,7 +13,12 @@ function SearchTab(props) {
 
     const [isRequestFinished, setIsRequestFinished] = useState(true)
 
-    const [numberOfUsers, setNumberOfUsers] = useState(10)
+    const [numberOfUsers, setNumberOfUsers] = useState({
+        from: 0,
+        to: 10
+    })
+
+    const [allUsersLength, setAllUsersLength] = useState(0)
     
     const [hasMore, setHasMore] = useState(true)
 
@@ -22,13 +27,27 @@ function SearchTab(props) {
             if(isRequestFinished) {
                 setIsRequestFinished(false)
 
-                api.get(`/userfilter?username=${props.txtValue}&numberOfUsers=${numberOfUsers}`).then(response => {
-                    setFoundUser(response.data.users)
+                api.get(`/userfilter?username=${props.txtValue}&from=${numberOfUsers.from}&to=${numberOfUsers.to}`).then(response => {
+                    setFoundUser(preValue => {
+                        return [
+                            ...preValue,
+                            response.data.users
+                        ]
+                    })
                     
                     setIsRequestFinished(true)
 
-                    numberOfUsers < response.data.userLength ? numberOfUsers && setNumberOfUsers(numberOfUsers + 10) :
+                    if(allUsersLength < response.data.allUsersLength) {
+                        setAllUsersLength(response.data.allUsersLength)
+                        setNumberOfUsers(preValue => {
+                            return {
+                                from: preValue.from + 10,
+                                to: preValue.to + 10
+                            }
+                        })
+                    } else {
                         setHasMore(false)
+                    }
                 })
                 .catch(err => {console.log(err)})
             }

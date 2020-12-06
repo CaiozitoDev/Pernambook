@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
     font-family: 'Roboto', sans-serif;
 }
 
-
 /* LEFT */
 .Left {
     position: fixed;
@@ -937,6 +936,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
     height: 100%;
     min-height: 100vh;
+    min-width: 625px;
     
     padding: 50px 0;
 }
@@ -1012,7 +1012,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                 text-shadow: none;
             }
-            .UsernameField, .PasswordField {
+            .UsernameField, .PasswordField, .LoginField {
                 display: flex;
 
                 border: 1px solid black;
@@ -1023,10 +1023,10 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
                 margin-bottom: 5%;
             }
-                .UsernameField svg, .PasswordField svg {
+                .UsernameField svg, .PasswordField svg, .LoginField svg {
                     margin-right: 10px;
                 }
-                .UsernameField input, .PasswordField input {
+                .UsernameField input, .PasswordField input, .LoginField input {
                     border: none;
 
                     width: 100%;

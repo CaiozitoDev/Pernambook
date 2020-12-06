@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
-function PostBody(props) {
+import {PostContext} from '../../../Contexts'
+
+function PostBody() {
+    const {content} = useContext(PostContext)
+
     return (
         <div className='PostBody'>
-           <p>{props.postbodytext}</p>
+           <p>{content}</p>
         </div>
     )
 }

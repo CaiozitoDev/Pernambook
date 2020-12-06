@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import {InterfacePresets} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
@@ -13,12 +13,12 @@ import api from '../../../services/API_CONFIG'
 
 import { useParams } from 'react-router-dom'
 
-import jwt from 'jsonwebtoken'
+import {AuthContext} from '../../Contexts'
 
 import InfiniteScroll from 'react-infinite-scroller'
 
 function ProfilePage(props) {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
     
     const [isRequestFinished, setIsRequestFinished] = useState(false)
 

@@ -6,7 +6,7 @@ import {Slide} from '@material-ui/core'
 
 function RightMenu() {
     return (
-        <Slide direction='down' in={true} timeout={1000}>
+        <Slide direction='down' in timeout={1000}>
             <div className='RightMenu'>
                 <h2>Most <span style={{color: 'red'}}>❤</span> posts</h2>
                 <RightMenuContent />

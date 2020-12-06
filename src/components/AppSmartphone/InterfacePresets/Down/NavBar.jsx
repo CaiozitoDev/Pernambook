@@ -1,17 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 
 import {Zoom} from '@material-ui/core'
 
 import {Home, Search, Email, Group} from '@material-ui/icons'
 
-import jwt from 'jsonwebtoken'
+import {AuthContext} from '../../../Contexts'
 
 import api from '../../../../services/API_CONFIG'
 
 import {Link} from 'react-router-dom'
 
 function NavBar() {
-    const {db_user_id, username} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id, username}} = useContext(AuthContext)
 
     const [friendNumber, setFriendNumber] = useState(0)
 
@@ -24,7 +24,7 @@ function NavBar() {
         setIsFriendRequestFinished(false)
 
         api.get(`/notification?db_user_id=${db_user_id}`).then(response => {
-            setFriendNumber(response.data) 
+            setFriendNumber(response.data.friendsLength) 
             setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
@@ -34,7 +34,7 @@ function NavBar() {
         setIsMessageRequestFinished(false)
         
         api.get(`/messagelist?db_user_id=${db_user_id}&notification=${true}`).then(response => {
-            setMessageNumber(response.data)
+            setMessageNumber(response.data.notSawMessages)
             setIsMessageRequestFinished(true)
         })
         .catch(err => {console.log(err)})
@@ -54,7 +54,7 @@ function NavBar() {
                             <Search />
                         </li>
                     </Link>
-                    <Link to={`/friends/${username}`}>
+                    <Link to={`/friends/${db_user_id}`}>
                         <li>
                             <Group />
                             <div className='Notification'>{friendNumber}</div>

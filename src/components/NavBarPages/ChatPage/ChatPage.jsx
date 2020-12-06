@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 
 import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
@@ -11,12 +11,13 @@ import {KeyboardBackspace} from '@material-ui/icons'
 import {useParams} from 'react-router-dom'
 
 import api from '../../../services/API_CONFIG'
-import jwt from 'jsonwebtoken'
 
 import {Link} from 'react-router-dom'
 
+import {ChatContext, AuthContext} from '../../Contexts'
+
 function ChatPage(props) {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const {chatid} = useParams()
 
@@ -63,13 +64,24 @@ function ChatPage(props) {
         .catch(err => {console.log(err)})
     }
 
+    let ChatContextData = ({children}) => {
+        return (
+            <ChatContext.Provider value={{isChat: true, chatId: chatid, chatData: {myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}}>
+                {children}
+            </ChatContext.Provider> 
+        )
+    }
+
     return (
         <div className='ChatPage' onLoad={() => {window.scrollTo(0,document.body.scrollHeight)}}> {/* PAGE INICIA JÁ NA PARTE DE BAIXO */}
-            {props.device == 'desktop' ? <DesktopInterfacePresets isChat={true} chatid={chatid} chatData={{myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}} /> : 
+            {props.device == 'desktop' ? 
+                <ChatContextData>
+                    <DesktopInterfacePresets />
+                </ChatContextData> : 
                 <div>
                     <SearchMenuPreset title='Chat' />
                     <LeftPreset />
-                    <DownPreset isChat={true} chatid={chatid} chatData={{myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}/>
+                    <ChatContextData><DownPreset /></ChatContextData>
                 </div>
             }
 

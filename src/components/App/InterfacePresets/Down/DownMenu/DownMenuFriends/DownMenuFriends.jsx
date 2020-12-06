@@ -1,18 +1,19 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 import DownMenuFriendChat from './DownMenuFriendChat/DownMenuFriendChat'
 
 import api from '../../../../../../services/API_CONFIG'
-import jwt from 'jsonwebtoken'
+
+import {AuthContext} from '../../../../../Contexts'
 
 function DownMenuFriends() {
-    const {db_user_id} = jwt.decode(localStorage.getItem('local_token'))
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [chatList, setChatList] = useState([])
 
     useEffect(() => {
         api.get(`/lastchat?db_user_id=${db_user_id}`).then(response => {
-            setChatList(response.data)
+            setChatList(response.data.chatList)
         })
         .catch(err => {console.log(err)})
     }, [])
