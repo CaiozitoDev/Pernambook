@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import Header from '../App/Content/HomePage/Header/Header'
 import Post from './Post/Post'
@@ -9,6 +9,8 @@ import api from '../../services/API_CONFIG'
 
 import {PostContext} from '../Contexts'
 
+import socket from '../../services/SOCKET_CONFIG'
+
 function PostArea(props) {
     const [postArray, setPostArray] = useState([])
     const [numberOfPosts, setNumberOfPosts] = useState({
@@ -17,6 +19,26 @@ function PostArea(props) {
     })
 
     const [hasMore, setHasMore] = useState(true)
+
+    useEffect(() => {
+        socket.on('newpost', () => {
+            api.get(`/posts?from=${0}&to=${1}`).then(response => {
+                setPostArray(preValue => {
+                    return [
+                        ...response.data.posts,
+                        ...preValue
+                    ]
+                })
+
+                setNumberOfPosts(preValue => {
+                    return {
+                        from: preValue.from + 1,
+                        ...preValue
+                    }
+                })
+            })
+        })
+    }, [])
 
     const fetcher = () => {
         hasMore &&
@@ -55,10 +77,10 @@ function PostArea(props) {
                 loadMore={fetcher}
                 hasMore
                 initialLoad
-                loader={hasMore ? <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/> : <h4 className='LoadingImage'>End</h4>}
+                loader={hasMore && <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
             >
                 {postArray.map((post) => {
-                    return <PostContext.Provider value={post}><Post /></PostContext.Provider>
+                    return <PostContext.Provider value={post} key={post._id}><Post /></PostContext.Provider>
                 })}
             </InfiniteScroll>
         </div>

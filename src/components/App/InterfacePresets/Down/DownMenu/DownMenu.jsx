@@ -16,7 +16,7 @@ function DownMenu() {
             <div className='DownMenu' style={{paddingRight: !chat.isChat ? '40px' : '0px'}}>
                 <div className='DownMenuComponents'>
                     <DownMenuSearch />
-                    {!chat.isChat ? <DownMenuFriends /> : <NewChatForm chatid={chat.chatid} chatData={chat.chatData} />}
+                    {!chat.isChat ? <DownMenuFriends /> : <NewChatForm chatid={chat.chatId} chatData={chat.chatData} />}
                 </div>
             </div>
         </Slide>

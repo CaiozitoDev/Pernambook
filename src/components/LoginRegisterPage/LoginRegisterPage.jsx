@@ -129,8 +129,7 @@ function LoginRegisterPage(props) {
         for(let key in userData) {data.append(key, userData[key])}
 
         api.post(currentPage, data, header).then(response => {
-            /* window.location = '/home' */
-            console.log('asodnf')
+            window.location = '/home'
         }).catch(err => {
             setTitle(err.response.data.message)
             console.log(err.response.data)

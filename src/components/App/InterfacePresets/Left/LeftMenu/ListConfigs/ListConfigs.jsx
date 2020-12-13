@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {Home, Person, Email, Group} from '@material-ui/icons'
 
@@ -6,34 +6,39 @@ import api from '../../../../../../services/API_CONFIG'
 
 import {Link} from 'react-router-dom'
 
+import socket from '../../../../../../services/SOCKET_CONFIG'
+
 function ListConfigs({id}) {
     const [friendNumber, setFriendNumber] = useState(0)
 
     const [messageNumber, setMessageNumber] = useState(0)
 
-    const [isFriendRequestFinished, setIsFriendRequestFinished] = useState(true)
-    const [isMessageRequestFinished, setIsMessageRequestFinished] = useState(true)
+    useEffect(() => {
+        getFriendsNotification()
+        getMessagesNotification()
 
-    if(isFriendRequestFinished) {
-        setIsFriendRequestFinished(false)
+        socket.on(`${id}_friendrequestnotification`, () => {
+            getFriendsNotification()
+        })
 
+        socket.on(`${id}_messagesnotification`, () => {
+            getMessagesNotification()
+        })
+    }, [])
+
+    function getFriendsNotification() {
         api.get(`/notification?db_user_id=${id}`).then(response => {
             setFriendNumber(response.data.friendsLength) 
-            setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }
 
-    if(isMessageRequestFinished) {
-        setIsMessageRequestFinished(false)
-        
+    function getMessagesNotification() {
         api.get(`/messagelist?db_user_id=${id}&notification=true`).then(response => {
             setMessageNumber(response.data.notSawMessages)
-            setIsMessageRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }
-
 
     return (
         <div className='ListConfigs'>

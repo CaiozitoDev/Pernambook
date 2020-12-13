@@ -10,34 +10,33 @@ import api from '../../../../services/API_CONFIG'
 
 import {Link} from 'react-router-dom'
 
-function Friend(props) {
+function Friend({db_user_id, friendData, url_userId}) {
     const [isDisabled, setIsDisabled] = useState(false)
 
     function deleteFriend() {
         setIsDisabled(true)
 
-        api.delete(`/deletefriend?db_user_id=${props.id}&userid=${props.frienddata.userid}`).then(response => {
-            console.log(response.data)
+        api.delete(`/deletefriend?db_user_id=${db_user_id}&userid=${friendData.userId}`).then(response => {
             setIsDisabled(false)
         })
         .catch(err => {console.log(err)})
     }
 
     return (
-        <Zoom in={true} timeout={1000}>
+        <Zoom in timeout={1000}>
             <div className='Friend'>
                 <li>
-                    <Link to={`/profile/${props.frienddata.username}`} className='FriendUserInfo'>
-                        <img src={props.frienddata.photo} alt='img' />
+                    <Link to={`/profile/${friendData.userId}`} className='FriendUserInfo'>
+                        <img src={friendData.photo} alt='img' />
                         <div className='UserInfo'>
-                            <h4>{props.frienddata.username}</h4>
+                            <h4>{friendData.username}</h4>
                         </div>
                     </Link>
                     <div className='FriendButtons'>
-                        {props.id !== props.frienddata.userid &&
-                            <ChatFriendButton db_user_id={props.id} postuserid={props.frienddata.userid} />
+                        {db_user_id !== friendData.userId &&
+                            <ChatFriendButton db_user_id={db_user_id} postuserid={friendData.userId} />
                         }
-                        {props.url_username == props.username &&
+                        {url_userId == db_user_id &&
                             <button className='DeleteFriendButton' onClick={deleteFriend} disabled={isDisabled}>
                                 <Delete />
                             </button>

@@ -10,13 +10,14 @@ import {ChatContext} from '../../../../Contexts'
 function DownMenu() {
     const {isChat, chatId, chatData} = useContext(ChatContext)
 
+    
     return (
         <Slide direction='up' in timeout={1000} mountOnEnter> 
             <div className='DownMenu'>
             {!isChat ?
                 <NavBar />
                 : 
-                <NewChatForm chatid={chatId} chatData={chatData}/>
+                <NewChatForm chatId={chatId} chatData={chatData}/>
             }
             </div>
         </Slide>

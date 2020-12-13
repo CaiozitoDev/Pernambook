@@ -9,19 +9,23 @@ import Zoom from '@material-ui/core/Zoom'
 
 import api from '../../../../services/API_CONFIG'
 
+import socket from '../../../../services/SOCKET_CONFIG'
+
 function Search() {
     const [topPosts, setTopPosts] = useState([])
 
-    const [isRequestFinished, setIsRequestFinished] = useState(true)
+    useEffect(() => {
+        getTopPosts()
 
-    if(isRequestFinished) {
-        setIsRequestFinished(false)
-        
-        api.get('/topposts').then(response => {
-            setTopPosts(response.data)
-            setIsRequestFinished(true)
+        socket.on('topposts', () => {
+            getTopPosts()
         })
-        .catch(err => {console.log(err)})
+    }, [])
+
+    function getTopPosts() {
+        api.get('/topposts').then(response => {
+            setTopPosts(response.data.posts)
+        }).catch(err => {console.log(err)})
     }
 
     return (
@@ -32,10 +36,10 @@ function Search() {
                 {topPosts.length !== 0 && 
                     <TopTrendingPost postdata={topPosts[0]} />
                 }
-                <Zoom in={true} timeout={1000}>
+                <Zoom in timeout={1000}>
                     <div className='Trending'>
                         <h2>Most <span style={{color: 'red'}}>❤</span> posts</h2>
-                        <Zoom in={true} timeout={1000}>
+                        <Zoom in timeout={1000}>
                             <div className='TopPostArea'>
                                 {topPosts.map((post, index) => {
                                     if(index !== 0) {

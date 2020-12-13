@@ -13,7 +13,9 @@ import {useParams} from 'react-router-dom'
 
 import api from '../../../services/API_CONFIG'
 
-import {AuthContext} from '../../Contexts'
+import {AuthContext, PostContext} from '../../Contexts'
+
+import socket from '../../../services/SOCKET_CONFIG'
 
 function CommentPage(props) { 
     const {userData: {db_user_id}} = useContext(AuthContext)
@@ -23,11 +25,19 @@ function CommentPage(props) {
     const {postid} = useParams()
 
     useEffect(() => {
+        getPostData()
+
+        socket.on('newcomment', () => {
+            getPostData()
+        })
+    }, [])
+
+    function getPostData() {
         api.get(`/getpost/${postid}`).then(response => {
             setPostData(response.data)
         })
         .catch(err => {return console.log(err)})
-    })
+    }
 
     return (
         <div className='CommentPage'>
@@ -42,11 +52,14 @@ function CommentPage(props) {
             <Zoom in={true} timeout={1000}>
                 <div className='CommentArea'>
                     <div className='CommentContent'>
-                        {postData !== undefined ? <Post postdata={postData} /> : <h1>Loading...</h1> }
+                        {postData !== undefined ? 
+                            <PostContext.Provider value={postData}><Post /></PostContext.Provider> 
+                            : <h1>Loading...</h1> 
+                        }
 
                         <div className='Comments'>
                             {postData !== undefined &&
-                                postData.comment.map(commentdata => {
+                                postData.comments.map(commentdata => {
                                     return <Comment data={commentdata} />
                                 })
                             }

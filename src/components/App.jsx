@@ -25,8 +25,6 @@ function App({device}) {
                     authStatus: 'accepted'
                 })
             }).catch(err => {
-                console.log(err)
-
                 setAuth(preValue => {
                     return {
                         ...preValue,

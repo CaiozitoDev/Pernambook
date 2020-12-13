@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom'
 
 function TopPost(props) {
     return (
-        <Zoom in={true} timeout={1000}>
-            <Link to={`/comments/${props.postdata.postid}`}>
+        <Zoom in timeout={1000}>
+            <Link to={`/comments/${props.postdata._id}`}>
                 <div className='TopPost'>
                     <div className='TopPostHeader'>
-                        <img src={props.postdata.headerphoto} className='PostUserIcon' alt='img' />
-                        <h6>{props.postdata.headerusername}</h6>
+                        <img src={props.postdata.photo} className='PostUserIcon' alt='img' />
+                        <h6>{props.postdata.username}</h6>
                     </div>
-                    <p><span className='Quotation'>"</span> {props.postdata.bodytext} <span className='Quotation'>"</span> </p>
+                    <p><span className='Quotation'>"</span> {props.postdata.content} <span className='Quotation'>"</span> </p>
                 </div>
             </Link>
         </Zoom>

@@ -27,17 +27,17 @@ function NewChatForm({chatData, chatId}) {
             setIsDisabled(false)
         } else {
             api.post('/newmessage', {
-                    chatid: chatId, 
-                    db_user_id: chatData.myProfile.userid,
-                    username: chatData.myProfile.username,
-                    content: txtValue
-                })
-                .then(response => {
-                    console.log(response.data)
-                    setIsDisabled(false)
-                    setTxtValue('')
-                })
-                .catch(err => {console.log(err)})
+                chatid: chatId, 
+                db_user_id: chatData.myProfile.userId,
+                userid: chatData.friendProfile.userId,
+                username: chatData.myProfile.username,
+                content: txtValue
+            })
+            .then(() => {
+                setIsDisabled(false)
+                setTxtValue('')
+            })
+            .catch(err => {console.log(err)})
         }
     }
 

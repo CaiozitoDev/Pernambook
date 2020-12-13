@@ -26,8 +26,10 @@ function NewPostForm({id}) {
         } else {
             setTitle('Sending...')
             api.post('/posts', {content: txtValue, db_user_id: id})
-                .then(response => {
+                .then(() => {
                     setTitle('Post area')
+
+                    window.scrollTo({ top: 0, behavior: `smooth` })
                 }).catch(err => {console.log(err)})
         }
     }

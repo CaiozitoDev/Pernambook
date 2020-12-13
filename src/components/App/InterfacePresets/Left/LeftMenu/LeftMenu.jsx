@@ -17,7 +17,7 @@ function LeftMenu() {
                 <NewPostForm id={userData.db_user_id} />
                 <hr />
                 <LeftOptions id={userData.db_user_id} />
-                <MyProfile username={userData.username} photo={userData.photo}/>
+                <MyProfile username={userData.username} photo={userData.photo} id={userData.db_user_id} />
                 <hr />
             </div>
         </Slide>

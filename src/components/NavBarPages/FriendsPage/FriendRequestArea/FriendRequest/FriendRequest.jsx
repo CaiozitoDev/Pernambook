@@ -14,29 +14,28 @@ function FriendRequest(props) {
     function handleRequestResult(result) {
         setIsDisabled(true)
 
-        const accept = {
+        /* const accept = {
             result: result,
             db_user_id: db_user_id,
             userid: props.requestdata.userid,
             username: props.requestdata.username,
             photo: props.requestdata.photo
-        }
-        const rejeit = {
+        } */
+        const options = {
             result: result,
             db_user_id: db_user_id,
-            userid: props.requestdata.userid
+            userid: props.requestdata.userId
         }
 
-        api.post('/friendrequestresult', result ? accept : rejeit)
-            .then(response => {
-                console.log(response.data)
+        api.post('/friendrequestresult', options)
+            .then(() => {
                 setIsDisabled(false)
             })
             .catch(err => {console.log(err)})
     }
 
     return (
-        <Zoom in={true} timeout={1000}>
+        <Zoom in timeout={1000}>
             <div className='FriendRequest'>
                 <img src={props.requestdata.photo} className='PostUserIcon' />
                 <div className='FriendRequestContent'>

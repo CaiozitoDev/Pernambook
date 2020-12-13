@@ -9,24 +9,27 @@ import api from '../../../services/API_CONFIG'
 
 import {AuthContext} from '../../Contexts'
 
+import socket from '../../../services/SOCKET_CONFIG'
+
 function MessagesPage(props) {
     const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [messageData, setMessageData] = useState([])
 
-    const [isRequestFinished, setIsRequestFinished] = useState(true)
-
     useEffect(() => {
-        if(isRequestFinished) {
-            setIsRequestFinished(false)
-    
-            api.get(`/messagelist?db_user_id=${db_user_id}`).then(response => {
-                setMessageData(response.data)
-                setIsRequestFinished(true)
-            })
-            .catch(err => {console.log(err)})
-        }
-    })
+        getMessages()
+
+        socket.on(`${db_user_id}_newmessage`, () => {
+            getMessages()
+        })
+    }, [])
+
+    function getMessages() {
+        api.get(`/messagelist?db_user_id=${db_user_id}&notification=false`).then(response => {
+            setMessageData(response.data.notSawMessages)
+        })
+        .catch(err => {console.log(err)})
+    }
 
     return (
         <div className='MessagesPage'>

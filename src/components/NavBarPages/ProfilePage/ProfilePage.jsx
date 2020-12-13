@@ -13,85 +13,104 @@ import api from '../../../services/API_CONFIG'
 
 import { useParams } from 'react-router-dom'
 
-import {AuthContext} from '../../Contexts'
+import {AuthContext, PostContext} from '../../Contexts'
 
 import InfiniteScroll from 'react-infinite-scroller'
 
 function ProfilePage(props) {
     const {userData: {db_user_id}} = useContext(AuthContext)
-    
-    const [isRequestFinished, setIsRequestFinished] = useState(false)
 
     const [userData, setUserData] = useState({
-        src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+        photo: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
         username: '',
-        userid: '',
+        userId: '',
         friendslength: '',
-        date: ''
+        timestamp: ''
     })
 
     const [userPosts, setUserPosts] = useState([])
 
-    const [numberOfPosts, setNumberOfPosts] = useState(10)
+    const [numberOfPosts, setNumberOfPosts] = useState({
+        from: 0,
+        to: 10
+    })
+    
+    const [allPostsLength, setAllPostsLength] = useState(0)
 
     const [hasMore, setHasMore] = useState(true)
 
-    const {username} = useParams()
+    const {userId} = useParams()
     
     useEffect(() => {
         // IMPORTA OS DADOS
-        api.get(`/profile/${username}`)
+        api.get(`/profile/${userId}`)
         .then(response => {
             setUserData({
-                src: response.data.src,
+                photo: response.data.photo,
                 username: response.data.username,
-                userid: response.data.userid,
-                friendslength: response.data.friendslength,
-                date: response.data.date
+                userId: response.data.userId,
+                friendsLength: response.data.friendsLength,
+                timestamp: response.data.timestamp
             })
-
-            setIsRequestFinished(true)
         })
         .catch(err => {console.log(err)})
-
-        handleNumberOfPosts()
     }, [])
 
-    function handleNumberOfPosts() {
-        api.get(`/userpost?username=${username}&numberOfPosts=${numberOfPosts}`).then(response => {
-            setUserPosts(response.data.posts)
+    function fetcher() {
+        hasMore &&
+        api.get(`/userposts?userid=${userId}&from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
+            setUserPosts(preValue => {
+                return [
+                    ...preValue,
+                    ...response.data.posts
+                ]
+            })
 
-            numberOfPosts < response.data.postLength ? numberOfPosts && setNumberOfPosts(numberOfPosts + 10) :
+            if(response.data.posts.length) {
+                setNumberOfPosts(preValue => {
+                    return {
+                        from: preValue.from + response.data.posts.length,
+                        to: (preValue.from + response.data.posts.length) + 10
+                    }
+                })
+            }
+
+            setAllPostsLength(response.data.allPostsLength)
+            
+            if(numberOfPosts.from >= response.data.allPostsLength){
                 setHasMore(false)
+            }
         })
-        .catch(err => {console.log(err)})
     }
 
     return (
         <div className='ProfilePage'>
             {props.device == 'desktop' ? <DesktopInterfacePresets /> : <InterfacePresets title='Profile' />}
             
-            {isRequestFinished && 
-                <Zoom in={true} timeout={1000}>
-                    <div className='ProfileContent'>
-                        <UserProfile data={userData} db_user_id={db_user_id} userid={userData.userid} post={userPosts.length} />
-                        <h2>{username} - posts</h2>
-                        <div className='ProfilePosts'>
-                            <InfiniteScroll
-                                pageStart={0}
-                                loadMore={handleNumberOfPosts}
-                                hasMore={true}
-                                initialLoad={true}
-                                loader={hasMore ? <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/> : <h4 className='LoadingImage'>End</h4>}
-                            >
-                                {userPosts.map(post => {
-                                    return <Post postdata={post} />
-                                })}
-                            </InfiniteScroll>
-                        </div>
+            <Zoom in timeout={1000}>
+                <div className='ProfileContent'>
+                    <UserProfile data={userData} db_user_id={db_user_id} post={allPostsLength} />
+                    <h2>Posts</h2>
+                    <div className='ProfilePosts'>
+                        <InfiniteScroll
+                            pageStart={0}
+                            loadMore={fetcher}
+                            hasMore
+                            initialLoad={false}
+                            threshold={10}
+                            loader={hasMore && <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                        >
+                            {userPosts.map(post => {
+                                return (
+                                    <PostContext.Provider value={post}>
+                                        <Post />
+                                    </PostContext.Provider>
+                                )
+                            })}
+                        </InfiniteScroll>
                     </div>
-                </Zoom>
-            }
+                </div>
+            </Zoom>
         </div>
     )
 }

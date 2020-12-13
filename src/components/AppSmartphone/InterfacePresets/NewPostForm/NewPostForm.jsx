@@ -28,9 +28,9 @@ function NewPostForm() {
         } else if(txtValue.length > 400) {
             setTitle('⚠ Max length: 400')
         } else {
-            api.post('/newpost', {content: txtValue, db_user_id})
-                .then(response => {
-                    console.log(response.data)
+            api.post('/posts', {content: txtValue, db_user_id})
+                .then(() => {
+                    window.scrollTo({ top: 0, behavior: `smooth` })
                 })
                 .catch(err => {console.log(err)})
         }

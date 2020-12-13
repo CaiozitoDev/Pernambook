@@ -12,7 +12,7 @@ function ChatFriendButton(props) {
 
         api.get(`/chat?db_user_id=${props.db_user_id}&userid=${props.postuserid}`).then(response => {
             setIsDisabled(false)
-            window.location = '/chat/' + response.data
+            window.location = '/chat/' + response.data.chatId
         })
         .catch(err => {console.log(err)})
     }

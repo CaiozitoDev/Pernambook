@@ -2,23 +2,25 @@ import React from 'react'
 
 import {Link} from 'react-router-dom'
 
-function MyProfile({username, photo}) {
+function MyProfile({username, photo, id}) {
     let userInfo
 
     if(username && photo) {
         userInfo = {
+            id,
             src: photo,
             username: username
         }
     } else {
         userInfo = {
+            id: '',
             src: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
             username: 'Not found'
         }
     }
 
     return (
-        <Link to={`/profile/${userInfo.username}`}>
+        <Link to={`/profile/${userInfo.id}`}>
             <div className='MyProfile'>
                 <img src={userInfo.src} className='PostUserIcon' alt='img' />
                 <div>

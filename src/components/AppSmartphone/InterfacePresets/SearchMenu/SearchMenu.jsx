@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import {Slide} from '@material-ui/core'
 
-import SearchTab from './SearchTab/SearchTab'
+import SearchTab from '../../../SearchTab/SearchTab'
 
 import {AuthContext} from '../../../Contexts'
 
@@ -18,12 +18,12 @@ function SearchMenu(props) {
 
     const [isInputClicked, setIsInputClicked] = useState(false)
 
-    const [txtValue, setTxtValue] = useState('')
+    const [input, setInput] = useState('')
 
     function handleTxtValue(e) {
         const value = e.target.value
 
-        setTxtValue(value)
+        setInput(value)
     }
 
     return(
@@ -35,15 +35,17 @@ function SearchMenu(props) {
                 alt='img' />
                 <div className='SearchMenu'>
                     <span> <SearchIcon style={{fill: 'white'}}/> </span>
-                    <input type='text' placeholder='Find a profile' 
+                    <input 
+                        type='text' 
+                        placeholder='Find a profile' 
                         onFocus={() => {setIsInputClicked(true)}}
-                        onBlur={() => {setIsInputClicked(false);setTxtValue('')}}
+                        onBlur={() => {setIsInputClicked(false); setInput('')}}
                         onChange={handleTxtValue}
-                        value={txtValue}
-                     />
+                        value={input || ''}
+                    />
                 </div>
                 <h5>{props.title}</h5>
-                <SearchTab isClicked={isInputClicked} txtValue={txtValue} />
+                <SearchTab isClicked={isInputClicked} input={input} device='smartphone' />
             </div>
         </Slide>
     )

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
@@ -16,82 +16,105 @@ import {Link} from 'react-router-dom'
 
 import {ChatContext, AuthContext} from '../../Contexts'
 
+import socket from '../../../services/SOCKET_CONFIG'
+
+let ChatContextData = ({children, params}) => {
+    return (
+        <ChatContext.Provider value={params}>
+            {children}
+        </ChatContext.Provider> 
+    )
+}
+
 function ChatPage(props) {
     const {userData: {db_user_id}} = useContext(AuthContext)
 
-    const {chatid} = useParams()
+    const {chatId} = useParams()
 
     const [chatData, setChatData] = useState({
         myProfile: {
-            userPhoto: '',
+            photo: '',
             username: '',
-            userid: ''
+            userId: ''
         },
         friendProfile: {
-            userPhoto: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+            photo: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
             username: '',
-            userid: ''
-        },
-        messages: []
+            userId: ''
+        }
     })
 
-    const [isRequestFinished, setIsRequestFinished] = useState(true)
+    const [messages, setMessages] = useState([])
 
-    if(isRequestFinished) {
-        setIsRequestFinished(false)
-        api.get(`/chat/${chatid}`).then(response => {
-            if(response.data.found) {
+    useEffect(() => {
+        getChatData(true)
+
+        socket.on(`${chatId}_newmessage`, () => {
+            getChatData()
+        })
+    }, [])
+
+    function getChatData(firstFetch) {
+        api.get(`/chat/${chatId}`).then(response => {
+            if(firstFetch) {
                 setChatData({
-                    myProfile: db_user_id == response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.doc.members[1],
-                    friendProfile: db_user_id !== response.data.doc.members[0].userid ? response.data.doc.members[0] : response.data.doc.members[1],
-                    messages: response.data.doc.messages
-                })
-            } else {
-                setChatData(preValue => {
-                    return {
-                        ...preValue,
-                        friendProfile: {
-                            userPhoto: 'https://image.flaticon.com/icons/png/512/718/718672.png',
-                            username: 'Chat not found',
-                            userid: ''
-                        } 
-                    }
+                    myProfile: db_user_id == response.data.chatData.members[0].userId ? response.data.chatData.members[0] : response.data.chatData.members[1],
+                    friendProfile: db_user_id !== response.data.chatData.members[0].userId ? response.data.chatData.members[0] : response.data.chatData.members[1]
                 })
             }
 
-            setIsRequestFinished(true)
+            setMessages(response.data.chatData.messages)
+
+            let scrollTop = document.body.scrollTop
+
+            let scrollTopMax = 
+            document.body.scrollHeight -
+            document.body.offsetHeight
+
+            let autoScroll = scrollTop >= scrollTopMax
+
+            autoScroll && window.scrollTo(0,document.body.scrollHeight)
         })
-        .catch(err => {console.log(err)})
+        .catch(err => {
+            console.log(err)
+        
+            setChatData(preValue => {
+                return {
+                    ...preValue,
+                    friendProfile: {
+                        photo: 'https://image.flaticon.com/icons/png/512/718/718672.png',
+                        username: 'Chat not found',
+                        userId: ''
+                    } 
+                }
+            })
+        })
     }
 
-    let ChatContextData = ({children}) => {
-        return (
-            <ChatContext.Provider value={{isChat: true, chatId: chatid, chatData: {myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}}>
-                {children}
-            </ChatContext.Provider> 
-        )
-    }
+    const params = {isChat: true, chatId: chatId, chatData: {myProfile: chatData.myProfile, friendProfile: chatData.friendProfile}}
 
     return (
-        <div className='ChatPage' onLoad={() => {window.scrollTo(0,document.body.scrollHeight)}}> {/* PAGE INICIA JÁ NA PARTE DE BAIXO */}
+        <div className='ChatPage' > {/* PAGE INICIA JÁ NA PARTE DE BAIXO */}
             {props.device == 'desktop' ? 
-                <ChatContextData>
+                <ChatContextData params={params}>
                     <DesktopInterfacePresets />
                 </ChatContextData> : 
-                <div>
+                <>
                     <SearchMenuPreset title='Chat' />
                     <LeftPreset />
-                    <ChatContextData><DownPreset /></ChatContextData>
-                </div>
+                    <ChatContextData params={params}>
+                        <DownPreset />
+                    </ChatContextData>
+                </>
             }
 
             <div className={`${props.device == 'desktop' && 'col-8'} ChatContent`}>
-                <Zoom in={true} timeout={1000}>
+                <Zoom in timeout={1000}>
                     <div className='ChatHeader'>
                         <Link to='/messages'><KeyboardBackspace /></Link>
                         <div className='ChatHeaderInfo'>
-                            <Link to={`/profile/${chatData.friendProfile.username}`}>
-                                <img src={chatData.friendProfile.userPhoto} className='PostUserIcon' />
+                            <Link to={`/profile/${chatData.friendProfile.userId}`}>
+                                <img src={chatData.friendProfile.photo} className='PostUserIcon' />
                                 <h4>{chatData.friendProfile.username}</h4>
                             </Link>
                         </div>
@@ -99,11 +122,11 @@ function ChatPage(props) {
                 </Zoom>
 
                 <div className='ChatMessages'>
-                    {chatData.messages.map(message => {
-                        if(message.userid == db_user_id) {
-                            return <ChatMessage data={message} myMessage={true} photo={chatData.myProfile.userPhoto} />
+                    {messages.map(message => {
+                        if(message.userId == db_user_id) {
+                            return <ChatMessage data={message} myMessage photo={chatData.myProfile.photo} />
                         } else {
-                            return <ChatMessage data={message} myMessage={false} photo={chatData.friendProfile.userPhoto} />
+                            return <ChatMessage data={message} myMessage={false} photo={chatData.friendProfile.photo} />
                         }
                     })}
                 </div>

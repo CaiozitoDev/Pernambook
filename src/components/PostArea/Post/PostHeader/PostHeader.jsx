@@ -8,9 +8,9 @@ import {Link} from 'react-router-dom'
 import {AuthContext, PostContext} from '../../../Contexts'
 
 function PostHeader() {
-    const {db_user_id} = useContext(AuthContext)
+    const {userData: {db_user_id}} = useContext(AuthContext)
     const {username, timestamp, photo, userId} = useContext(PostContext)
-
+    
     return (
         <div className='PostHeader'>
             <img src={photo} className='PostUserIcon' alt='img' />

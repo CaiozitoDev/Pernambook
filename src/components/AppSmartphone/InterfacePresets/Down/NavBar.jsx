@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 import {Zoom} from '@material-ui/core'
 
@@ -10,32 +10,38 @@ import api from '../../../../services/API_CONFIG'
 
 import {Link} from 'react-router-dom'
 
+import socket from '../../../../services/SOCKET_CONFIG'
+
 function NavBar() {
-    const {userData: {db_user_id, username}} = useContext(AuthContext)
+    const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [friendNumber, setFriendNumber] = useState(0)
 
     const [messageNumber, setMessageNumber] = useState(0)
 
-    const [isFriendRequestFinished, setIsFriendRequestFinished] = useState(true)
-    const [isMessageRequestFinished, setIsMessageRequestFinished] = useState(true)
+    useEffect(() => {
+        getFriendsNotification()
+        getMessagesNotification()
 
-    if(isFriendRequestFinished) {
-        setIsFriendRequestFinished(false)
+        socket.on(`${db_user_id}_friendrequestnotification`, () => {
+            getFriendsNotification()
+        })
 
+        socket.on(`${db_user_id}_messagesnotification`, () => {
+            getMessagesNotification()
+        })
+    }, [])
+
+    function getFriendsNotification() {
         api.get(`/notification?db_user_id=${db_user_id}`).then(response => {
             setFriendNumber(response.data.friendsLength) 
-            setIsFriendRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }
 
-    if(isMessageRequestFinished) {
-        setIsMessageRequestFinished(false)
-        
-        api.get(`/messagelist?db_user_id=${db_user_id}&notification=${true}`).then(response => {
+    function getMessagesNotification() {
+        api.get(`/messagelist?db_user_id=${db_user_id}&notification=true`).then(response => {
             setMessageNumber(response.data.notSawMessages)
-            setIsMessageRequestFinished(true)
         })
         .catch(err => {console.log(err)})
     }

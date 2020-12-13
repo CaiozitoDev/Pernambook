@@ -11,28 +11,27 @@ function NewCommentForm(props) {
     const {postid} = useParams()
     const db_user_id = props.db_user_id
 
-    const [txtValue, setTxtValue] = useState('')
+    const [content, setContent] = useState('')
 
     const [isDisable, setIsDisable] = useState(false)
 
     const [errorMessage, setErrorMessage] = useState('')
 
     function handleTxtArea(e) {
-        const {name, value} = e.target
+        const value = e.target.value
 
-        setTxtValue(value)
+        setContent(value)
     }
 
     function handleCommentData() {
-        if(txtValue == '') {
+        if(content == '') {
             setErrorMessage('Text area is empty')
         } else {
             setIsDisable(true)
             setErrorMessage('Sending...')
 
-            api.patch('/addcomment', {postid, txtValue, db_user_id}).then(response => {
-                console.log(response.data)
-                setTxtValue('')
+            api.patch('/addcomment', {postid, content, db_user_id}).then(() => {
+                setContent('')
                 setIsDisable(false)
                 setErrorMessage('')
             })
@@ -43,7 +42,7 @@ function NewCommentForm(props) {
     return (
         <div className='NewCommentForm'>
             <h6>{errorMessage}</h6>
-            <textarea rows={3} placeholder='Write a comment' name='commenttxtarea' onChange={handleTxtArea} value={txtValue}></textarea>
+            <textarea rows={3} placeholder='Write a comment' name='commenttxtarea' onChange={handleTxtArea} value={content}></textarea>
             <Zoom in={true}>
                 <Fab onClick={handleCommentData} disabled={isDisable}>
                     <Add />

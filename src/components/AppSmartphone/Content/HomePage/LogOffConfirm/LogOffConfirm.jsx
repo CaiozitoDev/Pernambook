@@ -5,7 +5,8 @@ import {Close} from '@material-ui/icons'
 function LogOffConfirm() {
 
     function handleLogOut() {
-        localStorage.removeItem('local_token')
+        /* localStorage.removeItem('local_token') */
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         window.location = '/'
     }
 

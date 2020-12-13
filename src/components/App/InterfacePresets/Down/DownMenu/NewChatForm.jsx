@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 import {Fab} from '@material-ui/core'
 import {Send} from '@material-ui/icons'
@@ -27,17 +27,16 @@ function NewChatForm(props) {
             setIsDisabled(false)
         } else {
             api.post('/newmessage', {
-                    chatid: props.chatid, 
-                    db_user_id: props.chatData.myProfile.userid,
-                    username: props.chatData.myProfile.username, 
-                    messagetext: txtValue
-                })
-                .then(response => {
-                    console.log(response.data)
-                    setIsDisabled(false)
-                    setTxtValue('')
-                })
-                .catch(err => {console.log(err)})
+                chatid: props.chatid, 
+                db_user_id: props.chatData.myProfile.userId,
+                userid: props.chatData.friendProfile.userId,
+                username: props.chatData.myProfile.username, 
+                content: txtValue
+            }).then(() => {
+                setIsDisabled(false)
+                setTxtValue('')
+            })
+            .catch(err => {console.log(err)})
         }
     }
 
