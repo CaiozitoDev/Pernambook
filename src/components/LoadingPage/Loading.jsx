@@ -8,7 +8,7 @@ function Loading() {
             <div className='LoadingContent'>
                 <Brand />
                 <h1>LOADING...</h1>
-                <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' alt='img' />
+                <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'}  alt='img' />
             </div>
         </div>
     )

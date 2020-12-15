@@ -21,6 +21,8 @@ function PostArea(props) {
     const [hasMore, setHasMore] = useState(true)
 
     useEffect(() => {
+        fetcher()
+        
         socket.on('newpost', () => {
             api.get(`/posts?from=${0}&to=${1}`).then(response => {
                 setPostArray(preValue => {
@@ -76,8 +78,9 @@ function PostArea(props) {
                 pageStart={0}
                 loadMore={fetcher}
                 hasMore
-                initialLoad
+                initialLoad={false}
                 loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
+                threshold={30}
             >
                 {postArray.map((post) => {
                     return <PostContext.Provider value={post} key={post._id}><Post /></PostContext.Provider>
