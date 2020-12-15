@@ -20,10 +20,10 @@ function LeftMenu() {
                 <LeftMenuOptions db_user_id={userData.db_user_id} />
                 <ul className='nav' style={{margin: '0 auto'}}>
                     <li className='nav-item'>
-                        <a href='https://github.com/CaiozitoDev' target='_blank' className='nav-link' style={{color: 'white'}}>GitHub</a>
+                        <a href='https://github.com/CaioDev1' target='_blank' className='nav-link' style={{color: 'white'}}>GitHub</a>
                     </li>
                     <li className='nav-item'>
-                        <a href='https://www.instagram.com/itsme_caio/?hl=pt-br' target='_blank' className='nav-link' style={{color: 'white'}}>Support</a>
+                        <a href='https://www.instagram.com/itsme_caio' target='_blank' className='nav-link' style={{color: 'white'}}>Support</a>
                     </li>
                 </ul>
                 <footer>
