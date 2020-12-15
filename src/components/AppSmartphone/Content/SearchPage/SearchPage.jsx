@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {InterfacePresets} from '../../InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 import TopTrendingPost from './TopTrendingPost/TopTrendingPost'
 import TopPost from './TopPost/TopPost'
@@ -30,7 +30,7 @@ function Search() {
 
     return (
         <div className='SearchPage'>
-            <InterfacePresets title='Search' />
+            <MobileInterfacePresets title='Search' />
 
             <div className='SearchContent'>
                 {topPosts.length !== 0 && 

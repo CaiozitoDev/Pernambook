@@ -69,7 +69,7 @@ function PostArea(props) {
         <div className={`${props.device == 'desktop' && 'col-5'} PostArea`}>
             {props.device == 'desktop' && <Header />}
 
-            <h1>Home page</h1>
+            {props.device == 'smartphone' ? <img src={process.env.PUBLIC_URL + '/BH-bull-white-3.png'} alt='img' /> : <h1>Home page</h1>}
 
             {/* MAPPING DE TODOS OS POSTS NA POST AREA, O PARAM "POST" É UM OBJETO COM OS DADOS DE CADA POST */}
             <InfiniteScroll
@@ -77,7 +77,7 @@ function PostArea(props) {
                 loadMore={fetcher}
                 hasMore
                 initialLoad
-                loader={hasMore && <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
             >
                 {postArray.map((post) => {
                     return <PostContext.Provider value={post} key={post._id}><Post /></PostContext.Provider>

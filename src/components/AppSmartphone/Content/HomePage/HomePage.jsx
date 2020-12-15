@@ -1,28 +1,18 @@
 import React from 'react'
 
-import Header from './Header/Header'
-import LogOffConfirm from './LogOffConfirm/LogOffConfirm'
 import PostArea from '../../../PostArea/PostArea'
 
-import {
-    LeftPreset as Left,
-    NewPostFormPreset as NewPostForm,
-    NewPostFormAddButtonPreset as NewPostFormAddButton,
-    DownPreset as Down
-} from '../../InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../InterfacePresets/InterfacePresets'
 
 function Home() {
+    if(typeof Notification == 'function') {
+        setTimeout(Notification.requestPermission, 5000)
+    }
+
     return (
         <div className='Home'>
-            <div className='InterfacePresets'>
-                <Left />
-                <NewPostForm />
-                <NewPostFormAddButton />
-                <Down />
-            </div> 
+            <MobileInterfacePresets searchMenu={false} isHomePage/>
 
-            <Header />
-            <LogOffConfirm />    
             <PostArea device='smartphone'/>
         </div>
     )

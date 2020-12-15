@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 
-import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
 import ChatMessage from './ChatMessage/ChatMessage'
@@ -100,10 +100,8 @@ function ChatPage(props) {
                     <DesktopInterfacePresets />
                 </ChatContextData> : 
                 <>
-                    <SearchMenuPreset title='Chat' />
-                    <LeftPreset />
                     <ChatContextData params={params}>
-                        <DownPreset />
+                        <MobileInterfacePresets postForm={false} title='Chat'/>
                     </ChatContextData>
                 </>
             }

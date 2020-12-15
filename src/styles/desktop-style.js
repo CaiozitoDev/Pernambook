@@ -731,6 +731,13 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         margin-right: 20px;
     }
 
+    .Message span {
+        color: white;
+        font-size: 12px;
+        opacity: 0.8;
+        font-weight: 700;
+    }
+
 
 
 
@@ -1003,7 +1010,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             border-top-right-radius: 30px;
             border-bottom-right-radius: 30px;
         }
-            .LoginRegisterData h1 {
+            .LoginRegisterData h4 {
                 text-align: center;
 
                 margin-bottom: 30px;
@@ -1272,6 +1279,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 border: 1px solid white;
 
                 max-width: 80%;
+                min-width: 135px;
 
                 padding: 10px 15px;
 
@@ -1291,6 +1299,13 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 }
                 .ChatMessage p {
                     display: inline;
+                }
+                .ChatMessage span {
+                    display: block;
+                    font-size: 9px;
+                    word-break: break-word;
+                    font-weight: 700;
+                    opacity: 0.8;
                 }
             .MyMessage {
                 margin-left: auto;

@@ -128,10 +128,15 @@ function LoginRegisterPage(props) {
 
         for(let key in userData) {data.append(key, userData[key])}
 
-        api.post(currentPage, data, header).then(response => {
-            /* window.location = '/home' */
+        api.post(currentPage, data, header).then(() => {
+            window.location = '/home'
         }).catch(err => {
-            setTitle(err.response.data.message)
+            for(let items in err.response.data.errorList) {
+                let item = err.response.data.errorList[items]
+                item.length && setTitle(item[0])
+
+                break
+            }
             console.log(err.response.data)
         })
    }
@@ -142,7 +147,7 @@ function LoginRegisterPage(props) {
                 <div className='LoginMenu'>
                     <Brand />
                     <div className='LoginRegisterData'>
-                        <h1>{title}</h1>
+                        <h4>{title}</h4>
                         <form onSubmit={(e) => {e.preventDefault()}}>
                             <div className='LoginField'>
                                 <Person />
@@ -165,7 +170,7 @@ function LoginRegisterPage(props) {
                                     </div>
                                 </div>
                             </div>}
-                            <button className='btn btn-lg btn-block btn-outline-danger' onClick={handlePostLoginRegisterData}>{props.title}</button>
+                            <button className='btn btn-md btn-block btn-outline-danger' onClick={handlePostLoginRegisterData}>{props.title}</button>
                         </form>
                         <div className='FacebookField'>
                             <FacebookLogin
@@ -174,7 +179,7 @@ function LoginRegisterPage(props) {
                                 fields="name,email,picture"
                                 isMobile={false}
                                 callback={handleFacebookLoginRegisterData}
-                                cssClass='btn btn-lg btn-primary w-100'
+                                cssClass='btn btn-sm btn-primary w-100'
                                 icon={<Facebook />}
                                 textButton={window.location.pathname == '/login' ? 'Login with Facebook' : 'Register with Facebook'}
                             />

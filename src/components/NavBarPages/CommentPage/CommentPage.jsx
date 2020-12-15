@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext} from 'react'
 
-import {SearchMenuPreset, LeftPreset, DownPreset} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
 import Post from '../../PostArea/Post/Post'
@@ -41,13 +41,7 @@ function CommentPage(props) {
 
     return (
         <div className='CommentPage'>
-        {props.device == 'desktop' ? <DesktopInterfacePresets /> : 
-            <div>
-                <SearchMenuPreset title='Comments' />
-                <LeftPreset />
-                <DownPreset />
-            </div>
-        }
+        {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets newPostFormAddButton={false} newPostForm={false} title='Comments' />}
     
             <Zoom in={true} timeout={1000}>
                 <div className='CommentArea'>

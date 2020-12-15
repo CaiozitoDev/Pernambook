@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext} from 'react'
 
-import {InterfacePresets} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
 import FriendRequestArea from './FriendRequestArea/FriendRequestArea'
@@ -42,7 +42,7 @@ function FriendsPage(props) {
 
     return (
         <div className='FriendsPage'>
-            {props.device == 'desktop' ? <DesktopInterfacePresets /> : <InterfacePresets title='Friends' />}
+            {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets title='Friends' />}
 
             <div className='FriendsContent'>
                 <h1 className='Title'>{notFound ? 'User not found' : `Friends`}</h1>

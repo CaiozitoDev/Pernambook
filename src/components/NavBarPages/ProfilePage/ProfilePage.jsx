@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 
-import {InterfacePresets} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
 import UserProfile from './UserProfile/UserProfile'
@@ -21,7 +21,7 @@ function ProfilePage(props) {
     const {userData: {db_user_id}} = useContext(AuthContext)
 
     const [userData, setUserData] = useState({
-        photo: 'https://i.ya-webdesign.com/images/loading-png-gif.gif',
+        photo: process.env.PUBLIC_URL + '/loading-png-gif.gif',
         username: '',
         userId: '',
         friendslength: '',
@@ -85,7 +85,7 @@ function ProfilePage(props) {
 
     return (
         <div className='ProfilePage'>
-            {props.device == 'desktop' ? <DesktopInterfacePresets /> : <InterfacePresets title='Profile' />}
+            {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets title='Profile' />}
             
             <Zoom in timeout={1000}>
                 <div className='ProfileContent'>
@@ -98,7 +98,7 @@ function ProfilePage(props) {
                             hasMore
                             initialLoad={false}
                             threshold={10}
-                            loader={hasMore && <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                            loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
                         >
                             {userPosts.map(post => {
                                 return (

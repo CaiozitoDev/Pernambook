@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 
-import {InterfacePresets} from '../../AppSmartphone/InterfacePresets/InterfacePresets'
+import MobileInterfacePresets from '../../AppSmartphone/InterfacePresets/InterfacePresets'
 import DesktopInterfacePresets from '../../App/InterfacePresets/InterfacePresets'
 
 import Message from './Message/Message'
@@ -33,7 +33,7 @@ function MessagesPage(props) {
 
     return (
         <div className='MessagesPage'>
-        {props.device == 'desktop' ? <DesktopInterfacePresets /> : <InterfacePresets title='Messages' />}
+        {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets title='Messages' />}
 
             <div className='MessagesContent'>
                 <div className='MessageTitle'><h1>Messages: {messageData.length}</h1></div>

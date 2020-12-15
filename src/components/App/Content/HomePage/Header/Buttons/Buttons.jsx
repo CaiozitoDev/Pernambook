@@ -1,10 +1,13 @@
 import React from 'react'
 
+import api from '../../../../../../services/API_CONFIG'
+
 function Buttons() {
     function handleLogOut() {
         /* localStorage.removeItem('local_token') */
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        window.location = '/'
+        api.get('/logoff').then(() => {
+            window.location = '/'
+        })
     }
 
     return (

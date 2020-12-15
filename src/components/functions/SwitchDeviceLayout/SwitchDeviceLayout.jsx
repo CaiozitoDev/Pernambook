@@ -13,6 +13,7 @@ function SwitchDeviceLayout() {
         </DesktopStyle>
         )
     }
+
     const AppSmartphone = () => {
         return (
         <MobileStyle>

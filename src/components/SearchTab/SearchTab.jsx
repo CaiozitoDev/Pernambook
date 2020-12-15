@@ -77,7 +77,7 @@ function SearchTab({input, isClicked, device}) {
                     loadMore={handleFilteredUsers}
                     hasMore
                     initialLoad={false}
-                    loader={hasMore && <img src='https://i.ya-webdesign.com/images/loading-png-gif.gif' className='LoadingImage'/>}
+                    loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
                     useWindow={false}
                     threshold={5}
                 >

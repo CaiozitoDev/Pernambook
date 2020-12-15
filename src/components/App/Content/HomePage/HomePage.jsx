@@ -6,6 +6,10 @@ import PostArea from '../../../PostArea/PostArea'
 import Right from './Right/Right'
 
 function HomePage() {
+    if(typeof Notification == 'function') {
+        setTimeout(Notification.requestPermission, 5000)
+    }
+    
     return (
         <div className='HomePage'>
             <InterfacePresets />

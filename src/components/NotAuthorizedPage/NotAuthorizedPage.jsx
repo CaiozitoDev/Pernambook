@@ -12,7 +12,7 @@ function NotAuthorizedPage() {
                 <h1>Connection not authorized</h1>
                 <h4>Please register on our website, if you're already registered, log in</h4>
                 <div className='NotAuthorizedButtons'>
-                    <Link to='/register'>
+                    <Link to='/register' >
                         <button className='btn btn-lg btn-primary'>Register</button>
                     </Link>
                     <Link to='/login'>

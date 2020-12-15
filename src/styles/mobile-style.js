@@ -26,24 +26,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* LEFT */
 .Left {
-    visibility: hidden;
+    backdrop-filter: blur(5px);
 
     position: fixed;
     
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
-    z-index: 5;
-
-    transition: 0.5s ease-in;
+    z-index: 4;
 }
 
-.isLeftClicked {     /* CRIAR ANIMAÇÃO DO FUNDO DESFOCADO*/
+/* .isLeftClicked {
     visibility: visible;
 
     background-color: rgba(0, 0, 0, 0.253);
     backdrop-filter: blur(5px);
-}
+} */
 
     /* LEFT MENU */
     .LeftMenu {
@@ -64,18 +62,17 @@ h1, h2, h3, h4, h5, h6 {
 
         overflow-y: scroll;
 
-        position: relative;
-        right: 100%;
+        position: fixed;
 
-        transition: 0.5s ease-in;
+        z-index: 5;
     }
     .LeftMenu a {
         text-decoration: none;
     }
 
-    .isLeftMenuClicked {  /* CRIAR ANIMAÇÃO DE SLIDE DO MENU */
+    /* .isLeftMenuClicked { 
         right: 0%;
-    }
+    } */
 
     .LeftMenu::-webkit-scrollbar, .ChatMessages::-webkit-scrollbar {
         display: none;
@@ -190,25 +187,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* NEW POST FORM */
 .NewPostForm {
-    visibility: hidden;
-
     position: fixed;
 
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
 
     padding: 20px;
 
     z-index: 2;
 
-    transition: 0.3s ease-in;
+    backdrop-filter: blur(5px);
 }
-.isNewPostFormClicked {
+/* .isNewPostFormClicked {
     visibility: visible;
 
     background-color: rgba(0, 0, 0, 0.262);
     backdrop-filter: blur(5px);
-}
+} */
 
     .NewPostFormHeader {
         display: flex;
@@ -293,11 +288,20 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px 4% 100px;
 
     min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
-    .PostArea h1 {
+    /* .PostArea h1 {
         text-align: center;
         padding-top: 60px;
-    }
+    } */
+        .PostArea > img {
+            margin: 60px auto 10px;
+
+            height: 80px;
+            width: 80px;
+        }
 
         /* HEADER */
         .Header {
@@ -387,26 +391,24 @@ h1, h2, h3, h4, h5, h6 {
         }
 
         .LogOffConfirm {
-            visibility: hidden;
-
             display: flex;
 
             position: fixed;
 
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
 
-            z-index: 1;
+            z-index: 5;
 
-            transition: 0.3s ease-in;
+            backdrop-filter: blur(5px);
         }
 
-        .isLogOffClicked {
+        /* .isLogOffClicked {
             visibility: initial;
 
             background-color: rgba(0, 0, 0, 0.349);
             backdrop-filter: blur(5px);
-        }
+        } */
 
             .LogOffReturn {
                 display: flex;
@@ -998,6 +1000,8 @@ h1, h2, h3, h4, h5, h6 {
         background: linear-gradient(to right, #fe003fde, #ff6b66d3);
 
         margin-bottom: 50px;
+
+        min-width: 300px;
     }
     .MessagesContent h1 {
         text-align: center;
@@ -1008,6 +1012,8 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 30px;
 
         align-items: center;
+
+        min-width: 300px;
     }
     .Message a {
         text-decoration: none;
@@ -1030,6 +1036,12 @@ h1, h2, h3, h4, h5, h6 {
         border: 2px solid white;
 
         margin-right: 20px;
+    }
+    .Message span {
+        color: white;
+        font-size: 12px;
+        opacity: 0.8;
+        font-weight: 700;
     }
 
 
@@ -1112,8 +1124,7 @@ h1, h2, h3, h4, h5, h6 {
     
     height: 100vh;
 
-    min-height: 700px;
-    min-width: 500px;
+    min-width: 300px;
 }
     .LoginMenu {
         background: linear-gradient(to right, #f09819, #edde5d); 
@@ -1147,6 +1158,8 @@ h1, h2, h3, h4, h5, h6 {
         .LoginMenu .Brand h1 {
             width: 100%;
             font-size: 3rem;
+
+            font-family: 'Bebas Neue', cursive;
         }
         
         .LoginRegisterData {
@@ -1166,7 +1179,10 @@ h1, h2, h3, h4, h5, h6 {
 
             position: initial;
         }
-            .LoginRegisterData h1 {
+            .LoginRegisterData form {
+                margin-bottom: auto;
+            }
+            .LoginRegisterData h4 {
                 text-align: center;
 
                 margin-bottom: 20px;
@@ -1182,9 +1198,9 @@ h1, h2, h3, h4, h5, h6 {
 
                 border-radius: 100px;
 
-                padding: 10px;
+                padding: 7px;
 
-                margin-bottom: 5%;
+                margin-bottom: 12px;
             }
                 .UsernameField svg, .PasswordField svg, .LoginField svg {
                     margin-right: 10px;
@@ -1197,7 +1213,7 @@ h1, h2, h3, h4, h5, h6 {
                     outline: none;
                 }
             .FacebookField {
-                margin-top: auto;
+                margin-top: 10px;
             }
             .FaebookField button {
                 display: flex;
@@ -1214,7 +1230,7 @@ h1, h2, h3, h4, h5, h6 {
             .SwitchPageButton {
                 position: relative;
                 bottom: 10px;
-                margin: 30px auto 0;
+                margin: auto auto 0;
             }
 
 
@@ -1495,6 +1511,7 @@ h1, h2, h3, h4, h5, h6 {
                 border: 1px solid white;
 
                 max-width: 80%;
+                min-width: 135px;
 
                 padding: 10px 15px;
 
@@ -1514,6 +1531,14 @@ h1, h2, h3, h4, h5, h6 {
                 }
                 .ChatMessage p {
                     display: inline;
+                }
+
+                .ChatMessage span {
+                    display: block;
+                    font-size: 9px;
+                    word-break: break-word;
+                    font-weight: 700;
+                    opacity: 0.8;
                 }
             .MyMessage {
                 margin-left: auto;

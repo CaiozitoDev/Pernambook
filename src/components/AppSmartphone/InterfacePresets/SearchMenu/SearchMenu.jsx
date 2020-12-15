@@ -6,10 +6,11 @@ import {Slide} from '@material-ui/core'
 
 import SearchTab from '../../../SearchTab/SearchTab'
 
-import {AuthContext} from '../../../Contexts'
+import {AuthContext, SlideLeftMenuContext} from '../../../Contexts'
 
 function SearchMenu(props) {
     const {userData} = useContext(AuthContext)
+    const {setSlideLeftMenu} = useContext(SlideLeftMenuContext)
 
     if(!userData) {
         userData.photo = 'https://i.ya-webdesign.com/images/loading-png-gif.gif'
@@ -30,8 +31,11 @@ function SearchMenu(props) {
         <Slide direction='down' in timeout={1000} mountOnEnter>
             <div className='SearchPageHeader'>
                 <img src={userData.photo} className='SearchMenuIcon' onClick={() => {
-                    document.querySelector('.Left').classList.add('isLeftClicked')
-                    document.querySelector('.LeftMenu').classList.add('isLeftMenuClicked')}}
+                        /* document.querySelector('.Left').classList.add('isLeftClicked')
+                        document.querySelector('.LeftMenu').classList.add('isLeftMenuClicked') */
+
+                        setSlideLeftMenu(true)
+                    }}
                 alt='img' />
                 <div className='SearchMenu'>
                     <span> <SearchIcon style={{fill: 'white'}}/> </span>

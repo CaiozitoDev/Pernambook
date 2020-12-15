@@ -1,12 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import LeftMenu from './LeftMenu/LeftMenu'
 
+import {Fade} from '@material-ui/core'
+
+import {SlideLeftMenuContext} from '../../../Contexts'
+
 function Left() {
+    const {slideLeftMenu} = useContext(SlideLeftMenuContext)
+
     return (
-        <div className='Left'>
+        <>
+            <Fade in={slideLeftMenu} timeout={500} mountOnEnter unmountOnExit><div className='Left'></div></Fade>
             <LeftMenu />
-        </div>
+        </>
     )
 }
 
