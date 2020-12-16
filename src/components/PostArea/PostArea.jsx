@@ -23,6 +23,7 @@ function PostArea(props) {
     const [isRequestFinished, setIsRequestFinished] = useState(true)
 
     useEffect(() => {
+        setPostArray([])
         fetcher()
 
         socket.on('newpost', () => {
