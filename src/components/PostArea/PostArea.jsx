@@ -87,7 +87,6 @@ function PostArea(props) {
                 hasMore
                 initialLoad={false}
                 loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
-                threshold={30}
             >
                 {postArray.map((post) => {
                     return <PostContext.Provider value={post} key={post._id}><Post /></PostContext.Provider>
