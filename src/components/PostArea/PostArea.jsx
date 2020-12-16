@@ -23,9 +23,6 @@ function PostArea(props) {
     const [isRequestFinished, setIsRequestFinished] = useState(true)
 
     useEffect(() => {
-        setPostArray([])
-        fetcher()
-
         socket.on('newpost', () => {
             api.get(`/posts?from=${0}&to=${1}`).then(response => {
                 setPostArray(preValue => {
@@ -54,13 +51,6 @@ function PostArea(props) {
             setIsRequestFinished(false)
 
             api.get(`/posts?from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
-                setPostArray(preValue => {
-                    return [
-                        ...preValue,
-                        ...response.data.posts
-                    ]
-                })
-    
                 setNumberOfPosts(preValue => {
                     return {
                         from: preValue.from + response.data.posts.length,
@@ -71,6 +61,13 @@ function PostArea(props) {
                 if(numberOfPosts.from >= response.data.allPostsLength){
                     setHasMore(false)
                 }
+
+                setPostArray(preValue => {
+                    return [
+                        ...preValue,
+                        ...response.data.posts
+                    ]
+                })
             })
         }
     }
@@ -86,7 +83,7 @@ function PostArea(props) {
                 pageStart={0}
                 loadMore={fetcher}
                 hasMore
-                initialLoad={false}
+                initialLoad
                 loader={hasMore && <img src={process.env.PUBLIC_URL + '/loading-png-gif.gif'} className='LoadingImage'/>}
             >
                 {postArray.map((post) => {

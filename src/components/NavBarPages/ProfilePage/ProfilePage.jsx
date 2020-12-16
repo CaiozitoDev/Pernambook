@@ -59,27 +59,25 @@ function ProfilePage(props) {
     function fetcher() {
         hasMore &&
         api.get(`/userposts?userid=${userId}&from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
-            setUserPosts(preValue => {
-                return [
-                    ...preValue,
-                    ...response.data.posts
-                ]
+            setNumberOfPosts(preValue => {
+                return {
+                    from: preValue.from + response.data.posts.length,
+                    to: (preValue.from + response.data.posts.length) + 10
+                }
             })
-
-            if(response.data.posts.length) {
-                setNumberOfPosts(preValue => {
-                    return {
-                        from: preValue.from + response.data.posts.length,
-                        to: (preValue.from + response.data.posts.length) + 10
-                    }
-                })
-            }
 
             setAllPostsLength(response.data.allPostsLength)
             
             if(numberOfPosts.from >= response.data.allPostsLength){
                 setHasMore(false)
             }
+
+            setUserPosts(preValue => {
+                return [
+                    ...preValue,
+                    ...response.data.posts
+                ]
+            })
         })
     }
 

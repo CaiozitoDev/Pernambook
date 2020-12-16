@@ -131,13 +131,16 @@ function LoginRegisterPage(props) {
         api.post(currentPage, data, header).then(() => {
             window.location = '/home'
         }).catch(err => {
-            for(let items in err.response.data.errorList) {
-                let item = err.response.data.errorList[items]
-                item.length && setTitle(item[0])
-
-                break
+            if(err.response.data.message == 'Validation fails.') {
+                for(let items in err.response.data.errorList) {
+                    let item = err.response.data.errorList[items]
+                    item.length && setTitle(item[0])
+    
+                    break
+                }
+            } else {
+                setTitle(err.response.data.message)
             }
-            console.log(err.response.data)
         })
    }
 
