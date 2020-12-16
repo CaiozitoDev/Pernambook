@@ -20,9 +20,11 @@ function PostArea(props) {
 
     const [hasMore, setHasMore] = useState(true)
 
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
     useEffect(() => {
         fetcher()
-        
+
         socket.on('newpost', () => {
             api.get(`/posts?from=${0}&to=${1}`).then(response => {
                 setPostArray(preValue => {
@@ -42,29 +44,34 @@ function PostArea(props) {
         })
     }, [])
 
-    const fetcher = () => {
-        hasMore &&
-        api.get(`/posts?from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
-            setPostArray(preValue => {
-                return [
-                    ...preValue,
-                    ...response.data.posts
-                ]
-            })
+    useEffect(() => {
+        setIsRequestFinished(true)
+    }, [numberOfPosts])
 
-            if(response.data.posts.length) {
+    const fetcher = () => {
+        if(hasMore && isRequestFinished) {
+            setIsRequestFinished(false)
+
+            api.get(`/posts?from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
+                setPostArray(preValue => {
+                    return [
+                        ...preValue,
+                        ...response.data.posts
+                    ]
+                })
+    
                 setNumberOfPosts(preValue => {
                     return {
                         from: preValue.from + response.data.posts.length,
                         to: (preValue.from + response.data.posts.length) + 10
                     }
                 })
-            } 
-            
-            if(numberOfPosts.from >= response.data.allPostsLength){
-                setHasMore(false)
-            }
-        })
+                
+                if(numberOfPosts.from >= response.data.allPostsLength){
+                    setHasMore(false)
+                }
+            })
+        }
     }
 
     return (
