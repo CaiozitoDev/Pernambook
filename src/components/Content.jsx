@@ -70,7 +70,7 @@ function Content(props) {
 
             <PrivateRoute exact path='/home' component={props.device == 'desktop' ? HomePage : SmartphoneHomePage} />
             {props.device == 'smartphone' && <PrivateRoute exact path='/search' component={SearchPage} /> }
-            <PrivateRoute exact path='/profile/:userId' component={() => {return <ProfilePage device={props.device} />}} />
+            <PrivateRoute path='/profile/:userId' component={() => {return <ProfilePage device={props.device} />}} />
             <PrivateRoute exact path='/messages' component={() => {return <MessagesPage device={props.device} />}} />
             <PrivateRoute exact path='/friends/:userId' component={() => {return <FriendsPage device={props.device} />}} />
             <PrivateRoute exact path='/comments/:postid' component={() => {return <CommentPage device={props.device} />}} />
