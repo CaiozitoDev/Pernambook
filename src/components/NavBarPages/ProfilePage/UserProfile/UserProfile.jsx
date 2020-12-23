@@ -4,6 +4,8 @@ import Zoom from '@material-ui/core/Zoom'
 
 import AreFriends from '../../../AreFriends'
 
+import ChatFriendButton from '../../../ChatFriendButton'
+
 import {Link} from 'react-router-dom'
 
 function UserProfile({data, db_user_id, post}) {
@@ -17,7 +19,10 @@ function UserProfile({data, db_user_id, post}) {
 
                 <div className='UserInfo'>
                     {data.userId !== '' && data.userId !== db_user_id &&
-                        <AreFriends db_user_id={db_user_id} postuserid={data.userId} />
+                        <>
+                            <AreFriends db_user_id={db_user_id} postuserid={data.userId} />
+                            <ChatFriendButton db_user_id={db_user_id} postuserid={data.userId} />
+                        </>
                     }
 
                     <div className='UserExtraInfo'>
