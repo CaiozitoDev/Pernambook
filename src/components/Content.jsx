@@ -43,7 +43,7 @@ function Content(props) {
     }, [authStatus])
 
     const PrivateRoute = ({component: Component, ...rest}) => (
-        <Route {...rest} component={(props) => {
+        <Route {...rest} render={(props) => {
             switch(authStatus) {
                 case 'processing':
                     return <LoadingPage />
@@ -69,8 +69,10 @@ function Content(props) {
             }} /> 
 
             <PrivateRoute exact path='/home' component={props.device == 'desktop' ? HomePage : SmartphoneHomePage} />
-            {props.device == 'smartphone' && <PrivateRoute exact path='/search' component={SearchPage} /> }
-            <PrivateRoute path='/profile/:userId' component={() => {return <ProfilePage device={props.device} />}} />
+            <PrivateRoute exact path='/search' render={() => {
+                    props.device == 'smartphone' ? <SearchPage /> : <Redirect to='/home' />
+            }} />
+            <PrivateRoute exact path='/profile/:userId' component={() => {return <ProfilePage device={props.device} />}} />
             <PrivateRoute exact path='/messages' component={() => {return <MessagesPage device={props.device} />}} />
             <PrivateRoute exact path='/friends/:userId' component={() => {return <FriendsPage device={props.device} />}} />
             <PrivateRoute exact path='/comments/:postid' component={() => {return <CommentPage device={props.device} />}} />
