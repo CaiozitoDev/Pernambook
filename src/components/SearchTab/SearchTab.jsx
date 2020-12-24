@@ -85,7 +85,7 @@ function SearchTab({input, isClicked, device}) {
                         return (
                             <Zoom in={true} timeout={500} key={user._id}>
                                 <div className='UserFiltered'>
-                                    <Link to={`/profile/${user._id}`}>
+                                    <Link to={`/profile/${user._id}/`}>
                                         <img src={user.photo} className='PostUserIcon' />
                                         <h3>{user.username}</h3>
                                     </Link>
