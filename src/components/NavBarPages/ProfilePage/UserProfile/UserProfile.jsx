@@ -18,7 +18,8 @@ function UserProfile({data, db_user_id, post}) {
                 </div>
 
                 <div className='UserInfo'>
-                    {data.userId !== '' && data.userId !== db_user_id &&
+                    {
+                    data.userId !== '' && data.userId !== db_user_id &&
                         <>
                             <AreFriends db_user_id={db_user_id} postuserid={data.userId} />
                             <ChatFriendButton db_user_id={db_user_id} postuserid={data.userId} />
