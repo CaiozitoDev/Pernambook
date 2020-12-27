@@ -956,7 +956,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
         display: flex;
 
         height: 80vh;
-        min-height: 450px;
+        min-height: 500px;
         
         width: 75%;
         min-width: 700px;
@@ -1003,6 +1003,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             flex-direction: column;
 
             height: 100%;
+            min-height: 500px;
             width: 40%;
 
             padding: 5% 5% 0;
@@ -1020,6 +1021,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                 color: black;
 
                 text-shadow: none;
+
+                font-size: 1rem;
             }
             .UsernameField, .PasswordField, .LoginField {
                 display: flex;

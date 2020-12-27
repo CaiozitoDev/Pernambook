@@ -351,13 +351,13 @@ h1, h2, h3, h4, h5, h6 {
         .HeaderUserInfo {
             display: flex;
             align-items: center;
+
+            word-break: break-all;
         }
 
     
     /* LOGOFF */
     .LogOff {
-        backdrop-filter: blur(5px);
-
         height: 60px;
         width: 60px;
 
@@ -1181,6 +1181,8 @@ h1, h2, h3, h4, h5, h6 {
                 color: black;
 
                 text-shadow: none;
+
+                font-size: 1rem;
             }
             .UsernameField, .PasswordField, .LoginField {
                 display: flex;
