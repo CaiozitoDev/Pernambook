@@ -41,7 +41,7 @@ function CommentPage(props) {
 
     return (
         <div className='CommentPage'>
-        {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets newPostFormAddButton={false} newPostForm={false} title='Comments' />}
+        {props.device == 'desktop' ? <DesktopInterfacePresets /> : <MobileInterfacePresets postForm={false} title='Comments' />}
     
             <Zoom in={true} timeout={1000}>
                 <div className='CommentArea'>
