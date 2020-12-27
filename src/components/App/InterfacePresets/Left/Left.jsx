@@ -6,7 +6,7 @@ import LeftMenu from './LeftMenu/LeftMenu'
 function Left() {
     return (
         <div className='col-4 Left'>
-            <Brand />
+            <Brand isHomePage={true} />
             <LeftMenu />
         </div>
     )

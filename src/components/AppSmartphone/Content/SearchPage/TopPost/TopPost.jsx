@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 function TopPost(props) {
     return (
         <Zoom in timeout={1000}>
-            <Link to={`/comments/${props.postdata._id}`}>
+            <Link to={`/comments/${props.postdata._id}`} style={{textDecoration: 'none'}}>
                 <div className='TopPost'>
                     <div className='TopPostHeader'>
                         <img src={props.postdata.photo} className='PostUserIcon' alt='img' />

@@ -1411,6 +1411,8 @@ h1, h2, h3, h4, h5, h6 {
             .CommentBody p, h6 {
                 margin: 0;
                 align-items: center;
+
+                word-break: break-all;
             }
         .NewCommentForm {
             position: relative;

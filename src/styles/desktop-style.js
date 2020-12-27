@@ -36,8 +36,6 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
         text-align: center;
         align-items: center;
-
-        text-decoration: none;
     }
         .Brand * {
             margin: auto;
@@ -1198,6 +1196,8 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
             .CommentBody {
                 display: flex;
                 align-items: center;
+
+                word-break: break-all;
             }
         .NewCommentForm {
             position: relative;
