@@ -53,6 +53,9 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
 
     /* LEFT MENU */
     .LeftMenu {
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
         border: 5px double white;
         border-bottom: none;
 
@@ -316,6 +319,7 @@ h1, h2, h3, h4, h5 { /* trocar os h's pra class title */
                     flex-direction: column;
                     width: 100%;
                 }
+
                 .LikeDiv span, .LoveDiv span, .CommentDiv span {
                     font-size: 0.7rem;
                     font-weight: bold;

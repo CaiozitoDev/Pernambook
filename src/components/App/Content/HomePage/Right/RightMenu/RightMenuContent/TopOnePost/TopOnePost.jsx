@@ -6,10 +6,10 @@ import {Link} from 'react-router-dom'
 
 function TopOnePost(props) {
     const text = props.postdata.content
-
+    
     return (
         <Zoom in timeout={1500}>
-            <Link to={`/comments/${props.postdata.postId}`}>
+            <Link to={`/comments/${props.postdata._id}`}>
                 <div className='TopOnePost'>
                     <div className='TopPostHeader'>
                         <span className='TopOneNumber'>#1</span>

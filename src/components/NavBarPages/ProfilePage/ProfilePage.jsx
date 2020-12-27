@@ -24,8 +24,8 @@ function ProfilePage(props) {
         photo: process.env.PUBLIC_URL + '/loading-png-gif.gif',
         username: '',
         userId: '',
-        friendslength: '',
-        timestamp: ''
+        friendsLength: '0',
+        timestamp: 'DD/MM/YYYY'
     })
 
     const [userPosts, setUserPosts] = useState([])
@@ -39,10 +39,22 @@ function ProfilePage(props) {
 
     const [hasMore, setHasMore] = useState(true)
 
+    const [isRequestFinished, setIsRequestFinished] = useState(true)
+
     const {userId} = useParams()
     
     useEffect(() => {
         // IMPORTA OS DADOS
+        getUserData()
+        setUserPosts([])
+        setNumberOfPosts({
+            from: 0,
+            to: 10
+        })
+        setHasMore(true)
+    }, [userId])
+
+    function getUserData() {
         api.get(`/profile/${userId}`)
         .then(response => {
             setUserData({
@@ -53,32 +65,45 @@ function ProfilePage(props) {
                 timestamp: response.data.timestamp
             })
         })
-        .catch(err => {console.log(err)})
-    }, [])
+        .catch(err => {
+            console.log(err)
 
-    function fetcher() {
-        hasMore &&
-        api.get(`/userposts?userid=${userId}&from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
-            setNumberOfPosts(preValue => {
+            setUserData(preValue => {
                 return {
-                    from: preValue.from + response.data.posts.length,
-                    to: (preValue.from + response.data.posts.length) + 10
+                    ...preValue, username: 'User not found', photo: process.env.PUBLIC_URL + '/not_allowed_image.png'
                 }
             })
-
-            setAllPostsLength(response.data.allPostsLength)
-            
-            if(numberOfPosts.from >= response.data.allPostsLength){
-                setHasMore(false)
-            }
-
-            setUserPosts(preValue => {
-                return [
-                    ...preValue,
-                    ...response.data.posts
-                ]
-            })
         })
+    }
+
+    function fetcher() {
+        if(hasMore && isRequestFinished) {
+            setIsRequestFinished(false)
+
+            api.get(`/userposts?userid=${userId}&from=${numberOfPosts.from}&to=${numberOfPosts.to}`).then(response => {
+                setNumberOfPosts(preValue => {
+                    return {
+                        from: preValue.from + response.data.posts.length,
+                        to: (preValue.from + response.data.posts.length) + 10
+                    }
+                })
+
+                setAllPostsLength(response.data.allPostsLength)
+                
+                if(numberOfPosts.from >= response.data.allPostsLength){
+                    setHasMore(false)
+                }
+
+                setUserPosts(preValue => {
+                    return [
+                        ...preValue,
+                        ...response.data.posts
+                    ]
+                })
+
+                setIsRequestFinished(true)
+            })
+        }
     }
 
     return (

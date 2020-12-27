@@ -69,8 +69,8 @@ function Content(props) {
             }} /> 
 
             <PrivateRoute exact path='/home' component={props.device == 'desktop' ? HomePage : SmartphoneHomePage} />
-            <PrivateRoute exact path='/search' render={() => {
-                    props.device == 'smartphone' ? <SearchPage /> : <Redirect to='/home' />
+            <PrivateRoute exact path='/search' component={() => {
+                return props.device == 'smartphone' ? <SearchPage /> : <Redirect to='/home' />
             }} />
             <PrivateRoute exact path='/profile/:userId' component={() => {return <ProfilePage device={props.device} />}} />
             <PrivateRoute exact path='/messages' component={() => {return <MessagesPage device={props.device} />}} />
@@ -81,9 +81,9 @@ function Content(props) {
             <Route exact path='/login' component={() => {return <LoginRegisterPage title='Log In' />}}/>
             <Route exact path='/register' component={() => {return <LoginRegisterPage title='Register' />}}/>
 
-            <Route exact path='/profile' render={() => {return <Redirect to={`/profile/${userData.db_user_id}`} />}} />
-            <Route exact path='/friends' render={() => {return <Redirect to={`/friends/${userData.db_user_id}`} />}} />
-            <Route exact path='/chat' render={() => {return <Redirect to={`/messages`} />}} />
+            <PrivateRoute exact path='/profile' component={() => {return <Redirect to={`/profile/${userData.db_user_id}`} />}} />
+            <PrivateRoute exact path='/friends' component={() => {return <Redirect to={`/friends/${userData.db_user_id}`} />}} />
+            <PrivateRoute exact path='/chat' component={() => {return <Redirect to={`/messages`} />}} />
         </Router>
     )
 }

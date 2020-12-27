@@ -23,7 +23,7 @@ function SwitchDeviceLayout() {
     }
 
     const [CurrentDevice, setCurrentDevice] = useState(() => {
-        return window.matchMedia('(min-width: 625px)').matches ? <AppDesktop /> : <AppSmartphone />
+        return window.matchMedia('(min-width: 800px)').matches ? <AppDesktop /> : <AppSmartphone />
     })
     
     window.matchMedia('(min-width: 800px)').addEventListener('change', e => {

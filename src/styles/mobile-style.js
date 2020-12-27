@@ -318,26 +318,24 @@ h1, h2, h3, h4, h5, h6 {
     .HeaderMyProfile {
         display: flex;
 
-        width: 200px;
+        width: 60vw;
 
         padding: 5px 10px 10px 5px;
 
-        border: 2px solid white;
-        border-left: none;
-
-        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.445);
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.245);
 
         position: relative;
 
         background: linear-gradient(to right, #eb3349, #f45c43);
+
 
         backdrop-filter: blur(5px);
 
         left: 0;
         top: 0;
 
-        border-bottom-right-radius: 9999px;
-        border-top-right-radius: 9999px;
+        border-bottom-right-radius: 100px;
+        border-top-right-radius: 0px;
 
         z-index: 1;
     }
@@ -358,15 +356,7 @@ h1, h2, h3, h4, h5, h6 {
     
     /* LOGOFF */
     .LogOff {
-        background: linear-gradient(to right, #eb3349, #f45c43);
-
         backdrop-filter: blur(5px);
-
-        border-top-left-radius: 100%;
-        border-bottom-left-radius: 100%;
-
-        border: 2px solid white;
-        border-right: none;
 
         height: 60px;
         width: 60px;
@@ -380,14 +370,10 @@ h1, h2, h3, h4, h5, h6 {
         top: 0;
 
         margin-left: auto;
-
-        box-shadow: -2px 3px 5px rgba(0, 0, 0, 0.342);
-
-        transition: 0.5s ease-in;
     }
         .LogOff svg {
-            height: 30px;
-            width: 30px;
+            height: 35px;
+            width: 35px;
         }
 
         .LogOffConfirm {
@@ -790,6 +776,11 @@ h1, h2, h3, h4, h5, h6 {
 
     position: relative;
 }
+
+.TopTrendingPost h2 {
+    text-decoration: none;
+}
+
     .TopTrendingPost * {
         padding: 10px;
     }

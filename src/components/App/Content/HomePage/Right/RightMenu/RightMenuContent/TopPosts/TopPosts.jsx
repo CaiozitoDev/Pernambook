@@ -9,7 +9,7 @@ function TopPost(props) {
     
     return (
         <Zoom in timeout={1500}>
-            <Link to={`/comments/${props.postdata.postId}`}>
+            <Link to={`/comments/${props.postdata._id}`}>
                 <div className='TopPosts'>
                     <div className='TopPostHeader'>
                         <img src={props.postdata.photo} className='PostUserIcon' alt='img' />
