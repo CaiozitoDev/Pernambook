@@ -27,7 +27,7 @@ function LeftMenuOptions({db_user_id}) {
                     </Link>
                 </li>
                 <li>
-                    <Link to={`/messages/${db_user_id}`}>
+                    <Link to={`/messages`}>
                         <Email style={{fill: 'white'}}/>
                         <h4>Messages</h4>
                     </Link>
